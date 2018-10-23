@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb6626a2-febb-4fe6-bd18-fe2c26232df6" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/com/nevergetme/designmode/prototype/MessageBox.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/com/nevergetme/designmode/prototype/PrototypeMain.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/com/nevergetme/designmode/prototype/README.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/com/nevergetme/designmode/prototype/UnderlinePen.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/com/nevergetme/designmode/prototype/framework/Manager.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/com/nevergetme/designmode/prototype/framework/Product.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/com/nevergetme/designmode/prototype/README.md" afterPath="$PROJECT_DIR$/src/com/nevergetme/designmode/prototype/README.md" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -74,8 +69,8 @@
         <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/prototype/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="120">
-                <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <first_editor relative-caret-position="0">
+                <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -519,7 +514,7 @@
       <workItem from="1536773274524" duration="113000" />
       <workItem from="1536931882748" duration="965000" />
       <workItem from="1539000825680" duration="122000" />
-      <workItem from="1540281038836" duration="2815000" />
+      <workItem from="1540281038836" duration="2858000" />
     </task>
     <task id="LOCAL-00001" summary="update readme">
       <created>1540281412961</created>
@@ -535,11 +530,18 @@
       <option name="project" value="LOCAL" />
       <updated>1540282281153</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Prototype">
+      <created>1540283875602</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1540283875602</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19735000" />
+    <option name="totallyTimeSpent" value="19778000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -583,7 +585,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update readme" />
     <MESSAGE value="Singleton" />
-    <option name="LAST_COMMIT_MESSAGE" value="Singleton" />
+    <MESSAGE value="Prototype" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prototype" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1021,8 +1024,8 @@
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/prototype/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="120">
-            <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
             <folding />
           </first_editor>
           <second_editor />

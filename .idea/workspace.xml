@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb6626a2-febb-4fe6-bd18-fe2c26232df6" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/SelectionSort.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/SortMain.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/algorithmCompetition.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/InsertionSort.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/ShellSort.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/com/nevergetme/effectiveJava/README.md" afterPath="$PROJECT_DIR$/src/com/nevergetme/effectiveJava/README.md" />
+      <change beforePath="$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/SortMain.java" afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/SortMain.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -85,7 +83,7 @@
       <file leaf-file-name="algorithmCompetition.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/algorithmCompetition.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
+            <state relative-caret-position="1724">
               <caret line="126" column="19" lean-forward="true" selection-start-line="126" selection-start-column="19" selection-end-line="126" selection-end-column="19" />
               <folding>
                 <element signature="method#shortestToChar#0;class#algorithmCompetition#0" expanded="false" />
@@ -94,38 +92,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SelectionSort.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/SelectionSort.java">
+      <file leaf-file-name="SortMain.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/SortMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="326">
+              <caret line="31" column="49" lean-forward="true" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
+              <folding>
+                <element signature="e#228#229#0" expanded="true" />
+                <element signature="e#267#268#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShellSort.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/ShellSort.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="12" column="34" lean-forward="true" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SortMain.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/SortMain.java">
+      <file leaf-file-name="InsertionSort.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/InsertionSort.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="990">
-              <caret line="33" column="33" lean-forward="false" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
-              <folding>
-                <element signature="e#217#218#0" expanded="true" />
-                <element signature="e#256#257#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessageBox.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/prototype/MessageBox.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="930">
-              <caret line="33" column="1" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="33" selection-end-column="1" />
-              <folding>
-                <element signature="e#216#217#0" expanded="true" />
-                <element signature="e#254#255#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="90">
+              <caret line="3" column="13" lean-forward="true" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -210,7 +205,9 @@
         <option value="$PROJECT_DIR$/src/com/nevergetme/effectiveJava/README.md" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/algorithmCompetition.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/SelectionSort.java" />
+        <option value="$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/InsertionSort.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/SortMain.java" />
+        <option value="$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/ShellSort.java" />
       </list>
     </option>
   </component>
@@ -541,7 +538,7 @@
       <workItem from="1540725504184" duration="3186000" />
       <workItem from="1540803716413" duration="1205000" />
       <workItem from="1540812457272" duration="4220000" />
-      <workItem from="1540876658678" duration="1060000" />
+      <workItem from="1540876658678" duration="3511000" />
     </task>
     <task id="LOCAL-00001" summary="update readme">
       <created>1540281412961</created>
@@ -578,11 +575,18 @@
       <option name="project" value="LOCAL" />
       <updated>1540284632698</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Update">
+      <created>1540877733107</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1540877733107</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54545000" />
+    <option name="totallyTimeSpent" value="56996000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -597,7 +601,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.292581" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.292581" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -608,7 +612,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2277952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36050156" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -628,7 +632,8 @@
     <MESSAGE value="Singleton" />
     <MESSAGE value="Prototype" />
     <MESSAGE value="Effective java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Effective java" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -700,28 +705,11 @@
           <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="34" />
+      <option name="time" value="37" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithm/stack/DoubleStackDijkstra.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/iterator/Aggregate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="3" column="40" lean-forward="false" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/iterator/Book.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1029,17 +1017,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/effectiveJava/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="270">
-            <caret line="9" column="43" lean-forward="false" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/singleton/Singleton.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1078,23 +1055,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/algorithmCompetition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="126" column="19" lean-forward="true" selection-start-line="126" selection-start-column="19" selection-end-line="126" selection-end-column="19" />
-          <folding>
-            <element signature="method#shortestToChar#0;class#algorithmCompetition#0" expanded="false" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/effectiveJava/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="270">
+            <caret line="9" column="43" lean-forward="false" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/SortMain.java">
+    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/algorithmCompetition.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="33" column="33" lean-forward="false" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
+        <state relative-caret-position="1724">
+          <caret line="126" column="19" lean-forward="true" selection-start-line="126" selection-start-column="19" selection-end-line="126" selection-end-column="19" />
           <folding>
-            <element signature="e#217#218#0" expanded="true" />
-            <element signature="e#256#257#0" expanded="true" />
+            <element signature="method#shortestToChar#0;class#algorithmCompetition#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1104,6 +1081,33 @@
         <state relative-caret-position="90">
           <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/ShellSort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="12" column="34" lean-forward="true" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/InsertionSort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="3" column="13" lean-forward="true" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/SortMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="31" column="49" lean-forward="true" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
+          <folding>
+            <element signature="e#228#229#0" expanded="true" />
+            <element signature="e#267#268#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

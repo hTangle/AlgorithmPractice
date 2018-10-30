@@ -2,10 +2,8 @@ package com.nevergetme.algorithm.sort;
 
 import com.nevergetme.designmode.template.StringDisplay;
 
-public class SortMain {
-    public void sort(Comparable[] a){
-
-    }
+public abstract class SortMain {
+    public abstract void sort(Comparable[] a);
     public boolean less(Comparable v,Comparable w){
         return v.compareTo(w)<0;
     }
@@ -30,8 +28,8 @@ public class SortMain {
         return true;
     }
     public static void main(String[] args){
-        SortMain sortMain=new SelectionSort();
-        Integer[] a=new Integer[]{4,3,5,2,6};
+        SortMain sortMain=new ShellSort();
+        Integer[] a=new Integer[]{2,1,4,3,5,2,6};
         sortMain.sort(a);
     }
 }

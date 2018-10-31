@@ -14,3 +14,8 @@
   * #### A second alternative when you are facing with many constructor parameters is the *JavaBeans* pattern, in which you call a parameterless constructor to create the object and then call setter methods to set each required paremeter and each optional parameter of interest.
   * #### A JavaBeans may be in an inconsistent state partway through its construction. A related disadvantage is that the JavaBeans pattern preculdes the possibility of making a class immutable, and requires added effort on the part of the programmer to ensure thread safety.
   * #### *Build Pattern* :The client calls a constructor(or static factory) with all of the required parameters and gets a builder object, then the client calls setter-like methods on the bulider object to set each optional parameter of interest. Finally, the client calls a parameterless build method to generate the object, which is immutable.  
+  * #### A builder whose parameters have been set makes a fine *Abstract Factory* which means that a client can pass such a builder to a method to enable the method to create one or more objects for the client.
+  * #### Class.newInstance breaks compile-time exception checking.
+  * #### While the cost of creating the builder is unlikely to be noticeable in practice, it could be a problem in some performance-critical situations.
+  * #### In addition, the Builder pattern is more verbose than the telescoping constructor pattern, so it should be used only if there are enough parameters.
+  * #### In summary, the Builder pattern is a good choice when designing classes whose constructors or static factories would have more than a handful of parameters.

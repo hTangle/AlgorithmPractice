@@ -172,7 +172,183 @@ public class algorithmCompetition {
         //moveZeroes(new int[]{0,1,0,3,12});
         //System.out.println(detectCapitalUse("FlaG"));
         //findDisappearedNumbers(new int[]{4,3,2,7,8,2,3,1});
-        System.out.println(majorityElement(new int[]{2,2,1,1,1,2,2}));
+        //System.out.println(majorityElement(new int[]{2,2,1,1,1,2,2}));
+        //matrixReshape(new int[][]{{1,2},{3,4}},4,1);
+        //System.out.println(hasAlternatingBits(4));
+        //System.out.println(reverseOnlyLetters("a-bC-dEf-ghIj"));
+        //System.out.println(romanToInt("MCMXCIV"));
+        //System.out.println(lemonadeChange(new int[]{5,5,10,10,20}));
+        System.out.println(isAnagram("rat","cat"));
+    }
+    public static boolean isAnagram(String s, String t) {
+        if(s.length()!=t.length())
+            return false;
+        int[] output=new int[26];
+        for(int i=0;i<s.length();i++){
+            output[s.charAt(i)-'a']++;
+        }
+        for(int i=0;i<t.length();i++){
+            output[t.charAt(i)-'a']--;
+        }
+        for(int k:output){
+            if(k!=0)
+                return false;
+        }
+        return true;
+    }
+    public static boolean lemonadeChange(int[] bills) {
+        int[] output=new int[2];
+        for(int bill:bills){
+            if(bill==5){
+                output[0]++;
+            }else if(bill==10){
+                if(output[0]<=0){
+                    return false;
+                }else{
+                    output[0]--;
+                    output[1]++;
+                }
+            }else{
+                if(output[0]<=0){
+                    return false;
+                }
+                if(output[1]<=0){
+                    if(output[0]<=2){
+                        return false;
+                    }else{
+                        output[0]-=3;
+                    }
+                }else {
+                    output[0]--;
+                    output[1]--;
+                }
+            }
+        }
+        return true;
+    }
+    public static int romanToInt(String s) {
+        int output=0;
+        int len=s.length();
+        for(int i=0;i<s.length();i++){
+            char cur=s.charAt(i);
+            if(cur=='M'){
+                output+=1000;
+            }else if(cur=='D'){
+                output+=500;
+            }else if(cur=='C'){
+                if(i+1<len){
+                    if(s.charAt(i+1)=='D'){
+                        output+=400;
+                        i++;
+                    }else if(s.charAt(i+1)=='M'){
+                        output+=900;
+                        i++;
+                    }else{
+                        output+=100;
+                    }
+                }else {
+                    output+=100;
+                }
+            }else if(cur=='L'){
+                output+=50;
+            }else if(cur=='X'){
+                if(i+1<len){
+                    if(s.charAt(i+1)=='L'){
+                        output+=40;
+                        i++;
+                    }else if(s.charAt(i+1)=='C'){
+                        output+=90;
+                        i++;
+                    }else{
+                        output+=10;
+                    }
+                }else {
+                    output+=10;
+                }
+            }else if(cur=='V'){
+                output+=5;
+            }else if(cur=='I'){
+                if(i+1<len){
+                    if(s.charAt(i+1)=='V'){
+                        output+=4;
+                        i++;
+                    }else if(s.charAt(i+1)=='X'){
+                        output+=9;
+                        i++;
+                    }else {
+                        output+=1;
+                    }
+                }else
+                    output+=1;
+            }
+        }
+        return output;
+    }
+    public static boolean rotateString(String A, String B) {
+        return (A.length()==B.length())&&((A+A).contains(B));
+    }
+    public static String reverseOnlyLetters(String S) {
+        int begin=0,end=S.length()-1;
+        int len=S.length();
+        char[] output=S.toCharArray();
+        while(begin<end){
+            while(!Character.isLetter(output[begin])){
+                begin++;
+                if(begin>=len){
+                    break;
+                }
+            }
+            while(!Character.isLetter(output[end])){
+                end--;
+                if(end<0){
+                    break;
+                }
+            }
+            if(begin<end){
+                char t=output[begin];
+                output[begin]=output[end];
+                output[end]=t;
+            }
+            begin++;
+            end--;
+        }
+        return String.valueOf(output);
+    }
+    public static boolean hasAlternatingBits(int n) {
+//        if(((n>>1)^n)==0){
+//            return true;
+//        }else {
+//            return false;
+//        }
+        if(n<=2){
+            return true;
+        }
+        int begin=n%2;
+        n=n>>1;
+        while(n!=0){
+            if(n%2!=begin){
+                begin=n%2;
+                n=n>>1;
+            }else{
+                return false;
+            }
+        }
+        //System.out.println((n>>1)^n);
+        return true;
+    }
+    public static int[][] matrixReshape(int[][] nums, int r, int c) {
+        if(nums.length*nums[0].length!=r*c){
+            return nums;
+        }
+        int[][] output=new int[r][c];
+        int index=0;
+        for(int[] num:nums){
+            for(int n:num){
+                output[index/c][index%c]=n;
+                index++;
+            }
+        }
+        return output;
     }
     public static int majorityElement(int[] nums) {
         HashMap<Integer,Integer> hashMap=new HashMap<>();

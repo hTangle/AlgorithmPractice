@@ -28,7 +28,7 @@ public abstract class SortMain {
         return true;
     }
     public static void main(String[] args){
-        SortMain sortMain=new ShellSort();
+        SortMain sortMain=new MergeSort();
         Integer[] a=new Integer[]{2,1,4,3,5,2,6};
         sortMain.sort(a);
     }

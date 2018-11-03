@@ -19,3 +19,7 @@
   * #### While the cost of creating the builder is unlikely to be noticeable in practice, it could be a problem in some performance-critical situations.
   * #### In addition, the Builder pattern is more verbose than the telescoping constructor pattern, so it should be used only if there are enough parameters.
   * #### In summary, the Builder pattern is a good choice when designing classes whose constructors or static factories would have more than a handful of parameters.
+  
+* ### Enforce the singleton property with a private constructor or an enum type
+  > #### A Singleton is simply a class that is instantiated exactly once.
+  > #### Making a class a singleton can make it difficult to test its clients, as it's impossible to substitute a mock implementation for a singleton unless it implements an interface that serves as its type.

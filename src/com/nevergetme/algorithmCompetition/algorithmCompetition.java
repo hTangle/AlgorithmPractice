@@ -1,5 +1,6 @@
 package com.nevergetme.algorithmCompetition;
 
+import com.nevergetme.designmode.prototype.framework.Manager;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -200,7 +201,199 @@ public class algorithmCompetition {
 //        }
         //System.out.println(countSegments(", , , , a, eaefa"));
         //System.out.println(compress(new char[]{'a','b','b','b','b','b','b','b','b','b','b','b','b','c'}));
-        System.out.println(compress(new char[]{'a','a','a','c','b','b','b','b','b','b','b','b','b','b','b','b','c','d','d'}));
+        //System.out.println(compress(new char[]{'a','a','a','c','b','b','b','b','b','b','b','b','b','b','b','b','c','d','d'}));
+        //System.out.println(hammingWeight(1));
+        //System.out.println(isUgly(14));
+        //System.out.println(grayCode(3));
+        //System.out.println(singleNumber137(new int[]{1,1,1,2,2,2,3,4,4,4}));
+        //int[] t=twoSum(new int[]{1,2,3,5,6,4},5);
+        //System.out.println(t[0]+","+t[1]);
+        //        //plusOne(new int[]{9,8,9});\
+        //System.out.println(isPalindrome(101));
+        System.out.println(canPlaceFlowers(new int[]{1,0,0,0,1},2));
+    }
+    public static boolean canPlaceFlowers(int[] flowerbed, int n) {
+        if(flowerbed.length==1){
+            if(flowerbed[0]==1&&n==1){
+                return false;
+            }else{
+                return true;
+            }
+        }
+        if(flowerbed.length==2){
+            if(flowerbed[0]+flowerbed[1]+n>1)
+                return false;
+            else
+                return true;
+        }
+        if(flowerbed[1]==0&&flowerbed[0]==0){
+            n--;
+            flowerbed[0]=1;
+        }
+        if(flowerbed[flowerbed.length-1]==0&&flowerbed[flowerbed.length-2]==0){
+            n--;
+            flowerbed[flowerbed.length-1]=1;
+        }
+        if(n<=0)
+            return true;
+        for(int i=1;i<flowerbed.length-1;){
+            if(flowerbed[i]==0){
+                if(flowerbed[i-1]==0&&flowerbed[i+1]==0)
+                {
+                    flowerbed[i]=1;
+                    n--;
+                    if(n<=0)
+                        return true;
+                    i+=2;
+                }else{
+                    i++;
+                }
+            }else {
+                i+=2;
+            }
+        }
+        if(n>0)
+            return false;
+        else
+            return true;
+    }
+    public static boolean isPalindrome(int x) {
+        if(x<0)
+            return false;
+        if(x<10){
+            return true;
+        }
+        String output=Integer.toString(x);
+        int begin=0;
+        int end=output.length()-1;
+        while(begin<end){
+            if(output.charAt(begin++)!=output.charAt(end--))
+                return false;
+        }
+        return true;
+//        if(output.equals(new StringBuffer(output).reverse().toString())){
+//            return true;
+//        }else{
+//            return false;
+//        }
+    }
+    public static int[] plusOne(int[] digits) {
+        int shift=1;
+        int sum=0;
+        List<Integer> list=new ArrayList<>();
+        for(int i=digits.length-1;i>=0;i--){
+            if(digits[i]==9&&shift==1){
+                shift=1;
+                list.add(0);
+            }else if(shift==1){
+                shift=0;
+                list.add(digits[i]+1);
+            }
+            else{
+                list.add(digits[i]);
+            }
+        }
+        if(shift==1){
+            list.add(1);
+        }
+        int[] output=new int[list.size()];
+        int size=list.size()-1;
+        for(int i=list.size()-1;i>=0;i--){
+            output[size-i]=list.get(i);
+        }
+        return output;
+    }
+    public static int[] twoSum(int[] nums, int target) {
+        Map<Integer,Integer> map=new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            if(map.containsKey(nums[i])){
+                return new int[]{map.get(nums[i]),i};
+            }else {
+                map.put(target-nums[i],i);
+            }
+        }
+        return null;
+    }
+    public static int singleNumber137(int[] nums) {
+        int ones = 0, twos = 0;
+        for(int i = 0; i < nums.length; i++){
+            ones = (ones ^ nums[i]) & ~twos;
+            twos = (twos ^ nums[i]) & ~ones;
+        }
+        return ones;
+//        int ans=0;
+//        for(int i=0;i<32;i++){
+//            int sum=0;
+//            for(int j=0;j<nums.length;j++){
+//                if(((nums[j]>>i)&1)==1){
+//                    sum++;
+//                    sum=sum%3;
+//                }
+//            }
+//            if(sum!=0){
+//                ans|=sum<<i;
+//            }
+//        }
+//        return ans;
+    }
+    public static List<Integer> grayCode(int n) {
+        List<Integer> output=new ArrayList<>();
+        if(n==0){
+            output.add(0);
+            return output;
+        }
+        output.add(0);
+        output.add(1);
+        if(n==1)
+            return output;
+        int shift=2;
+        for(int i=1;i<n;i++){
+            for(int j=output.size()-1;j>=0;j--){
+                output.add(shift+output.get(j));
+            }
+            shift<<=1;
+        }
+        return output;
+    }
+    public static boolean isUgly(int num) {
+        if(num==1){
+            return true;
+        }
+        if(num<1){
+            return false;
+        }
+        while(num!=1){
+            if(num%2==0){
+                num=num/2;
+            }else if(num%3==0){
+                num=num/3;
+            }else if(num%5==0){
+                num=num/5;
+            }else {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isPowerOfThree(int n) {
+        return (n>0&&1162261467%n==0);
+    }
+    // you need to treat n as an unsigned value
+    public static int hammingWeight(int n) {
+        int sum = 0;
+        while (n != 0) {
+            sum++;
+            n &= (n - 1);
+        }
+        return sum;
+        //return Integer.bitCount(n);
+//        int output=0;
+//        while(n!=0){
+//            output+=n&1;
+//            n=n>>1;
+//        }
+//        return output;
     }
 
     public boolean hasCycle(ListNode head) {

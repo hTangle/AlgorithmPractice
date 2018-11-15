@@ -23,3 +23,23 @@
 * ### Enforce the singleton property with a private constructor or an enum type
   > #### A Singleton is simply a class that is instantiated exactly once.
   > #### Making a class a singleton can make it difficult to test its clients, as it's impossible to substitute a mock implementation for a singleton unless it implements an interface that serves as its type.
+  
+* ### Enforce noninstantiability with with a private constructor
+  > #### Attempting to enforce noninstantiablilty by making a class abstract does not work.
+  > #### The AssertionError isn't strictly required, but it provides insurance in case the constructor is accidentally invoked from within the class.
+  
+* ### Avoid creating unnecessary objects
+
+```
+String s=new String("stringette");//Don't do this!
+```
+
+  > #### You can often avoid creating unnecessary objects by using *static factory methods* in preference to constructor on immutable classes that provide both.
+  > #### Prefer primitives to boxed primitives, and watch out for unintentional autoboxing.
+  > #### Creating objects unnecessarily merely affects style and performance.
+  
+* ### Eliminate obsolete object references
+  * #### Nulling out object references should be the exception rather than the norm.
+  * #### General speaking, whenever a class managers its own memory, the programmer should be alert for memory leaks.
+  * #### Another common source of memory leaks is caches.
+  * #### A third common source of memory leaks is listeners and other callbacks.

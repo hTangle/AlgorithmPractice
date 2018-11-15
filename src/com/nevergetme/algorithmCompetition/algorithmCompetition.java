@@ -1,7 +1,5 @@
 package com.nevergetme.algorithmCompetition;
 
-import com.nevergetme.designmode.prototype.framework.Manager;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 public class algorithmCompetition {
@@ -210,7 +208,46 @@ public class algorithmCompetition {
         //System.out.println(t[0]+","+t[1]);
         //        //plusOne(new int[]{9,8,9});\
         //System.out.println(isPalindrome(101));
-        System.out.println(canPlaceFlowers(new int[]{1,0,0,0,1},2));
+        //System.out.println(canPlaceFlowers(new int[]{1,0,0,0,1},2));
+        System.out.println(isPalindrome("race a car"));
+
+    }
+    public static boolean isCharOrDigiter(char c){
+        if((c<='9'&&c>='0')||(c<='z'&&c>='a')){
+            return true;
+        }else {
+            return false;
+        }
+    }
+    public static boolean isPalindrome(String s) {
+        char[] output=s.toLowerCase().toCharArray();
+        int begin=0,end=output.length-1;
+        while(begin<end){
+            while(begin<end&&(!isCharOrDigiter(output[begin]))){
+                begin++;
+            }
+            while(begin<end&&(!isCharOrDigiter(output[end]))){
+                end--;
+            }
+            if(begin>=end){
+                break;
+            }
+            if(output[begin++]!=output[end--]){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static int reachNumber(int target) {
+        target = Math.abs(target);
+        int sqrt = (int) Math.sqrt(2*target);
+        if(sqrt*(sqrt+1) < 2*target) sqrt++;
+        if(target%2 == 0) {
+            while(sqrt%4 != 0 && (sqrt+1)%4 != 0 ) sqrt++;
+        } else {
+            while(sqrt%4 == 0 || (sqrt+1)%4 == 0 ) sqrt++;
+        }
+        return sqrt;
     }
     public static boolean canPlaceFlowers(int[] flowerbed, int n) {
         if(flowerbed.length==1){

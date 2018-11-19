@@ -43,3 +43,6 @@ String s=new String("stringette");//Don't do this!
   * #### General speaking, whenever a class managers its own memory, the programmer should be alert for memory leaks.
   * #### Another common source of memory leaks is caches.
   * #### A third common source of memory leaks is listeners and other callbacks.
+  
+* ### Avoid finalizers
+  > #### Don't use finalizers except as a safety net or to terminate noncritical native resources. In those rare instances where you do use a finalizers, remember to invoke super.finalize. If you use a finalizer as a safety net, remember to log the invalid usage from the finalizer. Lastly, if you need to associate a finalizer with a public, nonfinal class, consider using a finalizer guardian, so finalization can take place even if a subclass finalizer fails to invoke super.finalize.

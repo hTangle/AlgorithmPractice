@@ -28,8 +28,8 @@ public abstract class SortMain {
         return true;
     }
     public static void main(String[] args){
-        SortMain sortMain=new MergeSort();
-        Integer[] a=new Integer[]{2,1,4,3,5,2,6};
+        SortMain sortMain=new QuickSort();
+        Integer[] a=new Integer[]{20,15,14,18,21,36,40,10};
         sortMain.sort(a);
     }
 }

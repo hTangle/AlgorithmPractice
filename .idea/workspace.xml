@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb6626a2-febb-4fe6-bd18-fe2c26232df6" name="Default" comment="Update">
+      <change afterPath="$PROJECT_DIR$/src/com/nevergetme/others/sensitiveword/SeneitiveWordInit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/nevergetme/effectiveJava/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/nevergetme/effectiveJava/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/MySQLReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/MySQLReader.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,14 +15,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/MySQLReader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/nevergetme/effectiveJava/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="400">
+              <first_editor relative-caret-position="266">
                 <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/nevergetme/others/sensitiveword/SeneitiveWordInit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#204#205#0" expanded="true" />
+                <element signature="e#262#263#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -68,7 +95,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/strategy/Hand.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/strategy/Strategy.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/strategy/WinningStrategy.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/strategy/ProbStrategy.java" />
@@ -110,7 +136,6 @@
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/facade/pagemaker/PageMaker.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/facade/FacadeMain.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/facade/maildata.txt" />
-        <option value="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/MySQLReader.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/observer/Observer.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/observer/NumberGenerator.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/observer/RandomNumberGenerator.java" />
@@ -119,6 +144,8 @@
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/observer/IncrementalNumberGenerator.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/observer/ObserverMain.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/effectiveJava/README.md" />
+        <option value="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/MySQLReader.java" />
+        <option value="$PROJECT_DIR$/src/com/nevergetme/others/sensitiveword/SeneitiveWordInit.java" />
       </list>
     </option>
   </component>
@@ -159,7 +186,22 @@
               <item name="AlgorithmPractice" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="nevergetme" type="462c0819:PsiDirectoryNode" />
-              <item name="effectiveJava" type="462c0819:PsiDirectoryNode" />
+              <item name="algorithmCompetition" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AlgorithmPractice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AlgorithmPractice" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="nevergetme" type="462c0819:PsiDirectoryNode" />
+              <item name="others" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AlgorithmPractice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AlgorithmPractice" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="nevergetme" type="462c0819:PsiDirectoryNode" />
+              <item name="others" type="462c0819:PsiDirectoryNode" />
+              <item name="sensitiveword" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -172,7 +214,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543303977127" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543307952312" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../jar/mysql-connector-java-5.1.47.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -191,23 +233,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ObserverMain">
+  <component name="RunManager" selected="Application.SeneitiveWordInit">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CreateJFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.nevergetme.others.CreateJFrame" />
-      <module name="AlgorithmPractice" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.nevergetme.others.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -247,6 +275,20 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.nevergetme.designmode.observer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SeneitiveWordInit" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.nevergetme.others.sensitiveword.SeneitiveWordInit" />
+      <module name="AlgorithmPractice" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nevergetme.others.sensitiveword.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -298,19 +340,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.CreateJFrame" />
       <item itemvalue="Application.SortMain" />
       <item itemvalue="Application.FacadeMain" />
       <item itemvalue="Application.MySQLReader" />
       <item itemvalue="Application.ObserverMain" />
+      <item itemvalue="Application.SeneitiveWordInit" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SeneitiveWordInit" />
         <item itemvalue="Application.ObserverMain" />
         <item itemvalue="Application.MySQLReader" />
         <item itemvalue="Application.FacadeMain" />
         <item itemvalue="Application.SortMain" />
-        <item itemvalue="Application.CreateJFrame" />
       </list>
     </recent_temporary>
   </component>
@@ -376,7 +418,7 @@
       <workItem from="1543299994358" duration="18000" />
       <workItem from="1543300047976" duration="99000" />
       <workItem from="1543301020194" duration="163000" />
-      <workItem from="1543301428647" duration="3002000" />
+      <workItem from="1543301428647" duration="6503000" />
     </task>
     <task id="LOCAL-00001" summary="update readme">
       <created>1540281412961</created>
@@ -497,17 +539,24 @@
       <option name="project" value="LOCAL" />
       <updated>1543303178110</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Update">
+      <created>1543304454796</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1543304454796</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="168062000" />
+    <option name="totallyTimeSpent" value="171563000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.15405117" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15405117" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -518,8 +567,8 @@
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.30653805" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.27899686" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30653805" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.27867097" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -810,17 +859,40 @@
           <properties />
           <option name="timeStamp" value="94" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/nevergetme/others/sensitiveword/SeneitiveWordInit.java</url>
+          <line>16</line>
+          <properties />
+          <option name="timeStamp" value="95" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/nevergetme/others/sensitiveword/SeneitiveWordInit.java</url>
+          <line>57</line>
+          <properties />
+          <option name="timeStamp" value="96" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/nevergetme/others/sensitiveword/SeneitiveWordInit.java</url>
+          <line>63</line>
+          <properties />
+          <option name="timeStamp" value="97" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/nevergetme/others/sensitiveword/SeneitiveWordInit.java</url>
+          <line>67</line>
+          <properties />
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/nevergetme/others/sensitiveword/SeneitiveWordInit.java</url>
+          <line>71</line>
+          <properties />
+          <option name="timeStamp" value="99" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/strategy/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="29" column="84" selection-start-line="29" selection-start-column="84" selection-end-line="29" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/strategy/StrategyMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1185,19 +1257,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/MySQLReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="20" column="46" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1543061954567" expanded="true" signature="857:876" ph="select * fro... words" />
-            <marker date="1543061954567" expanded="true" signature="2925:2957" ph="insert into words... " />
-            <marker date="1543061954567" expanded="true" signature="3124:3143" ph="select * fro... words" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/observer/GraphObserver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1215,10 +1274,32 @@
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/effectiveJava/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="400">
+          <first_editor relative-caret-position="266">
             <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/MySQLReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/others/sensitiveword/SeneitiveWordInit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#204#205#0" expanded="true" />
+            <element signature="e#262#263#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

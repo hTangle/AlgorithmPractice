@@ -50,4 +50,11 @@ String s=new String("stringette");//Don't do this!
 ## 2. Methods Common on All Objects
 
 * ### Obey the general contract when overriding equals
+  1. #### Use the == operator to check if the argument is a reference to this object.
+  2. #### Use the instanceof operator to check if the argument has the correct type.
+  3. #### Cast the argument to the correct type.
+  4. #### For each "significant" field in the class, check if that field of the argument matches the corresponding field of this object.
+  5. #### When you are finished writing your equals method, ask yourself three questions: Is it symmetric? Is it transitive? Is it consistent?
+  
+* ### Always override hashCode when you override equals
   

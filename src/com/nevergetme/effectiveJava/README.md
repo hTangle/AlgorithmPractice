@@ -57,4 +57,8 @@ String s=new String("stringette");//Don't do this!
   5. #### When you are finished writing your equals method, ask yourself three questions: Is it symmetric? Is it transitive? Is it consistent?
   
 * ### Always override hashCode when you override equals
+  * #### if two objects are equal according to the equals methods, then calling the hashCode method on each of the two objects must produce the same integer result, which is mean that equal objects must have equal codes.
+  * #### You mush exclude any fields that are not used in equals comparisons, or you risk violating the second provision of the hashCode contract.
+  * #### Don't be tempted to exclude significant parts of an object from the hash code computation to improve performance.
   
+* ### Always override toString

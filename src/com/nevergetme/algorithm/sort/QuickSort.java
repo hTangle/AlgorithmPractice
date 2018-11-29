@@ -26,4 +26,15 @@ public class QuickSort extends SortMain{
         exch(a,lo,j);
         return j;
     }
+    //利用排序算法中的切分找到数组中第k小的元素
+    public Comparable select(Comparable[] a,int k){
+        int lo=0,hi=a.length-1;
+        while (hi>lo){
+            int j=partition(a,lo,hi);
+            if(j==k)return a[k];
+            else if(j>k)hi=j-1;
+            else if(j<k)lo=j+1;
+        }
+        return a[k];
+    }
 }

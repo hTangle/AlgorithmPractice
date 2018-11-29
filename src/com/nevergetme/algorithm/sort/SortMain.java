@@ -1,6 +1,7 @@
 package com.nevergetme.algorithm.sort;
 
-import com.nevergetme.designmode.template.StringDisplay;
+
+import java.util.Arrays;
 
 public abstract class SortMain {
     public abstract void sort(Comparable[] a);
@@ -27,9 +28,12 @@ public abstract class SortMain {
         }
         return true;
     }
+
     public static void main(String[] args){
-        SortMain sortMain=new QuickSort();
+        SortMain sortMain=new HeapSort();
         Integer[] a=new Integer[]{20,15,14,18,21,36,40,10};
-        sortMain.sort(a);
+        Arrays.sort(a);
+        //sortMain.sort(a);
+        System.out.println("");
     }
 }

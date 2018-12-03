@@ -2,6 +2,7 @@ package com.nevergetme.algorithmCompetition;
 
 
 import java.util.*;
+
 public class algorithmCompetition {
     public static void question3_7(String[] dna) {
         String outputS = "";
@@ -209,102 +210,234 @@ public class algorithmCompetition {
         //        //plusOne(new int[]{9,8,9});\
         //System.out.println(isPalindrome(101));
         //System.out.println(canPlaceFlowers(new int[]{1,0,0,0,1},2));
-        System.out.println(isPalindrome("race a car"));
+        System.out.println(getRow(3));
 
     }
-    public static boolean isCharOrDigiter(char c){
-        if((c<='9'&&c>='0')||(c<='z'&&c>='a')){
+
+    public static List<Integer> getRow(int rowIndex) {
+        List<Integer> list = new ArrayList<>();
+        int[] pascal = new int[rowIndex + 1];
+
+        if (rowIndex == 0) {
+            list.add(1);
+            return list;
+        }
+        if (rowIndex == 1) {
+            list.add(1);
+            list.add(1);
+            return list;
+        }
+        pascal[0] = 1;pascal[1]=1;
+        int currentLen = 2;
+        for (int i = 2; i < rowIndex+1; i++) {
+            for(int j=1;j<i;j++){
+                pascal[j]=pascal[j-1]+pascal[j];
+            }
+            pascal[i]=1;
+        }
+        for(int k:pascal){
+            list.add(k);
+        }
+        return list;
+    }
+
+    public static boolean isPowerOfTwo(int n) {
+        if (n <= 0)
+            return false;
+        if (n == 1)
             return true;
-        }else {
+        if (n % 2 == 1) {
+            return false;
+        } else {
+            return isPowerOfTwo(n / 2);
+        }
+    }
+
+    public static int maxSubArray(int[] A) {
+//        Kadane’s Algorithm:
+//        Initialize:
+//        max_so_far = 0
+//        max_ending_here = 0
+//
+//        Loop for each element of the array
+//        (a) max_ending_here = max_ending_here + a[i]
+//        (b) if(max_ending_here < 0)
+//            max_ending_here = 0
+//        (c) if(max_so_far < max_ending_here)
+//            max_so_far = max_ending_here
+//        return max_so_far
+        int maxSoFar = A[0], maxEndingHere = A[0];
+        for (int i = 1; i < A.length; ++i) {
+            maxEndingHere = Math.max(maxEndingHere + A[i], A[i]);
+            maxSoFar = Math.max(maxSoFar, maxEndingHere);
+        }
+        return maxSoFar;
+    }
+
+    public static Set<Integer> happySet = new HashSet<>();
+
+    public static boolean isHappy(int n) {
+        char[] output = Integer.toString(n).toCharArray();
+        int result = 0;
+        for (char out : output) {
+            result += Character.getNumericValue(out) * Character.getNumericValue(out);
+        }
+        if (result == 1)
+            return true;
+        else if (happySet.contains(result))
+            return false;
+        else
+            happySet.add(result);
+        return isHappy(result);
+    }
+
+    public static char findTheDifference(String s, String t) {
+
+        char[] sN = s.toCharArray();
+        char[] tN = t.toCharArray();
+        int sum = 0;
+        for (char ts : tN) {
+            sum += ts;
+        }
+        for (char ss : sN) {
+            sum -= ss;
+        }
+        return (char) sum;
+//        HashMap<Character,Integer> map=new HashMap<>();
+//        for(char ts:tN){
+//            if(map.containsKey(ts))
+//                map.put(ts,map.get(ts)+1);
+//            else
+//                map.put(ts,1);
+//            //map.put(ts,0);
+//        }
+//        for(char ss:sN){
+//            map.put(ss,map.get(ss)-1);
+//        }
+//        Iterator<Character> it=map.keySet().iterator();
+//        while (it.hasNext()){
+//            char k=it.next();
+//            if(map.get(k)==1){
+//                return k;
+//            }
+//        }
+//        return '0';
+        //return map.keySet()
+    }
+
+    public static int distributeCandies(int[] candies) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int len = candies.length;
+        int number = 0;
+        int count = len / 2;
+        for (int i = 0; i < len; i++) {
+            if (!map.containsKey(candies[i])) {
+                map.put(candies[i], 1);
+                number++;
+                if (number >= count)
+                    break;
+                ;
+            }
+        }
+        return number;
+    }
+
+    public static boolean isCharOrDigiter(char c) {
+        if ((c <= '9' && c >= '0') || (c <= 'z' && c >= 'a')) {
+            return true;
+        } else {
             return false;
         }
     }
+
     public static boolean isPalindrome(String s) {
-        char[] output=s.toLowerCase().toCharArray();
-        int begin=0,end=output.length-1;
-        while(begin<end){
-            while(begin<end&&(!isCharOrDigiter(output[begin]))){
+        char[] output = s.toLowerCase().toCharArray();
+        int begin = 0, end = output.length - 1;
+        while (begin < end) {
+            while (begin < end && (!isCharOrDigiter(output[begin]))) {
                 begin++;
             }
-            while(begin<end&&(!isCharOrDigiter(output[end]))){
+            while (begin < end && (!isCharOrDigiter(output[end]))) {
                 end--;
             }
-            if(begin>=end){
+            if (begin >= end) {
                 break;
             }
-            if(output[begin++]!=output[end--]){
+            if (output[begin++] != output[end--]) {
                 return false;
             }
         }
         return true;
     }
+
     public static int reachNumber(int target) {
         target = Math.abs(target);
-        int sqrt = (int) Math.sqrt(2*target);
-        if(sqrt*(sqrt+1) < 2*target) sqrt++;
-        if(target%2 == 0) {
-            while(sqrt%4 != 0 && (sqrt+1)%4 != 0 ) sqrt++;
+        int sqrt = (int) Math.sqrt(2 * target);
+        if (sqrt * (sqrt + 1) < 2 * target) sqrt++;
+        if (target % 2 == 0) {
+            while (sqrt % 4 != 0 && (sqrt + 1) % 4 != 0) sqrt++;
         } else {
-            while(sqrt%4 == 0 || (sqrt+1)%4 == 0 ) sqrt++;
+            while (sqrt % 4 == 0 || (sqrt + 1) % 4 == 0) sqrt++;
         }
         return sqrt;
     }
+
     public static boolean canPlaceFlowers(int[] flowerbed, int n) {
-        if(flowerbed.length==1){
-            if(flowerbed[0]==1&&n==1){
+        if (flowerbed.length == 1) {
+            if (flowerbed[0] == 1 && n == 1) {
                 return false;
-            }else{
+            } else {
                 return true;
             }
         }
-        if(flowerbed.length==2){
-            if(flowerbed[0]+flowerbed[1]+n>1)
+        if (flowerbed.length == 2) {
+            if (flowerbed[0] + flowerbed[1] + n > 1)
                 return false;
             else
                 return true;
         }
-        if(flowerbed[1]==0&&flowerbed[0]==0){
+        if (flowerbed[1] == 0 && flowerbed[0] == 0) {
             n--;
-            flowerbed[0]=1;
+            flowerbed[0] = 1;
         }
-        if(flowerbed[flowerbed.length-1]==0&&flowerbed[flowerbed.length-2]==0){
+        if (flowerbed[flowerbed.length - 1] == 0 && flowerbed[flowerbed.length - 2] == 0) {
             n--;
-            flowerbed[flowerbed.length-1]=1;
+            flowerbed[flowerbed.length - 1] = 1;
         }
-        if(n<=0)
+        if (n <= 0)
             return true;
-        for(int i=1;i<flowerbed.length-1;){
-            if(flowerbed[i]==0){
-                if(flowerbed[i-1]==0&&flowerbed[i+1]==0)
-                {
-                    flowerbed[i]=1;
+        for (int i = 1; i < flowerbed.length - 1; ) {
+            if (flowerbed[i] == 0) {
+                if (flowerbed[i - 1] == 0 && flowerbed[i + 1] == 0) {
+                    flowerbed[i] = 1;
                     n--;
-                    if(n<=0)
+                    if (n <= 0)
                         return true;
-                    i+=2;
-                }else{
+                    i += 2;
+                } else {
                     i++;
                 }
-            }else {
-                i+=2;
+            } else {
+                i += 2;
             }
         }
-        if(n>0)
+        if (n > 0)
             return false;
         else
             return true;
     }
+
     public static boolean isPalindrome(int x) {
-        if(x<0)
+        if (x < 0)
             return false;
-        if(x<10){
+        if (x < 10) {
             return true;
         }
-        String output=Integer.toString(x);
-        int begin=0;
-        int end=output.length()-1;
-        while(begin<end){
-            if(output.charAt(begin++)!=output.charAt(end--))
+        String output = Integer.toString(x);
+        int begin = 0;
+        int end = output.length() - 1;
+        while (begin < end) {
+            if (output.charAt(begin++) != output.charAt(end--))
                 return false;
         }
         return true;
@@ -314,46 +447,48 @@ public class algorithmCompetition {
 //            return false;
 //        }
     }
+
     public static int[] plusOne(int[] digits) {
-        int shift=1;
-        int sum=0;
-        List<Integer> list=new ArrayList<>();
-        for(int i=digits.length-1;i>=0;i--){
-            if(digits[i]==9&&shift==1){
-                shift=1;
+        int shift = 1;
+        int sum = 0;
+        List<Integer> list = new ArrayList<>();
+        for (int i = digits.length - 1; i >= 0; i--) {
+            if (digits[i] == 9 && shift == 1) {
+                shift = 1;
                 list.add(0);
-            }else if(shift==1){
-                shift=0;
-                list.add(digits[i]+1);
-            }
-            else{
+            } else if (shift == 1) {
+                shift = 0;
+                list.add(digits[i] + 1);
+            } else {
                 list.add(digits[i]);
             }
         }
-        if(shift==1){
+        if (shift == 1) {
             list.add(1);
         }
-        int[] output=new int[list.size()];
-        int size=list.size()-1;
-        for(int i=list.size()-1;i>=0;i--){
-            output[size-i]=list.get(i);
+        int[] output = new int[list.size()];
+        int size = list.size() - 1;
+        for (int i = list.size() - 1; i >= 0; i--) {
+            output[size - i] = list.get(i);
         }
         return output;
     }
+
     public static int[] twoSum(int[] nums, int target) {
-        Map<Integer,Integer> map=new HashMap<>();
-        for(int i=0;i<nums.length;i++){
-            if(map.containsKey(nums[i])){
-                return new int[]{map.get(nums[i]),i};
-            }else {
-                map.put(target-nums[i],i);
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
+                return new int[]{map.get(nums[i]), i};
+            } else {
+                map.put(target - nums[i], i);
             }
         }
         return null;
     }
+
     public static int singleNumber137(int[] nums) {
         int ones = 0, twos = 0;
-        for(int i = 0; i < nums.length; i++){
+        for (int i = 0; i < nums.length; i++) {
             ones = (ones ^ nums[i]) & ~twos;
             twos = (twos ^ nums[i]) & ~ones;
         }
@@ -373,40 +508,42 @@ public class algorithmCompetition {
 //        }
 //        return ans;
     }
+
     public static List<Integer> grayCode(int n) {
-        List<Integer> output=new ArrayList<>();
-        if(n==0){
+        List<Integer> output = new ArrayList<>();
+        if (n == 0) {
             output.add(0);
             return output;
         }
         output.add(0);
         output.add(1);
-        if(n==1)
+        if (n == 1)
             return output;
-        int shift=2;
-        for(int i=1;i<n;i++){
-            for(int j=output.size()-1;j>=0;j--){
-                output.add(shift+output.get(j));
+        int shift = 2;
+        for (int i = 1; i < n; i++) {
+            for (int j = output.size() - 1; j >= 0; j--) {
+                output.add(shift + output.get(j));
             }
-            shift<<=1;
+            shift <<= 1;
         }
         return output;
     }
+
     public static boolean isUgly(int num) {
-        if(num==1){
+        if (num == 1) {
             return true;
         }
-        if(num<1){
+        if (num < 1) {
             return false;
         }
-        while(num!=1){
-            if(num%2==0){
-                num=num/2;
-            }else if(num%3==0){
-                num=num/3;
-            }else if(num%5==0){
-                num=num/5;
-            }else {
+        while (num != 1) {
+            if (num % 2 == 0) {
+                num = num / 2;
+            } else if (num % 3 == 0) {
+                num = num / 3;
+            } else if (num % 5 == 0) {
+                num = num / 5;
+            } else {
                 return false;
             }
         }
@@ -414,8 +551,9 @@ public class algorithmCompetition {
     }
 
     public boolean isPowerOfThree(int n) {
-        return (n>0&&1162261467%n==0);
+        return (n > 0 && 1162261467 % n == 0);
     }
+
     // you need to treat n as an unsigned value
     public static int hammingWeight(int n) {
         int sum = 0;
@@ -434,77 +572,81 @@ public class algorithmCompetition {
     }
 
     public boolean hasCycle(ListNode head) {
-        if(head==null){
+        if (head == null) {
             return false;
         }
-        ListNode slow=head,fast=head;
-        while(fast!=null&&fast.next!=null){
-            slow=slow.next;
-            fast=fast.next.next;
-            if(fast==slow)
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (fast == slow)
                 return true;
         }
         return false;
     }
+
     class ListNode {
         int val;
         ListNode next;
+
         ListNode(int x) {
             val = x;
             next = null;
         }
     }
+
     public static int compress(char[] chars) {
-        if(chars.length==1){
+        if (chars.length == 1) {
             return 1;
         }
-        char[] temp=new char[]{'0','1','2','3','4','5','6','7','8','9'};
-        int number=1;
-        int j=1;
-        for(int i=0;i<chars.length-1;i++){
-            if(chars[i]==chars[i+1]){
+        char[] temp = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+        int number = 1;
+        int j = 1;
+        for (int i = 0; i < chars.length - 1; i++) {
+            if (chars[i] == chars[i + 1]) {
                 number++;
-            }else{
+            } else {
                 //chars[j++]=chars[i+1];
-                if(number!=1){
-                    if(number>=1000){
-                        chars[j++]='1';
-                        number=number%1000;
+                if (number != 1) {
+                    if (number >= 1000) {
+                        chars[j++] = '1';
+                        number = number % 1000;
                     }
-                    if(number>=100){
-                        chars[j++]=temp[number/100];
-                        number%=100;
+                    if (number >= 100) {
+                        chars[j++] = temp[number / 100];
+                        number %= 100;
                     }
-                    if(number>=10){
-                        chars[j++]=temp[number/10];
-                        number%=10;
+                    if (number >= 10) {
+                        chars[j++] = temp[number / 10];
+                        number %= 10;
                     }
-                    chars[j++]=temp[number];
+                    chars[j++] = temp[number];
                 }
-                chars[j++]=chars[i+1];
-                number=1;
+                chars[j++] = chars[i + 1];
+                number = 1;
                 //j=i+1;
             }
         }
-        if(number!=1){
-            if(number>=1000){
-                chars[j++]='1';
-                number=number%1000;
+        if (number != 1) {
+            if (number >= 1000) {
+                chars[j++] = '1';
+                number = number % 1000;
             }
-            if(number>=100){
-                chars[j++]=temp[number/100];
-                number%=100;
+            if (number >= 100) {
+                chars[j++] = temp[number / 100];
+                number %= 100;
             }
-            if(number>=10){
-                chars[j++]=temp[number/10];
-                number%=10;
+            if (number >= 10) {
+                chars[j++] = temp[number / 10];
+                number %= 10;
             }
-            chars[j++]=temp[number];
+            chars[j++] = temp[number];
         }
         return j;
     }
+
     public static int countSegments(String s) {
-        if(s==null||s.length()==0)
+        if (s == null || s.length() == 0)
             return 0;
         return s.split(" ").length;
 //        if(s==null||s.length()==0){
@@ -537,9 +679,10 @@ public class algorithmCompetition {
 //        //maxLen=maxLen<count?count:maxLen;
 //        return output;
     }
+
     public static int arrangeCoins(int n) {
-        double x = Math.sqrt(2* (double)n + 0.25) - 0.5;
-        return (int)x;
+        double x = Math.sqrt(2 * (double) n + 0.25) - 0.5;
+        return (int) x;
 //        if(n==0)
 //            return 0;
 //        if(n==1){
@@ -554,39 +697,39 @@ public class algorithmCompetition {
 //            i++;
 
     }
+
     public static String addStrings(String num1, String num2) {
-        if(num1.length()<num2.length())
-            return addStrings(num2,num1);
-        int len1=num1.length()-1;
-        int len2=num2.length()-1;
-        int carryBit=0;
+        if (num1.length() < num2.length())
+            return addStrings(num2, num1);
+        int len1 = num1.length() - 1;
+        int len2 = num2.length() - 1;
+        int carryBit = 0;
         //List<Integer> list=new ArrayList<>();
-        StringBuffer buffer=new StringBuffer();
-        while(len2>=0){
-            int sum=num1.charAt(len1--)+num2.charAt(len2--)-96+carryBit;
-            if(sum>9) {
+        StringBuffer buffer = new StringBuffer();
+        while (len2 >= 0) {
+            int sum = num1.charAt(len1--) + num2.charAt(len2--) - 96 + carryBit;
+            if (sum > 9) {
                 carryBit = 1;
-                sum=sum-10;
-            }
-            else {
+                sum = sum - 10;
+            } else {
                 carryBit = 0;
             }
             buffer.append(sum);
             //list.add(sum);
             //System.out.println(sum);
         }
-        for(int i=len1;i>=0;i--){
-            int sum=num1.charAt(i)+carryBit-48;
-            if(sum>9){
-                carryBit=1;
-                sum=sum-10;
-            }else{
-                carryBit=0;
+        for (int i = len1; i >= 0; i--) {
+            int sum = num1.charAt(i) + carryBit - 48;
+            if (sum > 9) {
+                carryBit = 1;
+                sum = sum - 10;
+            } else {
+                carryBit = 0;
             }
             buffer.append(sum);
             //list.add(sum);
         }
-        if(carryBit==1){
+        if (carryBit == 1) {
             buffer.append(1);
         }
 
@@ -595,6 +738,7 @@ public class algorithmCompetition {
         //return String.valueOf(Integer.MAX_VALUE);
         //return String.valueOf(Integer.parseInt(num1)+Integer.parseInt(num2));
     }
+
     public static int removeElement(int[] nums, int val) {
         //题目没有要求后几个数为val，因此可以覆盖
         int i = 0;
@@ -643,105 +787,108 @@ public class algorithmCompetition {
 //        }
 //        return nums.length-output;
     }
+
     public static List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> output=new ArrayList<>();
-        if(numRows==0){
+        List<List<Integer>> output = new ArrayList<>();
+        if (numRows == 0) {
             return output;
         }
-        List<Integer> line1=new ArrayList<>();
+        List<Integer> line1 = new ArrayList<>();
         line1.add(1);
         output.add(line1);
-        if(numRows==1)
+        if (numRows == 1)
             return output;
-        List<Integer> line2=new ArrayList<>();
+        List<Integer> line2 = new ArrayList<>();
         line2.add(1);
         line2.add(1);
         output.add(line2);
-        if(numRows==2)
+        if (numRows == 2)
             return output;
-        for(int i=2;i<numRows;i++){
-            List<Integer> line3=output.get(i-1);
-            List<Integer> line=new ArrayList<>();
+        for (int i = 2; i < numRows; i++) {
+            List<Integer> line3 = output.get(i - 1);
+            List<Integer> line = new ArrayList<>();
             line.add(1);
-            for(int j=0;j<line3.size()-1;j++){
-                line.add(line3.get(j)+line3.get(j+1));
+            for (int j = 0; j < line3.size() - 1; j++) {
+                line.add(line3.get(j) + line3.get(j + 1));
             }
             line.add(1);
             output.add(line);
         }
         return output;
     }
+
     public static String addBinary(String a, String b) {
-        List<String> list=new ArrayList<>();
-        int i=a.length()-1,j=b.length()-1;
-        char carryBit='0';
-        for(;i>=0&&j>=0;){
-            switch (a.charAt(i--)+b.charAt(j--)+carryBit){
+        List<String> list = new ArrayList<>();
+        int i = a.length() - 1, j = b.length() - 1;
+        char carryBit = '0';
+        for (; i >= 0 && j >= 0; ) {
+            switch (a.charAt(i--) + b.charAt(j--) + carryBit) {
                 case 144:
                     list.add("0");
-                    carryBit='0';
+                    carryBit = '0';
                     break;
                 case 145:
                     list.add("1");
-                    carryBit='0';
+                    carryBit = '0';
                     break;
                 case 146:
                     list.add("0");
-                    carryBit='1';
+                    carryBit = '1';
                     break;
                 case 147:
                     list.add("1");
-                    carryBit='1';
+                    carryBit = '1';
                     break;
             }
         }
-        if(i<0&&j>=0){
-            for(;j>=0;j--){
-                switch (b.charAt(j)+carryBit){
+        if (i < 0 && j >= 0) {
+            for (; j >= 0; j--) {
+                switch (b.charAt(j) + carryBit) {
                     case 96:
                         list.add("0");
-                        carryBit='0';
+                        carryBit = '0';
                         break;
                     case 97:
                         list.add("1");
-                        carryBit='0';
+                        carryBit = '0';
                         break;
                     case 98:
                         list.add("0");
-                        carryBit='1';
+                        carryBit = '1';
                 }
             }
         }
-        if(j<0&&i>=0){
-            for(;i>=0;i--){
-                switch (a.charAt(i)+carryBit){
+        if (j < 0 && i >= 0) {
+            for (; i >= 0; i--) {
+                switch (a.charAt(i) + carryBit) {
                     case 96:
                         list.add("0");
-                        carryBit='0';
+                        carryBit = '0';
                         break;
                     case 97:
                         list.add("1");
-                        carryBit='0';
+                        carryBit = '0';
                         break;
                     case 98:
                         list.add("0");
-                        carryBit='1';
+                        carryBit = '1';
                 }
             }
         }
-        if(carryBit=='1')
+        if (carryBit == '1')
             list.add("1");
-        StringBuffer stringBuffer=new StringBuffer();
-        for(int k=list.size()-1;k>=0;k--){
+        StringBuffer stringBuffer = new StringBuffer();
+        for (int k = list.size() - 1; k >= 0; k--) {
             stringBuffer.append(list.get(k));
         }
         return stringBuffer.toString();
     }
+
     public static int titleToNumber(String s) {
-        int len=s.length();
-        int output=0;
-        for(char c:s.toCharArray()){
-            output=output*26+(c-'A'+1);
+        int len = s.length();
+        int output = 0;
+        for (char c : s.toCharArray()) {
+            output = output * 26 + (c - 'A' + 1);
         }
 
 //        for(int i=0;i<s.length();i++){
@@ -753,76 +900,82 @@ public class algorithmCompetition {
 //        }
         return output;
     }
+
     public static boolean isSameTree(TreeNode p, TreeNode q) {
-        if(p==null&&q==null)
+        if (p == null && q == null)
             return true;
-        if(p==null||q==null){
+        if (p == null || q == null) {
             return false;
         }
-        if(p.val==q.val){
-            if(!isTheSameLeaf(p.left,q.left)){
+        if (p.val == q.val) {
+            if (!isTheSameLeaf(p.left, q.left)) {
                 return false;
             }
-            if(!isTheSameLeaf(p.right,q.right))
+            if (!isTheSameLeaf(p.right, q.right))
                 return false;
             return true;
-        }else {
+        } else {
             return false;
         }
     }
-    public static boolean isTheSameLeaf(TreeNode p,TreeNode q){
-        if(p==null&&q==null){
+
+    public static boolean isTheSameLeaf(TreeNode p, TreeNode q) {
+        if (p == null && q == null) {
             return true;
         }
-        if(p==null||q==null){
+        if (p == null || q == null) {
             return false;
         }
-        if(p.val!=q.val)
+        if (p.val != q.val)
             return false;
-        if(!isTheSameLeaf(p.left,q.left))
+        if (!isTheSameLeaf(p.left, q.left))
             return false;
-        if(!isTheSameLeaf(p.right,q.right)){
+        if (!isTheSameLeaf(p.right, q.right)) {
             return false;
         }
         return true;
     }
+
     public static String tree2str(TreeNode t) {
-        if(t==null){
+        if (t == null) {
             return "";
         }
-        if(t.left==null&&t.right==null)
+        if (t.left == null && t.right == null)
             return String.valueOf(t.val);
-        String output=String.valueOf(t.val);
-        if(t.left!=null){
-            output+="("+visitSubTree(t.left)+")";
-        }else{
-            output+="()";
+        String output = String.valueOf(t.val);
+        if (t.left != null) {
+            output += "(" + visitSubTree(t.left) + ")";
+        } else {
+            output += "()";
         }
-        if(t.right!=null){
-            output+="("+visitSubTree(t.right)+")";
+        if (t.right != null) {
+            output += "(" + visitSubTree(t.right) + ")";
         }
         return output;
     }
-    public static String visitSubTree(TreeNode t){
-        if(t.left==null&&t.right==null){
+
+    public static String visitSubTree(TreeNode t) {
+        if (t.left == null && t.right == null) {
             return String.valueOf(t.val);
         }
-        String output=String.valueOf(t.val);
-        if(t.left!=null){
-            output+="("+visitSubTree(t.left)+")";
-        }else {
-            output+="()";
+        String output = String.valueOf(t.val);
+        if (t.left != null) {
+            output += "(" + visitSubTree(t.left) + ")";
+        } else {
+            output += "()";
         }
-        if(t.right!=null){
-            output+="("+visitSubTree(t.right)+")";
+        if (t.right != null) {
+            output += "(" + visitSubTree(t.right) + ")";
         }
         return output;
 
     }
+
     public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
+
         TreeNode(int x) {
             val = x;
         }

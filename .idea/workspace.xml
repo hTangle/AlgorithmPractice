@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb6626a2-febb-4fe6-bd18-fe2c26232df6" name="Default" comment="Update">
+    <list default="true" id="fb6626a2-febb-4fe6-bd18-fe2c26232df6" name="Default" comment="Update BST">
+      <change afterPath="$PROJECT_DIR$/src/com/nevergetme/datastructure/search/RedBlackBST.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/algorithmCompetition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/algorithmCompetition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/nevergetme/datastructure/BST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/nevergetme/datastructure/BST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/nevergetme/datastructure/BST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/nevergetme/datastructure/search/BST.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,13 +27,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/BST.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/search/BST.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
-              <caret line="86" column="4" selection-start-line="86" selection-start-column="4" selection-end-line="86" selection-end-column="4" />
+            <state relative-caret-position="60">
+              <caret line="2" column="27" lean-forward="true" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#404#405#0" expanded="true" />
                 <element signature="e#437#438#0" expanded="true" />
                 <element signature="e#583#584#0" expanded="true" />
@@ -42,6 +41,27 @@
                 <element signature="e#927#928#0" expanded="true" />
                 <element signature="e#1269#1270#0" expanded="true" />
                 <element signature="e#1305#1306#0" expanded="true" />
+                <element signature="e#2318#2319#0" expanded="true" />
+                <element signature="e#2348#2349#0" expanded="true" />
+                <element signature="e#2641#2642#0" expanded="true" />
+                <element signature="e#2669#2670#0" expanded="true" />
+                <element signature="e#2958#2959#0" expanded="true" />
+                <element signature="e#2977#2978#0" expanded="true" />
+                <element signature="e#3227#3228#0" expanded="true" />
+                <element signature="e#3246#3247#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/search/RedBlackBST.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="565">
+              <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
+              <folding>
+                <element signature="e#826#827#0" expanded="true" />
+                <element signature="e#854#855#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,8 +100,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/decorator/SideBorder.java" />
-        <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/decorator/FullBorder.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/decorator/DecoratorMain.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/others/ClassTest.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/visitor/Element.java" />
@@ -131,6 +149,8 @@
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/README.md" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/algorithmCompetition.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/datastructure/BST.java" />
+        <option value="$PROJECT_DIR$/src/com/nevergetme/datastructure/search/BST.java" />
+        <option value="$PROJECT_DIR$/src/com/nevergetme/datastructure/search/RedBlackBST.java" />
       </list>
     </option>
   </component>
@@ -180,6 +200,14 @@
               <item name="nevergetme" type="462c0819:PsiDirectoryNode" />
               <item name="datastructure" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="AlgorithmPractice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AlgorithmPractice" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="nevergetme" type="462c0819:PsiDirectoryNode" />
+              <item name="datastructure" type="462c0819:PsiDirectoryNode" />
+              <item name="search" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -191,7 +219,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544339268105" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544360637706" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../jar/mysql-connector-java-5.1.47.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -218,12 +246,12 @@
       </method>
     </configuration>
     <configuration name="BST" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.nevergetme.datastructure.BST" />
+      <option name="MAIN_CLASS_NAME" value="com.nevergetme.datastructure.search.BST" />
       <module name="AlgorithmPractice" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.nevergetme.datastructure.*" />
+          <option name="PATTERN" value="com.nevergetme.datastructure.search.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -406,7 +434,7 @@
       <workItem from="1543995895439" duration="9396000" />
       <workItem from="1544093323203" duration="3089000" />
       <workItem from="1544188394452" duration="881000" />
-      <workItem from="1544338657086" duration="611000" />
+      <workItem from="1544338657086" duration="5812000" />
     </task>
     <task id="LOCAL-00001" summary="update readme">
       <created>1540281412961</created>
@@ -590,11 +618,18 @@
       <option name="project" value="LOCAL" />
       <updated>1544015303629</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Update BST">
+      <created>1544339286327</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1544339286327</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="225578000" />
+    <option name="totallyTimeSpent" value="230779000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -609,7 +644,7 @@
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16684435" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16684435" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -618,7 +653,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49733475" visible="true" weight="0.24651662" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49733475" visible="true" weight="0.24651662" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4968017" weight="0.34297964" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -679,7 +714,8 @@
     <MESSAGE value="Prototype" />
     <MESSAGE value="Effective java" />
     <MESSAGE value="Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update" />
+    <MESSAGE value="Update BST" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update BST" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1027,8 +1063,8 @@
           <option name="timeStamp" value="120" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/nevergetme/datastructure/BST.java</url>
-          <line>98</line>
+          <url>file://$PROJECT_DIR$/src/com/nevergetme/datastructure/search/BST.java</url>
+          <line>171</line>
           <properties />
           <option name="timeStamp" value="121" />
         </line-breakpoint>
@@ -1042,13 +1078,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/visitor/Entry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/visitor/File.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
@@ -1462,12 +1491,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/BST.java">
+    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/search/BST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="86" column="4" selection-start-line="86" selection-start-column="4" selection-end-line="86" selection-end-column="4" />
+        <state relative-caret-position="60">
+          <caret line="2" column="27" lean-forward="true" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#404#405#0" expanded="true" />
             <element signature="e#437#438#0" expanded="true" />
             <element signature="e#583#584#0" expanded="true" />
@@ -1476,6 +1504,25 @@
             <element signature="e#927#928#0" expanded="true" />
             <element signature="e#1269#1270#0" expanded="true" />
             <element signature="e#1305#1306#0" expanded="true" />
+            <element signature="e#2318#2319#0" expanded="true" />
+            <element signature="e#2348#2349#0" expanded="true" />
+            <element signature="e#2641#2642#0" expanded="true" />
+            <element signature="e#2669#2670#0" expanded="true" />
+            <element signature="e#2958#2959#0" expanded="true" />
+            <element signature="e#2977#2978#0" expanded="true" />
+            <element signature="e#3227#3228#0" expanded="true" />
+            <element signature="e#3246#3247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/search/RedBlackBST.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
+          <folding>
+            <element signature="e#826#827#0" expanded="true" />
+            <element signature="e#854#855#0" expanded="true" />
           </folding>
         </state>
       </provider>

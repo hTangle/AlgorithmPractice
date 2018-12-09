@@ -1,5 +1,10 @@
 package com.nevergetme.datastructure;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class BST<Key extends Comparable<Key>,Value>{
     private class Node{
         private Key key;
@@ -65,12 +70,32 @@ public class BST<Key extends Comparable<Key>,Value>{
         if(t!=null)return t;
         else return x;
     }
+    public String toString(){
+        StringBuilder sb=new StringBuilder();
+        toString(root,sb);
+        return sb.toString();
+    }
+    public void toString(Node root,StringBuilder sb){
+        if(root.left!=null){
+            toString(root.left,sb);
+        }
+        sb.append(root.val);
+        if(root.right!=null){
+            toString(root.right,sb);
+        }
+    }
+
     public static void main(String[] args){
-        BST<String,String> bst=new BST<>();
-        bst.put("2","B");
-        bst.put("1","A");
-        bst.put("3","C");
-        bst.put("4","D");
-        System.out.println();
+        BST<Integer,Integer> bst=new BST<>();
+        List<Integer> list=new ArrayList<>();
+        //int[] a=new int[100];
+        for(int i=0;i<100;i++){
+            list.add(i);
+        }
+        Collections.shuffle(list);
+        for(int a:list){
+            bst.put(a,a);
+        }
+        System.out.println(bst);
     }
 }

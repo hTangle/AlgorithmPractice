@@ -123,18 +123,99 @@ public class algorithmCompetition {
         //System.out.println(toHex(-1));
         //System.out.println(convertToBase7(-7));
         //System.out.println(maxProfit(new int[]{7, 1, 5, 3, 6, 4}));
-//        TreeNode t1=new TreeNode(4);
-//        TreeNode t2=new TreeNode(2);
-//        TreeNode t3=new TreeNode(1);
-//        TreeNode t4=new TreeNode(3);
-//        TreeNode t5=new TreeNode(6);
-//        t1.left=t2;
-//        t1.right=t5;
-//        t2.left=t3;
-//        t2.right=t4;
+        TreeNode t1=new TreeNode(4);
+        TreeNode t2=new TreeNode(2);
+        TreeNode t3=new TreeNode(1);
+        TreeNode t4=new TreeNode(3);
+        TreeNode t5=new TreeNode(6);
+        t1.left=t2;
+        t1.right=t5;
+        t2.left=t3;
+        t2.right=t4;
+        System.out.println(new algorithmCompetition().sumOfLeftLeaves(t1));
 //        System.out.println(minDiffInBST(t1));
         //System.out.println(canConstruct("aa", "aab"));
-        floodFill(new int[][]{{0, 0, 0}, {0, 1, 1}}, 1, 1, 1);
+        //floodFill(new int[][]{{0, 0, 0}, {0, 1, 1}}, 1, 1, 1);
+
+
+        //System.out.println(isLongPressedName("pyplrz","ppyypllr"));
+        //System.out.println(missingNumber(new int[]{9,6,4,2,3,5,7,0,1}));
+    }
+//    public String countAndSay(int n) {
+//        StringBuilder sb=new StringBuilder("1");
+//        StringBuilder sbTemp=new StringBuilder();
+//        for(int i=0;i<n-1;i++){
+//            for(int j=0;j<sb.length();){
+//                int count=1;
+//
+//            }
+//        }
+//    }
+    public int sumOfLeftLeaves(TreeNode root) {
+        int sumOfLeftLeaf=0;
+        return sumOfLeftLeaves(root,sumOfLeftLeaf,false);
+    }
+    public int sumOfLeftLeaves(TreeNode root,int sumOfLeftLeaf,boolean isLeft) {
+        if(root==null)
+            return sumOfLeftLeaf;
+        if(root.left==null&&root.right==null&&isLeft){
+            return sumOfLeftLeaf+root.val;
+        }
+        if(root.left!=null){
+            //sumOfLeftLeaf+=root.left.val;
+            sumOfLeftLeaf=sumOfLeftLeaves(root.left,sumOfLeftLeaf,true);
+        }
+        if(root.right!=null){
+            sumOfLeftLeaf=sumOfLeftLeaves(root.right,sumOfLeftLeaf,false);
+        }
+        return sumOfLeftLeaf;
+    }
+
+    public static int missingNumber(int[] nums) {
+        long output=0;
+        long com=nums.length*(nums.length+1)/2;
+        for(int num:nums)
+            output+=num;
+        return (int)(com-output);
+    }
+    public static boolean isLongPressedName(String name, String typed) {
+        if(typed.length()<name.length()){
+            return false;
+        }
+        int nameLen=name.length();
+        int typedLen=typed.length();
+        int i=0,j=0;
+        int nameCharLen=0,typedCharLen=0;
+        while (i<nameLen&&j<typedLen){
+            char n=name.charAt(i);
+            nameCharLen=1;
+            while(++i<nameLen){
+                if(name.charAt(i)==n)
+                    nameCharLen++;
+                else
+                    break;
+            }
+            char t=typed.charAt(j);
+            if(t!=n)
+                return false;
+            typedCharLen=1;
+            while(++j<typedLen){
+                if(typed.charAt(j)==t){
+                    typedCharLen++;
+                }else{
+                    break;
+                }
+            }
+            if(typedCharLen>=nameCharLen){
+                continue;
+            }else{
+                return false;
+            }
+        }
+        if(j<typedLen||i<nameLen)
+            return false;
+        else
+            return true;
     }
 
     int min = Integer.MAX_VALUE;

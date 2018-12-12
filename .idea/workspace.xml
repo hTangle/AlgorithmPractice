@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb6626a2-febb-4fe6-bd18-fe2c26232df6" name="Default" comment="Update BST">
-      <change afterPath="$PROJECT_DIR$/src/com/nevergetme/datastructure/search/RedBlackBST.java" afterDir="false" />
+    <list default="true" id="fb6626a2-febb-4fe6-bd18-fe2c26232df6" name="Default" comment="RedBlackBST">
+      <change afterPath="$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/DepthFirstPaths.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/DepthFirstSearch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/Graph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/nevergetme/datastructure/BST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/nevergetme/datastructure/search/BST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/nevergetme/datastructure/search/BST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/nevergetme/datastructure/search/BST.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,12 +15,26 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/algorithmCompetition.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="780">
+            <state relative-caret-position="4650">
               <caret line="158" column="22" selection-start-line="158" selection-start-column="22" selection-end-line="158" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -30,39 +46,63 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/search/BST.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="2" column="27" lean-forward="true" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+            <state relative-caret-position="4260">
+              <caret line="160" column="43" selection-start-line="160" selection-start-column="43" selection-end-line="160" selection-end-column="43" />
               <folding>
-                <element signature="e#404#405#0" expanded="true" />
-                <element signature="e#437#438#0" expanded="true" />
-                <element signature="e#583#584#0" expanded="true" />
-                <element signature="e#619#620#0" expanded="true" />
-                <element signature="e#889#890#0" expanded="true" />
-                <element signature="e#927#928#0" expanded="true" />
-                <element signature="e#1269#1270#0" expanded="true" />
-                <element signature="e#1305#1306#0" expanded="true" />
-                <element signature="e#2318#2319#0" expanded="true" />
-                <element signature="e#2348#2349#0" expanded="true" />
-                <element signature="e#2641#2642#0" expanded="true" />
-                <element signature="e#2669#2670#0" expanded="true" />
-                <element signature="e#2958#2959#0" expanded="true" />
-                <element signature="e#2977#2978#0" expanded="true" />
-                <element signature="e#3227#3228#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#3209#3210#0" expanded="true" />
                 <element signature="e#3246#3247#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/Graph.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#595#596#0" expanded="true" />
+                <element signature="e#624#625#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/DepthFirstSearch.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+              <folding>
+                <element signature="e#542#543#0" expanded="true" />
+                <element signature="e#574#575#0" expanded="true" />
+                <element signature="e#600#601#0" expanded="true" />
+                <element signature="e#628#629#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/DepthFirstPaths.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="822">
+              <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+              <folding>
+                <element signature="e#736#745#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/search/RedBlackBST.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="565">
+            <state relative-caret-position="1770">
               <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
-              <folding>
-                <element signature="e#826#827#0" expanded="true" />
-                <element signature="e#854#855#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -81,6 +121,8 @@
     <findStrings>
       <find>System\.out\.print\(printNum\+\+\)\;\n                System\.out\.print\(printNum\+\+\)\;\n                printState\=false\;\n                notifyAll\(\)\;\n</find>
       <find>public class TreeNode \{\n      int val\;\n      TreeNode left\;\n      TreeNode right\;\n      TreeNode\(int x\) \{ val \= x\; \}\n  \}</find>
+      <find>value</find>
+      <find>hashCode</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -100,9 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/decorator/DecoratorMain.java" />
-        <option value="$PROJECT_DIR$/src/com/nevergetme/others/ClassTest.java" />
-        <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/visitor/Element.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/visitor/Entry.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/visitor/File.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/visitor/Visitor.java" />
@@ -149,16 +188,19 @@
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/README.md" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/algorithmCompetition.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/datastructure/BST.java" />
-        <option value="$PROJECT_DIR$/src/com/nevergetme/datastructure/search/BST.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/datastructure/search/RedBlackBST.java" />
+        <option value="$PROJECT_DIR$/src/com/nevergetme/datastructure/search/BST.java" />
+        <option value="$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/Graph.java" />
+        <option value="$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/DepthFirstSearch.java" />
+        <option value="$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/DepthFirstPaths.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="686" />
-    <option name="y" value="130" />
-    <option name="width" value="1092" />
-    <option name="height" value="734" />
+    <option name="x" value="119" />
+    <option name="y" value="120" />
+    <option name="width" value="1456" />
+    <option name="height" value="894" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -206,20 +248,20 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="nevergetme" type="462c0819:PsiDirectoryNode" />
               <item name="datastructure" type="462c0819:PsiDirectoryNode" />
-              <item name="search" type="462c0819:PsiDirectoryNode" />
+              <item name="graph" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544360637706" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544580422244" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../jar/mysql-connector-java-5.1.47.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -238,7 +280,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.BST">
+  <component name="RunManager" selected="Application.DepthFirstSearch">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -252,6 +294,20 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.nevergetme.datastructure.search.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DepthFirstSearch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.nevergetme.datastructure.graph.DepthFirstSearch" />
+      <module name="AlgorithmPractice" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nevergetme.datastructure.graph.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -280,20 +336,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.nevergetme.designmode.proxy.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SortMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.nevergetme.algorithm.sort.SortMain" />
-      <module name="AlgorithmPractice" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.nevergetme.algorithm.sort.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -345,19 +387,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.SortMain" />
       <item itemvalue="Application.MySQLReader" />
       <item itemvalue="Application.ProxyMain" />
       <item itemvalue="Application.algorithmCompetition" />
       <item itemvalue="Application.BST" />
+      <item itemvalue="Application.DepthFirstSearch" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DepthFirstSearch" />
         <item itemvalue="Application.BST" />
         <item itemvalue="Application.algorithmCompetition" />
         <item itemvalue="Application.ProxyMain" />
         <item itemvalue="Application.MySQLReader" />
-        <item itemvalue="Application.SortMain" />
       </list>
     </recent_temporary>
   </component>
@@ -434,7 +476,10 @@
       <workItem from="1543995895439" duration="9396000" />
       <workItem from="1544093323203" duration="3089000" />
       <workItem from="1544188394452" duration="881000" />
-      <workItem from="1544338657086" duration="5812000" />
+      <workItem from="1544338657086" duration="8514000" />
+      <workItem from="1544406751803" duration="2337000" />
+      <workItem from="1544518442421" duration="3283000" />
+      <workItem from="1544580112158" duration="310000" />
     </task>
     <task id="LOCAL-00001" summary="update readme">
       <created>1540281412961</created>
@@ -625,11 +670,18 @@
       <option name="project" value="LOCAL" />
       <updated>1544339286327</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="RedBlackBST">
+      <created>1544360703406</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1544360703406</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="230779000" />
+    <option name="totallyTimeSpent" value="239411000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -644,7 +696,7 @@
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16684435" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12793177" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -653,7 +705,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49733475" visible="true" weight="0.24651662" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49733475" weight="0.24651662" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4968017" weight="0.34297964" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -670,7 +722,7 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Database" order="6" weight="0.32995737" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="8" />
       <window_info anchor="right" id="Maven" order="9" />
@@ -715,7 +767,8 @@
     <MESSAGE value="Effective java" />
     <MESSAGE value="Update" />
     <MESSAGE value="Update BST" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update BST" />
+    <MESSAGE value="RedBlackBST" />
+    <option name="LAST_COMMIT_MESSAGE" value="RedBlackBST" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1078,34 +1131,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/visitor/File.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/visitor/Directory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="846">
-          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/composite/CompositeMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="6" selection-start-line="6" selection-end-line="16" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/visitor/ListVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="20" column="9" selection-start-line="16" selection-start-column="8" selection-end-line="20" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/visitor/FileFindVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1481,9 +1506,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="822">
+          <caret line="1472" column="21" selection-start-line="1472" selection-start-column="21" selection-end-line="1472" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/algorithmCompetition.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
+        <state relative-caret-position="4650">
           <caret line="158" column="22" selection-start-line="158" selection-start-column="22" selection-end-line="158" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1493,36 +1525,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/search/BST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="2" column="27" lean-forward="true" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+        <state relative-caret-position="4260">
+          <caret line="160" column="43" selection-start-line="160" selection-start-column="43" selection-end-line="160" selection-end-column="43" />
           <folding>
-            <element signature="e#404#405#0" expanded="true" />
-            <element signature="e#437#438#0" expanded="true" />
-            <element signature="e#583#584#0" expanded="true" />
-            <element signature="e#619#620#0" expanded="true" />
-            <element signature="e#889#890#0" expanded="true" />
-            <element signature="e#927#928#0" expanded="true" />
-            <element signature="e#1269#1270#0" expanded="true" />
-            <element signature="e#1305#1306#0" expanded="true" />
-            <element signature="e#2318#2319#0" expanded="true" />
-            <element signature="e#2348#2349#0" expanded="true" />
-            <element signature="e#2641#2642#0" expanded="true" />
-            <element signature="e#2669#2670#0" expanded="true" />
-            <element signature="e#2958#2959#0" expanded="true" />
-            <element signature="e#2977#2978#0" expanded="true" />
-            <element signature="e#3227#3228#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3209#3210#0" expanded="true" />
             <element signature="e#3246#3247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/Graph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#595#596#0" expanded="true" />
+            <element signature="e#624#625#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/search/RedBlackBST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="565">
+        <state relative-caret-position="1770">
           <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/DepthFirstSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
           <folding>
-            <element signature="e#826#827#0" expanded="true" />
-            <element signature="e#854#855#0" expanded="true" />
+            <element signature="e#542#543#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
+            <element signature="e#600#601#0" expanded="true" />
+            <element signature="e#628#629#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/DepthFirstPaths.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="822">
+          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+          <folding>
+            <element signature="e#736#745#0" expanded="true" />
           </folding>
         </state>
       </provider>

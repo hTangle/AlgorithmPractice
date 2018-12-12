@@ -157,6 +157,8 @@ public class BST<Key extends Comparable<Key>,Value>{
     }
 
     public static void main(String[] args){
+//        String s="12";
+//        System.out.println(s.hashCode());
         BST<Integer,Integer> bst=new BST<>();
         List<Integer> list=new ArrayList<>();
         //int[] a=new int[100];

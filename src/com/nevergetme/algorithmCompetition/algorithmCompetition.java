@@ -2,6 +2,7 @@ package com.nevergetme.algorithmCompetition;
 
 
 import com.nevergetme.algorithm.sort.MaxPQ;
+import sun.reflect.generics.tree.Tree;
 
 import java.text.DecimalFormat;
 import java.util.*;
@@ -123,16 +124,16 @@ public class algorithmCompetition {
         //System.out.println(toHex(-1));
         //System.out.println(convertToBase7(-7));
         //System.out.println(maxProfit(new int[]{7, 1, 5, 3, 6, 4}));
-        TreeNode t1=new TreeNode(4);
-        TreeNode t2=new TreeNode(2);
-        TreeNode t3=new TreeNode(1);
-        TreeNode t4=new TreeNode(3);
-        TreeNode t5=new TreeNode(6);
-        t1.left=t2;
-        t1.right=t5;
-        t2.left=t3;
-        t2.right=t4;
-        System.out.println(new algorithmCompetition().sumOfLeftLeaves(t1));
+//        TreeNode t1=new TreeNode(4);
+//        TreeNode t2=new TreeNode(2);
+//        TreeNode t3=new TreeNode(1);
+//        TreeNode t4=new TreeNode(3);
+//        TreeNode t5=new TreeNode(6);
+//        t1.left=t2;
+//        t1.right=t5;
+//        t2.left=t3;
+//        t2.right=t4;
+//        System.out.println(new algorithmCompetition().sumOfLeftLeaves(t1));
 //        System.out.println(minDiffInBST(t1));
         //System.out.println(canConstruct("aa", "aab"));
         //floodFill(new int[][]{{0, 0, 0}, {0, 1, 1}}, 1, 1, 1);
@@ -140,8 +141,157 @@ public class algorithmCompetition {
 
         //System.out.println(isLongPressedName("pyplrz","ppyypllr"));
         //System.out.println(missingNumber(new int[]{9,6,4,2,3,5,7,0,1}));
+        //System.out.println(new algorithmCompetition().isOneBitCharacter(new int[]{1,1,1,0}));
+        //System.out.println(new algorithmCompetition().minMoves(new int[]{1,2,3}));
+//        TreeNode t1=new TreeNode(5);
+//        TreeNode t2=new TreeNode(2);
+//        TreeNode t3=new TreeNode(13);
+//        t1.left=t2;
+//        t1.right=t3;
+        algorithmCompetition ac=new algorithmCompetition();
+        System.out.println(ac.firstUniqChar("loveleetcode"));
+        System.out.println(ac.reverseStr("abcdefg",3));
+        System.out.println(ac.searchInsert(new int[]{1,2,5,6},7));
+//        ac.convertBST(t1);
+//        System.out.println();
     }
-//    public String countAndSay(int n) {
+    //Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+    public int searchInsert(int[] nums, int target) {
+        int max=nums.length;
+        int min=0;
+        int begin=nums.length/2;
+        while (min<max){
+            if(nums[begin]<target){
+                min=begin;
+                begin=(max+begin)/2;
+            }else if(nums[begin]>target){
+                max=begin;
+                begin=(begin+min)/2;
+            }else{
+                return begin;
+            }
+        }
+        if(nums[begin]<target){
+            return begin+1;
+        }else{
+            return begin;
+        }
+    }
+    //Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
+    public int diameterOfBinaryTree(TreeNode root) {
+        if(root==null)
+            return 0;
+
+        int rootDepth=depth(root.left)+depth(root.right);
+        int leftDepth=diameterOfBinaryTree(root.left);
+        int rigthDepth=diameterOfBinaryTree(root.right);
+        return Math.max(rootDepth,Math.max(leftDepth,rigthDepth));
+    }
+    private int depth(TreeNode root){
+        if(root==null)return 0;
+        return 1+Math.max(depth(root.left),depth(root.right));
+    }
+    //Given a string and an integer k, you need to reverse the first k characters for every 2k characters counting from the start of the string. If there are less than k characters left, reverse all of them. If there are less than 2k but greater than or equal to k characters, then reverse the first k characters and left the other as original.
+    public String reverseStr(String s, int k) {
+        StringBuilder sb=new StringBuilder();
+        char[] ss=s.toCharArray();
+        int len=ss.length;
+        for(int i=0;i<len;){
+            int z=i+k;
+            for(int j=i+k-1;j>=i;j--){
+                if(j>len-1)
+                    continue;
+                sb.append(ss[j]);
+            }
+            i+=k;
+            for(int j=i;j<i+k;j++){
+                if(j>len-1)
+                    break;
+                sb.append(ss[j]);
+            }
+            i+=k;
+        }
+        return sb.toString();
+    }
+    //Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist, return -1.
+    public int firstUniqChar(String s) {
+        int[] output=new int[26];
+        char[] ss=s.toCharArray();
+        for(char a:ss){
+            output[a-'a']++;
+        }
+        for(int i=0;i<ss.length;i++){
+            if(output[ss[i]-'a']==1){
+                return i;
+            }
+        }
+        return -1;
+    }
+    //Given a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST is changed to the original key plus sum of all keys greater than the original key in BST.
+    public TreeNode convertBST(TreeNode root) {
+        //sumconvertBST=0;
+        if(root!=null){
+            if(root.right!=null){
+                convertBST(root.right);
+            }
+            root.val+=sumconvertBST;
+            sumconvertBST=root.val;
+            if(root.left!=null){
+                convertBST(root.left);
+            }
+        }
+        return root;
+    }
+    int sumconvertBST=0;
+//    int sumconvertBST=0;
+//    private void setBSTNode(TreeNode root){
+//        if(root!=null){
+//            root.val=sumconvertBST-root.val;
+//            if(root.left!=null)
+//                setBSTNode(root.left);
+//            if(root.right!=null)
+//                setBSTNode(root.right);
+//        }
+//    }
+//    private void getBSTSum(TreeNode root){
+//        if(root!=null){
+//            sumconvertBST+=root.val;
+//            if(root.left!=null)
+//                getBSTSum(root.left);
+//            if(root.right!=null)
+//                getBSTSum(root.right);
+//        }
+//    }
+
+    //Given a non-empty integer array of size n, find the minimum number of moves required to make all array elements equal, where a move is incrementing n - 1 elements by 1.
+    public int minMoves(int[] nums) {
+        int sum=0;
+        int min=Integer.MAX_VALUE;
+        for(int num:nums){
+            min=num<min?num:min;
+            sum+=num;
+        }
+        return sum-nums.length*min;
+    }
+    public boolean isOneBitCharacter(int[] bits) {
+        int i = 0;
+        while (i < bits.length) {
+            if (bits[i] == 1) {
+                i += 2;
+                if (i == bits.length) {
+                    return false;
+                }
+            } else {
+                i++;
+                if (i == bits.length) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    //    public String countAndSay(int n) {
 //        StringBuilder sb=new StringBuilder("1");
 //        StringBuilder sbTemp=new StringBuilder();
 //        for(int i=0;i<n-1;i++){
@@ -152,67 +302,69 @@ public class algorithmCompetition {
 //        }
 //    }
     public int sumOfLeftLeaves(TreeNode root) {
-        int sumOfLeftLeaf=0;
-        return sumOfLeftLeaves(root,sumOfLeftLeaf,false);
+        int sumOfLeftLeaf = 0;
+        return sumOfLeftLeaves(root, sumOfLeftLeaf, false);
     }
-    public int sumOfLeftLeaves(TreeNode root,int sumOfLeftLeaf,boolean isLeft) {
-        if(root==null)
+
+    public int sumOfLeftLeaves(TreeNode root, int sumOfLeftLeaf, boolean isLeft) {
+        if (root == null)
             return sumOfLeftLeaf;
-        if(root.left==null&&root.right==null&&isLeft){
-            return sumOfLeftLeaf+root.val;
+        if (root.left == null && root.right == null && isLeft) {
+            return sumOfLeftLeaf + root.val;
         }
-        if(root.left!=null){
+        if (root.left != null) {
             //sumOfLeftLeaf+=root.left.val;
-            sumOfLeftLeaf=sumOfLeftLeaves(root.left,sumOfLeftLeaf,true);
+            sumOfLeftLeaf = sumOfLeftLeaves(root.left, sumOfLeftLeaf, true);
         }
-        if(root.right!=null){
-            sumOfLeftLeaf=sumOfLeftLeaves(root.right,sumOfLeftLeaf,false);
+        if (root.right != null) {
+            sumOfLeftLeaf = sumOfLeftLeaves(root.right, sumOfLeftLeaf, false);
         }
         return sumOfLeftLeaf;
     }
 
     public static int missingNumber(int[] nums) {
-        long output=0;
-        long com=nums.length*(nums.length+1)/2;
-        for(int num:nums)
-            output+=num;
-        return (int)(com-output);
+        long output = 0;
+        long com = nums.length * (nums.length + 1) / 2;
+        for (int num : nums)
+            output += num;
+        return (int) (com - output);
     }
+
     public static boolean isLongPressedName(String name, String typed) {
-        if(typed.length()<name.length()){
+        if (typed.length() < name.length()) {
             return false;
         }
-        int nameLen=name.length();
-        int typedLen=typed.length();
-        int i=0,j=0;
-        int nameCharLen=0,typedCharLen=0;
-        while (i<nameLen&&j<typedLen){
-            char n=name.charAt(i);
-            nameCharLen=1;
-            while(++i<nameLen){
-                if(name.charAt(i)==n)
+        int nameLen = name.length();
+        int typedLen = typed.length();
+        int i = 0, j = 0;
+        int nameCharLen = 0, typedCharLen = 0;
+        while (i < nameLen && j < typedLen) {
+            char n = name.charAt(i);
+            nameCharLen = 1;
+            while (++i < nameLen) {
+                if (name.charAt(i) == n)
                     nameCharLen++;
                 else
                     break;
             }
-            char t=typed.charAt(j);
-            if(t!=n)
+            char t = typed.charAt(j);
+            if (t != n)
                 return false;
-            typedCharLen=1;
-            while(++j<typedLen){
-                if(typed.charAt(j)==t){
+            typedCharLen = 1;
+            while (++j < typedLen) {
+                if (typed.charAt(j) == t) {
                     typedCharLen++;
-                }else{
+                } else {
                     break;
                 }
             }
-            if(typedCharLen>=nameCharLen){
+            if (typedCharLen >= nameCharLen) {
                 continue;
-            }else{
+            } else {
                 return false;
             }
         }
-        if(j<typedLen||i<nameLen)
+        if (j < typedLen || i < nameLen)
             return false;
         else
             return true;

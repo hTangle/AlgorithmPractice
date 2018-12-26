@@ -4,6 +4,7 @@ package com.nevergetme.algorithm.sort;
 import java.util.Arrays;
 
 public abstract class SortMain {
+    //int _s=0;
     public abstract void sort(Comparable[] a);
     public boolean less(Comparable v,Comparable w){
         return v.compareTo(w)<0;

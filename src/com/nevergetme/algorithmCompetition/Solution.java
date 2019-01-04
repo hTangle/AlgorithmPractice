@@ -1,8 +1,104 @@
 package com.nevergetme.algorithmCompetition;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Solution {
     public static void main(String[] args) {
-        System.out.println(new Solution().complexNumberMultiply("1+-1i","1+-1i"));
+        TreeNode t1=new TreeNode(1);
+        TreeNode t2=new TreeNode(2);;
+        TreeNode t3=new TreeNode(5);
+        TreeNode t4=new TreeNode(3);
+        t1.left=t2;
+        t2.right=t3;
+        t1.right=t4;
+        System.out.println(new Solution().binaryTreePaths(t1));
+        //new Solution().PrintToMaxOfNDigits(2);
+    }
+    public boolean isBalanced(TreeNode root) {
+        return getTreeHeight(root)!=-1;
+    }
+    private int getTreeHeight(TreeNode root){
+        if(root==null)return 0;
+        int leftHeight=getTreeHeight(root.left);
+        int rightHeight=getTreeHeight(root.right);
+        if(leftHeight==-1||rightHeight==-1||Math.abs(leftHeight-rightHeight)>1)
+            return -1;
+        else
+            return 1+Math.max(leftHeight,rightHeight);
+    }
+    public List<String> binaryTreePaths(TreeNode root) {
+        List<String> output=new ArrayList<>();
+        if(root==null)return output;
+        if(root.left==null&&root.right==null){
+            output.add(root.val+"");
+            return output;
+        }
+        binaryTreePaths(root.left,root.val+"",output);
+        binaryTreePaths(root.right,root.val+"",output);
+        return output;
+    }
+    public void binaryTreePaths(TreeNode root,String before,List<String> output){
+        if(root==null)return;
+        String after=before+"->"+root.val;
+        if(root.left==null&&root.right==null){
+            output.add(after);
+        }else{
+            binaryTreePaths(root.left,after,output);
+            binaryTreePaths(root.right,after,output);
+        }
+    }
+    public void PrintToMaxOfNDigits(int n){
+        if(n<=0)return;
+        int[] numbers=new int[n];
+        for(int i=0;i<10;i++){
+            numbers[0]=i;
+            PrintToMaxOfNDigits(numbers,1);
+        }
+    }
+    public void PrintToMaxOfNDigits(int[] numbers,int index){
+        if(index==numbers.length){
+            printNumbers(numbers);
+        }else{
+            for(int i=0;i<10;i++){
+                numbers[index]=i;
+                PrintToMaxOfNDigits(numbers,index+1);
+            }
+        }
+    }
+    public void printNumbers(int[] numbers){
+        boolean isFirst=false;
+        for(int number:numbers){
+            if(!isFirst&&number!=0){
+                isFirst=true;
+            }
+            if(isFirst){
+                System.out.print(number);
+            }
+        }
+        if(isFirst)
+            System.out.println();
+    }
+    //Given an array of integers nums, write a method that returns the "pivot" index of this array.
+    //
+    //We define the pivot index as the index where the sum of the numbers to the left of the index is equal to the sum of the numbers to the right of the index.
+    //
+    //If no such index exists, we should return -1. If there are multiple pivot indexes, you should return the left-most pivot index.
+    public int pivotIndex(int[] nums) {
+        if(nums.length<=0)return -1;
+        int first=0,last=nums.length-1;
+        int leftSum=nums[first],rightSum=nums[last];
+        while(first<last){
+            if(leftSum<=rightSum){
+                leftSum+=nums[++first];
+            }else{
+                rightSum+=nums[--last];
+            }
+        }
+        if(leftSum==rightSum)
+            return first;
+        else
+            return -1;
     }
     //Given two strings representing two complex numbers.
     //
@@ -25,7 +121,7 @@ public class Solution {
         }
         return output;
     }
-    public class TreeNode {
+    public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;

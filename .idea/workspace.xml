@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb6626a2-febb-4fe6-bd18-fe2c26232df6" name="Default" comment="Update Graph">
-      <change afterPath="$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/DepthFirstOrder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/nevergetme/designmode/strategy/AdjuetListEvenOdd.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/nevergetme/designmode/strategy/AdjustList.java" afterDir="false" />
+    <list default="true" id="fb6626a2-febb-4fe6-bd18-fe2c26232df6" name="Default" comment="Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/JianzhiOffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/JianzhiOffer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java" afterDir="false" />
@@ -35,25 +32,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="35" column="34" lean-forward="true" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
+            <state relative-caret-position="414">
+              <caret line="45" column="43" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3182#3183#0" expanded="true" />
-                <element signature="e#3213#3214#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/JianzhiOffer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1320">
-              <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+            <state relative-caret-position="528">
+              <caret line="61" column="17" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
+              <folding>
+                <element signature="e#1462#1463#0" expanded="true" />
+                <element signature="e#1493#1494#0" expanded="true" />
+                <element signature="e#9192#9193#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -189,14 +189,14 @@
         <option value="$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/DepthFirstOrder.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/strategy/AdjustList.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/designmode/strategy/AdjuetListEvenOdd.java" />
-        <option value="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/JianzhiOffer.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java" />
+        <option value="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/JianzhiOffer.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="219" />
-    <option name="y" value="-16" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="276" />
+    <option name="y" value="80" />
     <option name="width" value="1456" />
     <option name="height" value="894" />
   </component>
@@ -209,6 +209,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -234,25 +235,16 @@
               <item name="nevergetme" type="462c0819:PsiDirectoryNode" />
               <item name="designmode" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="AlgorithmPractice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AlgorithmPractice" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="nevergetme" type="462c0819:PsiDirectoryNode" />
-              <item name="designmode" type="462c0819:PsiDirectoryNode" />
-              <item name="strategy" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550211605395" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551016963323" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -272,7 +264,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Solution">
+  <component name="RunManager" selected="Application.JianzhiOffer">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -387,8 +379,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Solution" />
         <item itemvalue="Application.JianzhiOffer" />
+        <item itemvalue="Application.Solution" />
         <item itemvalue="Application.algorithmCompetition" />
         <item itemvalue="Application.TwoColor" />
         <item itemvalue="Application.Cycle" />
@@ -491,7 +483,8 @@
       <workItem from="1546860323933" duration="5807000" />
       <workItem from="1546915034877" duration="1123000" />
       <workItem from="1550042964773" duration="615000" />
-      <workItem from="1550211293925" duration="312000" />
+      <workItem from="1550211293925" duration="6075000" />
+      <workItem from="1551011226830" duration="6202000" />
     </task>
     <task id="LOCAL-00001" summary="update readme">
       <created>1540281412961</created>
@@ -717,11 +710,18 @@
       <option name="project" value="LOCAL" />
       <updated>1546601396748</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Update">
+      <created>1550211646837</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1550211646837</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="310193000" />
+    <option name="totallyTimeSpent" value="322158000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -733,10 +733,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="276" y="80" width="1456" height="894" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49874055" visible="true" weight="0.15191898" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49874055" visible="true" weight="0.20630373" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -746,7 +746,7 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49733475" visible="true" weight="0.20715836" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49733475" weight="0.4763158" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4968017" weight="0.34273317" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -806,11 +806,11 @@
     <MESSAGE value="Singleton" />
     <MESSAGE value="Prototype" />
     <MESSAGE value="Effective java" />
-    <MESSAGE value="Update" />
     <MESSAGE value="Update BST" />
     <MESSAGE value="RedBlackBST" />
     <MESSAGE value="Update Graph" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update Graph" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1213,19 +1213,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>288</line>
+          <line>338</line>
           <properties />
           <option name="timeStamp" value="138" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>289</line>
+          <line>339</line>
           <properties />
           <option name="timeStamp" value="139" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/JianzhiOffer.java</url>
-          <line>170</line>
+          <line>335</line>
           <properties />
           <option name="timeStamp" value="140" />
         </line-breakpoint>
@@ -1241,17 +1241,52 @@
           <properties />
           <option name="timeStamp" value="142" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
+          <line>47</line>
+          <properties />
+          <option name="timeStamp" value="143" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
+          <line>43</line>
+          <properties />
+          <option name="timeStamp" value="144" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
+          <line>46</line>
+          <properties />
+          <option name="timeStamp" value="145" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
+          <line>45</line>
+          <properties />
+          <option name="timeStamp" value="146" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/JianzhiOffer.java</url>
+          <line>45</line>
+          <properties />
+          <option name="timeStamp" value="147" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/JianzhiOffer.java</url>
+          <line>117</line>
+          <properties />
+          <option name="timeStamp" value="148" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="t.val" />
+        <watch expression="t.right.left" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/facade/pagemaker/PageMaker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/facade/pagemaker/Database.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -1618,20 +1653,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="35" column="34" lean-forward="true" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
+        <state relative-caret-position="414">
+          <caret line="45" column="43" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3182#3183#0" expanded="true" />
-            <element signature="e#3213#3214#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/JianzhiOffer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1320">
-          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1678,6 +1704,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/Collections.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/JianzhiOffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="61" column="17" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
+          <folding>
+            <element signature="e#1462#1463#0" expanded="true" />
+            <element signature="e#1493#1494#0" expanded="true" />
+            <element signature="e#9192#9193#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

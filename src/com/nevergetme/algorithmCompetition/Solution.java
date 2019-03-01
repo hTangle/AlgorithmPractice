@@ -27,8 +27,58 @@ public class Solution {
 //        ListNode output = new Solution().addTwoNumbers(l1, l2);
 //        System.out.println();
         Solution solution=new Solution();
-        System.out.println(solution.maxArea(new int[]{1,8,6,2,5,4,8,3,7}));
+        //for(int i=1;i<20;i++)
+        System.out.println(solution.longestCommonPrefix(new String[]{"dog","racecar","car"}));
+        //System.out.println(solution.maxArea(new int[]{1,8,6,2,5,4,8,3,7}));
         //new Solution().PrintToMaxOfNDigits(2);
+    }
+    public String longestCommonPrefix(String[] strs) {
+        if(strs.length<1)return "";
+        if(strs.length==1)return strs[0];
+        int minIndex=0;
+        for(int i=0;i<strs.length;i++){
+            minIndex=strs[i].length()<strs[minIndex].length()?i:minIndex;
+        }
+        String prefix=strs[minIndex];
+        int lastIndex=0;
+        for(int i=0;i<prefix.length();i++){
+            char t=prefix.charAt(i);
+            for(int j=0;j<strs.length;j++){
+                if(strs[j].charAt(i)!=t){
+                    return lastIndex==0?"":prefix.substring(0,lastIndex);
+                }
+            }
+            lastIndex++;
+        }
+        return prefix;
+    }
+    public String intToRoman(int num) {
+        StringBuilder sb=new StringBuilder();
+        String[][] roman=new String[][]{{"X","V","I"},{"C","L","X"},{"M","D","C"},{"M","M","M"}};
+        int count=0;
+        int digital=0;
+        while (num!=0){
+            digital=num%10;
+            num=num/10;
+            if(digital<=3){
+                for(int i=0;i<digital;i++){
+                    sb.append(roman[count][2]);
+                }
+            }else if(digital==4){
+                sb.append(roman[count][1]);
+                sb.append(roman[count][2]);
+            }else if(digital<9){
+                for(int i=0;i<digital-5;i++){
+                    sb.append(roman[count][2]);
+                }
+                sb.append(roman[count][1]);
+            }else{
+                sb.append(roman[count][0]);
+                sb.append(roman[count][2]);
+            }
+            count++;
+        }
+        return sb.reverse().toString();
     }
     //Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.
     public int maxArea(int[] height) {

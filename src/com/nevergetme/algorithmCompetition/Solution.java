@@ -26,7 +26,7 @@ public class Solution {
 //        l5.next = l6;
 //        ListNode output = new Solution().addTwoNumbers(l1, l2);
 //        System.out.println();
-        Solution solution=new Solution();
+        Solution solution = new Solution();
         //for(int i=1;i<20;i++)
         //System.out.println(solution.longestCommonPrefix(new String[]{"dog","racecar","car"}));
 //        List<String> word=new ArrayList<>();
@@ -37,73 +37,165 @@ public class Solution {
 //        word.add("dog");
 //        System.out.println(solution.wordBreak("catsanddog",word));
         //ConcurrentHashMap
+//        List<List<Integer>> lists=new ArrayList<>();
+//        List<Integer> list1=new ArrayList<>();
+//        list1.add(1);
+//        List<Integer> list2=new ArrayList<>();
+//        list1.add(1);
+
         System.out.println(solution.longestPalindrome("cbbd"));
 
         //System.out.println(solution.maxArea(new int[]{1,8,6,2,5,4,8,3,7}));
         //new Solution().PrintToMaxOfNDigits(2);
     }
-    public int myAtoi(String str) {
-        boolean isFind=false;
-        boolean isNegative=false;
-        long result=0;
-        for(char c:str.toCharArray()){
-            if(!isFind){
-                if(c=='-'){
-                    isFind=true;
-                    isNegative=true;
-                }else if(c=='+') {
-                    isFind=true;
-                    isNegative=false;
-                }else if(c<='9'&&c>='0'){
-                    isFind=true;
-                    result+=(c-'0');
-                }else if(c==' '){
+    public List<List<Integer>> fourSum(int[] nums, int target) {
 
-                }else{
-                    return 0;
+    }
+    public int threeSumClosest(int[] nums, int target) {
+        Arrays.sort(nums);
+        int diff  =Integer.MAX_VALUE;
+        int closestSum = 0;
+        for(int i=0;i<nums.length-2;i++){
+            while (i>0&&(i<nums.length-2)&&nums[i]==nums[i-1])
+                i++;
+            int left=i+1;
+            int right=nums.length-1;
+            while (left<right){
+                int tempSum=nums[i]+nums[left]+nums[right];
+                int tempDiff=Math.abs(target-tempSum);
+                if(tempDiff<diff){
+                    closestSum=tempSum;
+                    diff=tempDiff;
                 }
-            }else{
-                if(c<='9'&&c>='0') {
-                    result = result * 10 + (c - '0');
-                    if(result>Integer.MAX_VALUE)return isNegative?Integer.MIN_VALUE:Integer.MAX_VALUE;
-                }
-                else return (int)result*(isNegative?-1:1);
+                if(tempSum<target)left++;
+                else if(tempSum>target)right--;
+                else
+                    return tempSum;
             }
         }
-        return (int)result*(isNegative?-1:1);
+        return closestSum;
     }
+    public List<List<Integer>> threeSum(int[] nums,int sum,int beign,int end){
+        List<List<Integer>> results=new ArrayList<>();
+        for(int i=beign;i<end-2;i++){
+            while (i>beign&&(i<end-2)&&nums[i]==nums[i-1])
+                i++;
+            //if(nums[i]>sum)break;
+            int target=sum-nums[i];
+            //choose second and third number
+            int left=i+1;
+            int right=end-1;
+            while(left<right){
+                if(nums[left]+nums[right]==target){
+                    List<Integer> result=new ArrayList<>();
+                    result.add(nums[i]);
+                    result.add(nums[left]);
+                    result.add(nums[right]);
+                    results.add(result);
+                    left++;
+                    right--;
+                    while(left<right&&nums[left]==nums[left-1])left++;
+                    while (left<right&&nums[right]==nums[right+1])right--;
+                }else if(nums[left]+nums[right]<target){
+                    left++;
+                    while(left<right&&nums[left]==nums[left-1])left++;
+                }else{
+                    right--;
+                    while (left<right&&nums[right]==nums[right+1])right--;
+                }
+
+            }
+        }
+        return results;
+    }
+    public List<List<Integer>> threeSum(int[] nums) {
+
+        if(nums.length<3){
+            List<List<Integer>> results=new ArrayList<>();
+            return results;
+        }
+        Arrays.sort(nums);
+        return threeSum(nums,0,0,nums.length);
+
+    }
+
+    public boolean isMatch(String s, String p) {
+        if (p.isEmpty()) return s.isEmpty();
+        boolean first_match = (!s.isEmpty() &&
+                (p.charAt(0) == s.charAt(0) || p.charAt(0) == '.'));
+
+        if (p.length() >= 2 && p.charAt(1) == '*') {
+            return (isMatch(s, p.substring(2)) ||
+                    (first_match && isMatch(s.substring(1), p)));
+        } else {
+            return first_match && isMatch(s.substring(1), p.substring(1));
+        }
+    }
+
+    public int myAtoi(String str) {
+        boolean isFind = false;
+        boolean isNegative = false;
+        long result = 0;
+        for (char c : str.toCharArray()) {
+            if (!isFind) {
+                if (c == '-') {
+                    isFind = true;
+                    isNegative = true;
+                } else if (c == '+') {
+                    isFind = true;
+                    isNegative = false;
+                } else if (c <= '9' && c >= '0') {
+                    isFind = true;
+                    result += (c - '0');
+                } else if (c == ' ') {
+
+                } else {
+                    return 0;
+                }
+            } else {
+                if (c <= '9' && c >= '0') {
+                    result = result * 10 + (c - '0');
+                    if (result > Integer.MAX_VALUE) return isNegative ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+                } else return (int) result * (isNegative ? -1 : 1);
+            }
+        }
+        return (int) result * (isNegative ? -1 : 1);
+    }
+
     public String convert(String s, int nRows) {
         char[] charSet = s.toCharArray();
         if (nRows == 1) return s;
         StringBuilder stringBuilder = new StringBuilder();
         for (int row = 0; row < nRows; row++) {
             int current = row;
-            for (; current - 2*row < charSet.length;) {
-                if (row != 0 && row != nRows-1 && current - 2*row > 0) stringBuilder.append(charSet[current - 2*row]);
+            for (; current - 2 * row < charSet.length; ) {
+                if (row != 0 && row != nRows - 1 && current - 2 * row > 0)
+                    stringBuilder.append(charSet[current - 2 * row]);
                 if (current < charSet.length) stringBuilder.append(charSet[current]);
-                current += 2*nRows - 2;
+                current += 2 * nRows - 2;
             }
         }
 
         return stringBuilder.toString();
     }
+
     public String longestPalindrome(String s) {
-        if(s==null||s.length()==0)return "";
-        int[][] dp=new int[s.length()][s.length()];
-        int maxLen=0,begin=0,end=0;
-        for(int i=s.length()-1;i>=0;i--){
-            for(int j=i;j<s.length();j++){
-                if(s.charAt(i)==s.charAt(j)&&(j-i<=1||dp[i+1][j-1]==1)){
-                    dp[i][j]=1;
-                    if(j-i>maxLen){
-                        begin=i;
-                        end=j;
-                        maxLen=j-i;
+        if (s == null || s.length() == 0) return "";
+        int[][] dp = new int[s.length()][s.length()];
+        int maxLen = 0, begin = 0, end = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            for (int j = i; j < s.length(); j++) {
+                if (s.charAt(i) == s.charAt(j) && (j - i <= 1 || dp[i + 1][j - 1] == 1)) {
+                    dp[i][j] = 1;
+                    if (j - i > maxLen) {
+                        begin = i;
+                        end = j;
+                        maxLen = j - i;
                     }
                 }
             }
         }
-        return s.substring(begin,end+1);
+        return s.substring(begin, end + 1);
 //        StringBuilder sb=new StringBuilder();
 //        for(char c:s.toCharArray()){
 //            sb.append("#");
@@ -131,86 +223,92 @@ public class Solution {
 //        }
 
     }
+
     public int lengthOfLongestSubstring(String s) {
-        if(s==null||s.length()==0)return 0;
-        int currentLen=0;
-        int maxLen=0;
-        int[] position=new int[255];
-        for(int i=0;i<255;i++)position[i]=-1;
-        for(int i=0;i<s.length();i++){
-            int prevIndex=position[s.charAt(i)];
-            if(prevIndex<0||i-prevIndex>currentLen){
+        if (s == null || s.length() == 0) return 0;
+        int currentLen = 0;
+        int maxLen = 0;
+        int[] position = new int[255];
+        for (int i = 0; i < 255; i++) position[i] = -1;
+        for (int i = 0; i < s.length(); i++) {
+            int prevIndex = position[s.charAt(i)];
+            if (prevIndex < 0 || i - prevIndex > currentLen) {
                 currentLen++;
-            }else{
-                if(currentLen>maxLen)maxLen=currentLen;
-                currentLen=i-prevIndex;
+            } else {
+                if (currentLen > maxLen) maxLen = currentLen;
+                currentLen = i - prevIndex;
             }
-            position[s.charAt(i)]=i;
+            position[s.charAt(i)] = i;
         }
-        return Math.max(currentLen,maxLen);
+        return Math.max(currentLen, maxLen);
     }
 
     public int[] twoSum(int[] nums, int target) {
         int[] result = new int[2];
-        if(nums == null || nums.length == 0){
+        if (nums == null || nums.length == 0) {
             return result;
         }
-        Map<Integer,Integer> map = new HashMap<Integer,Integer>();
-        for(int i = 0; i<nums.length; i++){
-            if(map.containsKey(nums[i])){
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
                 result[0] = map.get(nums[i]);
                 result[1] = i;
                 return result;
-            }else{
-                map.put(target-nums[i],i);
+            } else {
+                map.put(target - nums[i], i);
             }
         }
         return result;
     }
 
     public boolean hasPathSum(TreeNode root, int sum) {
-        if(root==null)return false;
-        if(root.left==null&&root.right==null){
-            if(sum==root.val)
+        if (root == null) return false;
+        if (root.left == null && root.right == null) {
+            if (sum == root.val)
                 return true;
             else
                 return false;
         }
-        return hasPathSum(root.left,sum-root.val)||hasPathSum(root.right,sum-root.val);
+        return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
     }
-    List<List<Integer>> results=new ArrayList<List<Integer>>();
-    private void find(List<Integer> path,TreeNode root,int sum){
-        if(root==null)return;
-        if(root.left==null&&root.right==null&&root.val==sum){
-            List<Integer> temp=new ArrayList<>();
+
+    List<List<Integer>> results = new ArrayList<List<Integer>>();
+
+    private void find(List<Integer> path, TreeNode root, int sum) {
+        if (root == null) return;
+        if (root.left == null && root.right == null && root.val == sum) {
+            List<Integer> temp = new ArrayList<>();
             temp.addAll(path);
             temp.add(root.val);
             results.add(temp);
             return;
         }
         path.add(root.val);
-        find(path,root.left,sum-root.val);
-        find(path,root.right,sum-root.val);
-        path.remove(path.size()-1);
+        find(path, root.left, sum - root.val);
+        find(path, root.right, sum - root.val);
+        path.remove(path.size() - 1);
     }
+
     public List<List<Integer>> pathSum(TreeNode root, int sum) {
-        find(new ArrayList<>(),root,sum);
+        find(new ArrayList<>(), root, sum);
         return results;
     }
+
     public int minCut(String s) {
-        int[][] dp=new int[s.length()][s.length()];
-        int[] cut=new int[s.length()+1];
-        for(int i=s.length()-1;i>=0;i--){
-            cut[i]=Integer.MAX_VALUE;//第i个字符到最后一个字符所构成的子串的最小分割次数
-            for(int j=i;j<s.length();j++){
-                if(s.charAt(i)==s.charAt(j)&&(j-i<=1||dp[i+1][j-1]==1)){
-                    dp[i][j]=1;
-                    cut[i]=Math.min(1+cut[j+1],cut[i]);
+        int[][] dp = new int[s.length()][s.length()];
+        int[] cut = new int[s.length() + 1];
+        for (int i = s.length() - 1; i >= 0; i--) {
+            cut[i] = Integer.MAX_VALUE;//第i个字符到最后一个字符所构成的子串的最小分割次数
+            for (int j = i; j < s.length(); j++) {
+                if (s.charAt(i) == s.charAt(j) && (j - i <= 1 || dp[i + 1][j - 1] == 1)) {
+                    dp[i][j] = 1;
+                    cut[i] = Math.min(1 + cut[j + 1], cut[i]);
                 }
             }
         }
-        return cut[0]-1;
+        return cut[0] - 1;
     }
+
     public List<String> wordBreak(String s, List<String> wordDict) {
         if (s == null || s.length() == 0) {
             return new ArrayList<String>();
@@ -253,7 +351,8 @@ public class Solution {
         memo.put(startIdx, result);
         return result;
     }
-//    public List<String> wordBreak(String s, List<String> wordDict) {
+
+    //    public List<String> wordBreak(String s, List<String> wordDict) {
 //        List<String> result=new ArrayList<>();
 //        int n=s.length();
 //        List<Integer>[] pointer=new List[n];
@@ -279,134 +378,142 @@ public class Solution {
 //        }
 //    }
     public boolean hasCycle(ListNode head) {
-        if(head==null||head.next==null)return false;
-        ListNode fast=head;
-        ListNode slow=head;
-        while (fast!=null&&fast.next!=null){
-            fast=fast.next.next;
-            slow=slow.next;
-            if(fast==slow){
+        if (head == null || head.next == null) return false;
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
                 return true;
             }
         }
         return false;
     }
+
     public ListNode detectCycle(ListNode head) {
-        if(head==null||head.next==null)return null;
-        ListNode fast=head;
-        ListNode slow=head;
-        while (fast!=null&&fast.next!=null){
-            fast=fast.next.next;
-            slow=slow.next;
-            if(fast==slow){
-                slow=head;
-                while (fast!=slow){
-                    fast=fast.next;
-                    slow=slow.next;
+        if (head == null || head.next == null) return null;
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                slow = head;
+                while (fast != slow) {
+                    fast = fast.next;
+                    slow = slow.next;
                 }
                 return slow;
             }
         }
         return null;
     }
+
     public void reorderList(ListNode head) {
-        if(head==null||head.next==null) return;
+        if (head == null || head.next == null) return;
 
         //Find the middle of the list
-        ListNode p1=head;
-        ListNode p2=head;
-        while(p2.next!=null&&p2.next.next!=null){
-            p1=p1.next;
-            p2=p2.next.next;
+        ListNode p1 = head;
+        ListNode p2 = head;
+        while (p2.next != null && p2.next.next != null) {
+            p1 = p1.next;
+            p2 = p2.next.next;
         }
 
         //Reverse the half after middle  1->2->3->4->5->6 to 1->2->3->6->5->4
-        ListNode preMiddle=p1;
-        ListNode preCurrent=p1.next;
-        while(preCurrent.next!=null){
-            ListNode current=preCurrent.next;
-            preCurrent.next=current.next;
-            current.next=preMiddle.next;
-            preMiddle.next=current;
+        ListNode preMiddle = p1;
+        ListNode preCurrent = p1.next;
+        while (preCurrent.next != null) {
+            ListNode current = preCurrent.next;
+            preCurrent.next = current.next;
+            current.next = preMiddle.next;
+            preMiddle.next = current;
         }
 
         //Start reorder one by one  1->2->3->6->5->4 to 1->6->2->5->3->4
-        p1=head;
-        p2=preMiddle.next;
-        while(p1!=preMiddle){
-            preMiddle.next=p2.next;
-            p2.next=p1.next;
-            p1.next=p2;
-            p1=p2.next;
-            p2=preMiddle.next;
+        p1 = head;
+        p2 = preMiddle.next;
+        while (p1 != preMiddle) {
+            preMiddle.next = p2.next;
+            p2.next = p1.next;
+            p1.next = p2;
+            p1 = p2.next;
+            p2 = preMiddle.next;
         }
     }
+
     public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> preOrder=new ArrayList<>();
-        preorderTraversal(root,preOrder);
+        List<Integer> preOrder = new ArrayList<>();
+        preorderTraversal(root, preOrder);
         return preOrder;
     }
-    public void preorderTraversal(TreeNode root,List<Integer> preOrder) {
-        if(root!=null){
+
+    public void preorderTraversal(TreeNode root, List<Integer> preOrder) {
+        if (root != null) {
             preOrder.add(root.val);
-            preorderTraversal(root.left,preOrder);
-            preorderTraversal(root.right,preOrder);
+            preorderTraversal(root.left, preOrder);
+            preorderTraversal(root.right, preOrder);
         }
     }
+
     public List<Integer> postorderTraversal(TreeNode root) {
-        List<Integer> postOrder=new ArrayList<>();
-        postorderTraversal(root,postOrder);
+        List<Integer> postOrder = new ArrayList<>();
+        postorderTraversal(root, postOrder);
         return postOrder;
     }
-    public void postorderTraversal(TreeNode root,List<Integer> postOrder){
-        if(root!=null){
-            postorderTraversal(root.left,postOrder);
-            postorderTraversal(root.right,postOrder);
+
+    public void postorderTraversal(TreeNode root, List<Integer> postOrder) {
+        if (root != null) {
+            postorderTraversal(root.left, postOrder);
+            postorderTraversal(root.right, postOrder);
             postOrder.add(root.val);
 
         }
     }
+
     public String longestCommonPrefix(String[] strs) {
-        if(strs.length<1)return "";
-        if(strs.length==1)return strs[0];
-        int minIndex=0;
-        for(int i=0;i<strs.length;i++){
-            minIndex=strs[i].length()<strs[minIndex].length()?i:minIndex;
+        if (strs.length < 1) return "";
+        if (strs.length == 1) return strs[0];
+        int minIndex = 0;
+        for (int i = 0; i < strs.length; i++) {
+            minIndex = strs[i].length() < strs[minIndex].length() ? i : minIndex;
         }
-        String prefix=strs[minIndex];
-        int lastIndex=0;
-        for(int i=0;i<prefix.length();i++){
-            char t=prefix.charAt(i);
-            for(int j=0;j<strs.length;j++){
-                if(strs[j].charAt(i)!=t){
-                    return lastIndex==0?"":prefix.substring(0,lastIndex);
+        String prefix = strs[minIndex];
+        int lastIndex = 0;
+        for (int i = 0; i < prefix.length(); i++) {
+            char t = prefix.charAt(i);
+            for (int j = 0; j < strs.length; j++) {
+                if (strs[j].charAt(i) != t) {
+                    return lastIndex == 0 ? "" : prefix.substring(0, lastIndex);
                 }
             }
             lastIndex++;
         }
         return prefix;
     }
+
     public String intToRoman(int num) {
-        StringBuilder sb=new StringBuilder();
-        String[][] roman=new String[][]{{"X","V","I"},{"C","L","X"},{"M","D","C"},{"M","M","M"}};
-        int count=0;
-        int digital=0;
-        while (num!=0){
-            digital=num%10;
-            num=num/10;
-            if(digital<=3){
-                for(int i=0;i<digital;i++){
+        StringBuilder sb = new StringBuilder();
+        String[][] roman = new String[][]{{"X", "V", "I"}, {"C", "L", "X"}, {"M", "D", "C"}, {"M", "M", "M"}};
+        int count = 0;
+        int digital = 0;
+        while (num != 0) {
+            digital = num % 10;
+            num = num / 10;
+            if (digital <= 3) {
+                for (int i = 0; i < digital; i++) {
                     sb.append(roman[count][2]);
                 }
-            }else if(digital==4){
+            } else if (digital == 4) {
                 sb.append(roman[count][1]);
                 sb.append(roman[count][2]);
-            }else if(digital<9){
-                for(int i=0;i<digital-5;i++){
+            } else if (digital < 9) {
+                for (int i = 0; i < digital - 5; i++) {
                     sb.append(roman[count][2]);
                 }
                 sb.append(roman[count][1]);
-            }else{
+            } else {
                 sb.append(roman[count][0]);
                 sb.append(roman[count][2]);
             }
@@ -414,18 +521,20 @@ public class Solution {
         }
         return sb.reverse().toString();
     }
+
     //Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.
     public int maxArea(int[] height) {
-        int left=0;
-        int right=height.length-1;
-        int maxArea=0;
-        while(left<right){
-            maxArea=Math.max(maxArea,Math.min(height[left],height[right])*(right-left));
-            if(height[left]<height[right])left++;
+        int left = 0;
+        int right = height.length - 1;
+        int maxArea = 0;
+        while (left < right) {
+            maxArea = Math.max(maxArea, Math.min(height[left], height[right]) * (right - left));
+            if (height[left] < height[right]) left++;
             else right--;
         }
         return maxArea;
     }
+
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int n = nums1.length;
         int m = nums2.length;

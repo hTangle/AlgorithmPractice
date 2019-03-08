@@ -1,7 +1,7 @@
 package com.nevergetme.algorithmCompetition;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Solution {
     public static void main(String[] args) {
@@ -28,9 +28,343 @@ public class Solution {
 //        System.out.println();
         Solution solution=new Solution();
         //for(int i=1;i<20;i++)
-        System.out.println(solution.longestCommonPrefix(new String[]{"dog","racecar","car"}));
+        //System.out.println(solution.longestCommonPrefix(new String[]{"dog","racecar","car"}));
+//        List<String> word=new ArrayList<>();
+//        word.add("cat");
+//        word.add("cats");
+//        word.add("and");
+//        word.add("sand");
+//        word.add("dog");
+//        System.out.println(solution.wordBreak("catsanddog",word));
+        //ConcurrentHashMap
+        System.out.println(solution.longestPalindrome("cbbd"));
+
         //System.out.println(solution.maxArea(new int[]{1,8,6,2,5,4,8,3,7}));
         //new Solution().PrintToMaxOfNDigits(2);
+    }
+    public int myAtoi(String str) {
+        boolean isFind=false;
+        boolean isNegative=false;
+        long result=0;
+        for(char c:str.toCharArray()){
+            if(!isFind){
+                if(c=='-'){
+                    isFind=true;
+                    isNegative=true;
+                }else if(c=='+') {
+                    isFind=true;
+                    isNegative=false;
+                }else if(c<='9'&&c>='0'){
+                    isFind=true;
+                    result+=(c-'0');
+                }else if(c==' '){
+
+                }else{
+                    return 0;
+                }
+            }else{
+                if(c<='9'&&c>='0') {
+                    result = result * 10 + (c - '0');
+                    if(result>Integer.MAX_VALUE)return isNegative?Integer.MIN_VALUE:Integer.MAX_VALUE;
+                }
+                else return (int)result*(isNegative?-1:1);
+            }
+        }
+        return (int)result*(isNegative?-1:1);
+    }
+    public String convert(String s, int nRows) {
+        char[] charSet = s.toCharArray();
+        if (nRows == 1) return s;
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int row = 0; row < nRows; row++) {
+            int current = row;
+            for (; current - 2*row < charSet.length;) {
+                if (row != 0 && row != nRows-1 && current - 2*row > 0) stringBuilder.append(charSet[current - 2*row]);
+                if (current < charSet.length) stringBuilder.append(charSet[current]);
+                current += 2*nRows - 2;
+            }
+        }
+
+        return stringBuilder.toString();
+    }
+    public String longestPalindrome(String s) {
+        if(s==null||s.length()==0)return "";
+        int[][] dp=new int[s.length()][s.length()];
+        int maxLen=0,begin=0,end=0;
+        for(int i=s.length()-1;i>=0;i--){
+            for(int j=i;j<s.length();j++){
+                if(s.charAt(i)==s.charAt(j)&&(j-i<=1||dp[i+1][j-1]==1)){
+                    dp[i][j]=1;
+                    if(j-i>maxLen){
+                        begin=i;
+                        end=j;
+                        maxLen=j-i;
+                    }
+                }
+            }
+        }
+        return s.substring(begin,end+1);
+//        StringBuilder sb=new StringBuilder();
+//        for(char c:s.toCharArray()){
+//            sb.append("#");
+//            sb.append(c);
+//        }
+//        sb.append("#");
+//        String T=sb.toString();
+//        int length=T.length();
+//        int[] p=new int[length];
+//        int C=0,R=0;
+//        for(int i=0;i<length;i++){
+//            int i_mirror=C-(i-C);
+//            int diff=R-i;
+//            if(diff>=0){
+//                if(p[i_mirror]<diff)p[i]=p[i_mirror];
+//                else{
+//                    p[i]=diff;
+//                    while (T.charAt(i+p[i]+1)==T.charAt(i-p[i]-1)){
+//                        p[i]++;
+//                    }
+//                    C=i;
+//                    R=i+p[i];
+//                }
+//            }
+//        }
+
+    }
+    public int lengthOfLongestSubstring(String s) {
+        if(s==null||s.length()==0)return 0;
+        int currentLen=0;
+        int maxLen=0;
+        int[] position=new int[255];
+        for(int i=0;i<255;i++)position[i]=-1;
+        for(int i=0;i<s.length();i++){
+            int prevIndex=position[s.charAt(i)];
+            if(prevIndex<0||i-prevIndex>currentLen){
+                currentLen++;
+            }else{
+                if(currentLen>maxLen)maxLen=currentLen;
+                currentLen=i-prevIndex;
+            }
+            position[s.charAt(i)]=i;
+        }
+        return Math.max(currentLen,maxLen);
+    }
+
+    public int[] twoSum(int[] nums, int target) {
+        int[] result = new int[2];
+        if(nums == null || nums.length == 0){
+            return result;
+        }
+        Map<Integer,Integer> map = new HashMap<Integer,Integer>();
+        for(int i = 0; i<nums.length; i++){
+            if(map.containsKey(nums[i])){
+                result[0] = map.get(nums[i]);
+                result[1] = i;
+                return result;
+            }else{
+                map.put(target-nums[i],i);
+            }
+        }
+        return result;
+    }
+
+    public boolean hasPathSum(TreeNode root, int sum) {
+        if(root==null)return false;
+        if(root.left==null&&root.right==null){
+            if(sum==root.val)
+                return true;
+            else
+                return false;
+        }
+        return hasPathSum(root.left,sum-root.val)||hasPathSum(root.right,sum-root.val);
+    }
+    List<List<Integer>> results=new ArrayList<List<Integer>>();
+    private void find(List<Integer> path,TreeNode root,int sum){
+        if(root==null)return;
+        if(root.left==null&&root.right==null&&root.val==sum){
+            List<Integer> temp=new ArrayList<>();
+            temp.addAll(path);
+            temp.add(root.val);
+            results.add(temp);
+            return;
+        }
+        path.add(root.val);
+        find(path,root.left,sum-root.val);
+        find(path,root.right,sum-root.val);
+        path.remove(path.size()-1);
+    }
+    public List<List<Integer>> pathSum(TreeNode root, int sum) {
+        find(new ArrayList<>(),root,sum);
+        return results;
+    }
+    public int minCut(String s) {
+        int[][] dp=new int[s.length()][s.length()];
+        int[] cut=new int[s.length()+1];
+        for(int i=s.length()-1;i>=0;i--){
+            cut[i]=Integer.MAX_VALUE;//第i个字符到最后一个字符所构成的子串的最小分割次数
+            for(int j=i;j<s.length();j++){
+                if(s.charAt(i)==s.charAt(j)&&(j-i<=1||dp[i+1][j-1]==1)){
+                    dp[i][j]=1;
+                    cut[i]=Math.min(1+cut[j+1],cut[i]);
+                }
+            }
+        }
+        return cut[0]-1;
+    }
+    public List<String> wordBreak(String s, List<String> wordDict) {
+        if (s == null || s.length() == 0) {
+            return new ArrayList<String>();
+        }
+
+        Set<String> wordSet = new HashSet<>();
+        int maxLen = 0;
+        //去重以及获取字符串的最大长度
+        for (String word : wordDict) {
+            wordSet.add(word);
+            maxLen = Math.max(maxLen, word.length());
+        }
+
+        Map<Integer, List<String>> memo = new HashMap<>();
+        List<String> res = helper(s, wordSet, memo, 0, maxLen);
+        return res;
+    }
+
+    private List<String> helper(String s, Set<String> wordSet, Map<Integer, List<String>> memo, int startIdx, int maxLen) {
+
+        if (memo.containsKey(startIdx)) {
+            return memo.get(startIdx);
+        }
+
+        List<String> result = new ArrayList<>();
+        //字串长度小于最大长度
+        for (int i = startIdx; i < s.length() && i + 1 - startIdx <= maxLen; i++) {
+            String pref = s.substring(startIdx, i + 1);//获取字串
+            if (wordSet.contains(pref)) {//字串在字典中
+                if (i == s.length() - 1) {
+                    result.add(pref);//如果当前index到了字符串的最后，则可以直接退出
+                    return result;
+                }
+                List<String> tmp = helper(s, wordSet, memo, i + 1, maxLen);
+                for (String suff : tmp) {
+                    result.add(pref + " " + suff);
+                }
+            }
+        }
+        memo.put(startIdx, result);
+        return result;
+    }
+//    public List<String> wordBreak(String s, List<String> wordDict) {
+//        List<String> result=new ArrayList<>();
+//        int n=s.length();
+//        List<Integer>[] pointer=new List[n];
+//        for(int i=0;i<n;i++)pointer[i]=new ArrayList<Integer>();
+//        for(int i=0;i<n;i++){
+//            for(int j=0;j<=i;j++){
+//                if(wordDict.contains(s.substring(j,i+1))&&(j==0||pointer[j-1].size()>0))
+//                    pointer[i].add(j);
+//            }
+//        }
+//        helper(pointer,s,n-1,"",result);
+//        System.out.println();
+//        return result;
+//    }
+//    public void helper(List<Integer>[] pointer,String s,int i,String pattern,List<String> result){
+//        if(i<0){
+//            result.add(pattern);
+//            return;
+//        }
+//        for(Integer item:pointer[i]){
+//            String nextPattern=pattern.length()==0?s.substring(item,i+1):s.substring(item,i+1)+" "+pattern;
+//            helper(pointer,s,item-1,nextPattern,result);
+//        }
+//    }
+    public boolean hasCycle(ListNode head) {
+        if(head==null||head.next==null)return false;
+        ListNode fast=head;
+        ListNode slow=head;
+        while (fast!=null&&fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+            if(fast==slow){
+                return true;
+            }
+        }
+        return false;
+    }
+    public ListNode detectCycle(ListNode head) {
+        if(head==null||head.next==null)return null;
+        ListNode fast=head;
+        ListNode slow=head;
+        while (fast!=null&&fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+            if(fast==slow){
+                slow=head;
+                while (fast!=slow){
+                    fast=fast.next;
+                    slow=slow.next;
+                }
+                return slow;
+            }
+        }
+        return null;
+    }
+    public void reorderList(ListNode head) {
+        if(head==null||head.next==null) return;
+
+        //Find the middle of the list
+        ListNode p1=head;
+        ListNode p2=head;
+        while(p2.next!=null&&p2.next.next!=null){
+            p1=p1.next;
+            p2=p2.next.next;
+        }
+
+        //Reverse the half after middle  1->2->3->4->5->6 to 1->2->3->6->5->4
+        ListNode preMiddle=p1;
+        ListNode preCurrent=p1.next;
+        while(preCurrent.next!=null){
+            ListNode current=preCurrent.next;
+            preCurrent.next=current.next;
+            current.next=preMiddle.next;
+            preMiddle.next=current;
+        }
+
+        //Start reorder one by one  1->2->3->6->5->4 to 1->6->2->5->3->4
+        p1=head;
+        p2=preMiddle.next;
+        while(p1!=preMiddle){
+            preMiddle.next=p2.next;
+            p2.next=p1.next;
+            p1.next=p2;
+            p1=p2.next;
+            p2=preMiddle.next;
+        }
+    }
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> preOrder=new ArrayList<>();
+        preorderTraversal(root,preOrder);
+        return preOrder;
+    }
+    public void preorderTraversal(TreeNode root,List<Integer> preOrder) {
+        if(root!=null){
+            preOrder.add(root.val);
+            preorderTraversal(root.left,preOrder);
+            preorderTraversal(root.right,preOrder);
+        }
+    }
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> postOrder=new ArrayList<>();
+        postorderTraversal(root,postOrder);
+        return postOrder;
+    }
+    public void postorderTraversal(TreeNode root,List<Integer> postOrder){
+        if(root!=null){
+            postorderTraversal(root.left,postOrder);
+            postorderTraversal(root.right,postOrder);
+            postOrder.add(root.val);
+
+        }
     }
     public String longestCommonPrefix(String[] strs) {
         if(strs.length<1)return "";

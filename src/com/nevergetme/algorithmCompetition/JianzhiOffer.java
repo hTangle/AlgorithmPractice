@@ -51,7 +51,39 @@ public class JianzhiOffer {
 //        System.out.println(jzo.pop());
 //        System.out.println(jzo.pop());
         System.out.println(jzo.Fibonacci(3));
+        //HashMap
 
+    }
+    public ArrayList<String> wordBreak(String s, Set<String> dict) {
+        if(s==null||s.length()==0)return new ArrayList<String>();
+        int maxLength=0;
+        for(String st:dict){
+            maxLength=Math.max(maxLength,st.length());
+        }
+        Map<Integer, ArrayList<String>> memo = new HashMap<>();
+        return wordBreak(s,dict,memo,0,maxLength);
+
+    }
+    public ArrayList<String> wordBreak(String s,Set<String> dict,Map<Integer, ArrayList<String>> memo, int startIdx, int maxLength){
+        if(memo.containsKey(startIdx)){
+            return memo.get(startIdx);
+        }
+        ArrayList<String> result = new ArrayList<>();
+        for(int i=startIdx;i<s.length()&&i+1-maxLength<=startIdx;i++){
+            String pref=s.substring(startIdx,i+1);
+            if(dict.contains(pref)){
+                if(i==s.length()-1){
+                    result.add(pref);
+                    return result;
+                }
+                ArrayList<String> laters=wordBreak(s,dict,memo,i+1,maxLength);
+                for(String later:laters){
+                    result.add(pref+" "+later);
+                }
+            }
+        }
+        memo.put(startIdx, result);
+        return result;
     }
     public int Fibonacci(int n) {
         int f=0,g=1;

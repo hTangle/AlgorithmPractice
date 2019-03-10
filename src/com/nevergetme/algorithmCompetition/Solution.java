@@ -1,5 +1,8 @@
 package com.nevergetme.algorithmCompetition;
 
+import com.nevergetme.datastructure.stack.Stack;
+import sun.reflect.generics.tree.Tree;
+
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -13,11 +16,16 @@ public class Solution {
 //        t2.right=t3;
 //        t1.right=t4;
 //        System.out.println(new Solution().binaryTreePaths(t1));
-//        ListNode l1 = new ListNode(2);
-//        ListNode l2 = new ListNode(5);
-//
-//        ListNode l3 = new ListNode(4);
-//        ListNode l4 = new ListNode(3);
+        ListNode l1 = new ListNode(1);
+        ListNode l2 = new ListNode(2);
+
+        ListNode l3 = new ListNode(3);
+        ListNode l4 = new ListNode(4);
+        ListNode l5 = new ListNode(5);
+        l1.next=l2;
+        l2.next=l3;
+        l3.next=l4;
+        l4.next=l5;
 //        l1.next = l3;
 //        l3.next = l4;
 //        ListNode l5 = new ListNode(6);
@@ -37,20 +45,337 @@ public class Solution {
 //        word.add("dog");
 //        System.out.println(solution.wordBreak("catsanddog",word));
         //ConcurrentHashMap
-//        List<List<Integer>> lists=new ArrayList<>();
-//        List<Integer> list1=new ArrayList<>();
-//        list1.add(1);
-//        List<Integer> list2=new ArrayList<>();
-//        list1.add(1);
 
-        System.out.println(solution.longestPalindrome("cbbd"));
+        //System.out.println(solution.longestPalindrome("cbbd"));
+        List<String> l=new ArrayList<>();
+        l.add("3");
+        l.add("321");
+        l.add("32");
+        Collections.sort(l);
 
+        System.out.println(solution.maxProfit(new int[]{3,3,5,0,0,3,1,4}));
+        //solution.isValid("()");
         //System.out.println(solution.maxArea(new int[]{1,8,6,2,5,4,8,3,7}));
         //new Solution().PrintToMaxOfNDigits(2);
+        //Queue<>
     }
-    public List<List<Integer>> fourSum(int[] nums, int target) {
+//    public int maxPathSum(TreeNode root) {
+//        //if(root!=null)
+//    }
+//    private int maxPathSum(TreeNode root,int sum){
+//        if(root==null)return sum;
+//        int current
+//        int left=maxPathSum()
+//        // return
+//    }
+    public int maxProfit(int[] prices) {
+        int buy1=Integer.MIN_VALUE;//前i天做第一笔交易买入剩下最多的钱
+        int buy2=Integer.MIN_VALUE;//前i天做第二笔交易买入股票后剩下最多的钱
+        int sell1=0;//前i天做第一笔交易卖出股票剩下最多的钱
+        int sell2=0;//
+        for(int i=0;i<prices.length;i++){
+            sell2 = Math.max(sell2, buy2+prices[i]);
+            buy2 = Math.max(buy2, sell1-prices[i]);
+            sell1 = Math.max(sell1, buy1+prices[i]);
+            buy1 = Math.max(buy1,-prices[i]);
+        }
+        return sell2;
+//        int m=prices.length;
+//        if(m==0)return 0;
+//        int curMin=prices[0];
+//        int ret=0;
+//        for(int i=0;i<m;i++){
+//            curMin=Math.min(curMin,prices[i]);
+//            ret=Math.max(ret,prices[i]-curMin);
+//        }
+//        return ret;
+    }
+    public int trap(int[] height) {
+        if(height.length<2)return 0;
+        int[] left=new int[height.length];
+        int[] right=new int[height.length];
+        int leftMax=0;
+        int rightMax=0;
+        for(int i=0;i<height.length;i++){
+            left[i]=Math.max(leftMax,height[i]);
+            leftMax=left[i];
+        }
+        for(int i=height.length-1;i>=0;i--){
+            right[i]=Math.max(rightMax,height[i]);
+            rightMax=right[i];
+        }
+        int sum=0;
+        for(int i=1;i<height.length-1;i++){
+            sum+=(Math.min(left[i],right[i])-height[i]);
+        }
+        return sum;
+    }
 
+    private boolean findSubstring(String s,Map<String,Integer> dict,int len){
+        Map<String,Integer> fullMap=new HashMap<>();
+        for(Iterator<Map.Entry<String,Integer>> it=dict.entrySet().iterator();it.hasNext();){
+            Map.Entry<String,Integer> entry=it.next();
+            fullMap.put(entry.getKey(),0);
+        }
+        for(int i=0;i<s.length();i+=len){
+            String cur=s.substring(i,i+len);
+            if(dict.containsKey(cur)){
+                if(dict.get(cur)>=fullMap.get(cur)+1){
+                    fullMap.put(cur,fullMap.get(cur)+1);
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }
+        return true;
     }
+
+    public List<Integer> findSubstring(String s, String[] words) {
+        List<Integer> result=new ArrayList<>();
+        Map<String,Integer> dict=new HashMap<>();
+        int len=0;
+
+        for(String word:words){
+            len=word.length();
+            if(dict.containsKey(word)){
+                dict.put(word,dict.get(word)+1);
+            }else
+                dict.put(word,1);
+        }
+        int strLen=len*words.length;
+        for(int i=0;i<len;i++){
+            for(int j=i;j<=s.length()-strLen;j+=len){
+                if(findSubstring(s.substring(j,j+strLen),dict,len)){
+                    result.add(j);
+                }
+            }
+        }
+//        Map<String,Integer> fullMap=new HashMap<>();
+//
+//        int beginIndex=0;
+//        for(int i=0;i<len;i++){
+//            beginIndex=i;
+//            for(int j=i;j<s.length();j+=len){
+//                String cur=s.substring(j,Math.min(j+len,s.length()));
+//                if(cur.length()==len){
+//                    if(dict.containsKey(cur)){
+//                        if(fullMap.size()==0){
+//                            beginIndex=j;
+//                        }
+//                        if(fullMap.containsKey(cur)){
+//                            //更新map
+//                            int curId=fullMap.get(cur);
+//                            for(Iterator<Map.Entry<String,Integer>> it=fullMap.entrySet().iterator();it.hasNext();){
+//                                Map.Entry<String,Integer> entry=it.next();
+//                                int value=entry.getValue();
+//                                if(value<=curId){
+//                                    it.remove();
+//                                }
+//                            }
+//                            //应该更新起始值
+//                            beginIndex=curId+len;
+//                        }
+//                        fullMap.put(cur,j);
+//                        if(fullMap.size()==dict.size()){
+//                            result.add(beginIndex);
+//                            for(Iterator<Map.Entry<String,Integer>> it=fullMap.entrySet().iterator();it.hasNext();){
+//                                Map.Entry<String,Integer> entry=it.next();
+//                                int value=entry.getValue();
+//                                if(value==beginIndex){
+//                                    it.remove();
+//                                    break;
+//                                }
+//                            }
+//                            beginIndex=beginIndex+len;
+//                            //fullMap.clear();
+//                            //移除第一个
+//                        }
+//                    }else{
+//                        fullMap.clear();
+//                    }
+//                }
+//            }
+//        }
+        Collections.sort(result);
+        return result;
+    }
+
+
+    public int removeElement(int[] nums, int val) {
+        if(nums.length<0)return 0;
+        int index=0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]!=val){
+                nums[index++]=nums[i];
+            }
+        }
+        return index;
+    }
+    public int removeDuplicates(int[] nums) {
+        if(nums.length<0)return 0;
+        if(nums.length==1)return 1;
+        int first=0,second=1;
+        while (second<nums.length){
+            if(nums[first]==nums[second]){
+                second++;
+            }else{
+                nums[first+1]=nums[second];
+                first++;
+                second++;
+            }
+        }
+        return first+1;
+    }
+    public ListNode reverseKGroup(ListNode head, int k) {
+        ListNode curr = head;
+        int count = 0;
+        while (curr != null && count != k) { // find the k+1 node
+            curr = curr.next;
+            count++;
+        }
+        if (count == k) { // if k+1 node is found
+            curr = reverseKGroup(curr, k); // reverse list with k+1 node as head
+            // head - head-pointer to direct part,
+            // curr - head-pointer to reversed part;
+            while (count-- > 0) { // reverse current k-group:
+                ListNode tmp = head.next; // tmp - next head in direct part
+                head.next = curr; // preappending "direct" head to the reversed list
+                curr = head; // move head of reversed part to a new node
+                head = tmp; // move "direct" head to the next node in direct part
+            }
+            head = curr;
+        }
+        return head;
+    }
+    public ListNode swapPairs(ListNode head) {
+        ListNode first=new ListNode(-1);
+        ListNode pHead=first;
+        first.next=head;
+        ListNode second=head;
+        while (second!=null&&second.next!=null){
+            first.next=second.next;
+            second.next=first.next.next;
+            first.next.next=second;
+            first=second;
+            second=second.next;
+        }
+        return pHead.next;
+    }
+    public ListNode mergeKLists(ListNode[] lists) {
+        if(lists== null || lists.length == 0) return null;
+        return mergeLists(lists,0,lists.length-1);
+    }
+    private ListNode mergeLists(ListNode[] lists,int start,int end){
+        if(start>=end)return lists[start];
+        int mid=(start+end)/2;
+        return mergeTwoLists(mergeLists(lists,start,mid),mergeLists(lists,mid+1,end));
+    }
+    private ListNode mergeTwoLists(ListNode p1,ListNode p2){
+        if(p1==null)return p2;
+        if(p2==null)return p1;
+        ListNode pHead=null;
+        if(p1.val<p2.val){
+            pHead=p1;
+            pHead.next=mergeTwoLists(p1.next,p2);
+        }else{
+            pHead=p2;
+            pHead.next=mergeTwoLists(p1,p2.next);
+        }
+        return pHead;
+    }
+    public List<String> generateParenthesis(int n) {
+        List<String> result=new ArrayList<>();
+        backTrace("",result,n,n);
+        return result;
+    }
+    public void backTrace(String sub,List<String> result,int left,int right){
+        if(left==right&&left==0){
+            result.add(sub);
+        }
+        if(left>right)
+            return;
+        if(left>0)
+            backTrace(sub+"(",result,left-1,right);
+        if(right>0)
+            backTrace(sub+")",result,left,right-1);
+    }
+    public boolean isValid(String s) {
+        if(s=="")return true;
+        Stack<Character> stack=new Stack<>();
+        for(char c:s.toCharArray()){
+            System.out.println(c);
+            if(c=='('||c=='{'||c=='[')
+                stack.push(c);
+            else{
+                if(stack.isEmpty())return false;
+                char t=stack.pop();
+                if(c==')'&&t!='(')return false;
+                if(c=='}'&&t!='{')return false;
+                if(c==']'&&t!='[')return false;
+
+            }
+        }
+        return stack.isEmpty();
+    }
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode first=head;
+        ListNode second=head;
+        while (n>0&&first.next!=null){
+            first=first.next;
+            n--;
+        }
+        if(n==0) {
+            while (first.next != null) {
+                first = first.next;
+                second = second.next;
+            }
+            second.next = second.next.next;
+        }else if(n==1){
+            return head.next;
+        }
+        return head;
+    }
+    public List<String> letterCombinations(String digits) {
+        char[][] dict=new char[][]{
+                {'a','b','c'},
+                {'d','e','f'},
+                {'g','h','i'},
+                {'j','k','l'},
+                {'m','n','o'},
+                {'p','q','r','s'},
+                {'t','u','v'},
+                {'w','x','y','z'}
+        };
+        List<String> result=new ArrayList<>();
+        if(digits.length()==0){
+            result.add("");
+            return result;
+        }
+        for(char c:digits.toCharArray()){
+            int size=result.size();
+            int index=c-'2';
+            if(index<0)return result;
+            if(size==0){
+                for(int i=0;i<dict[index].length;i++){
+                    result.add(dict[index][i]+"");
+                }
+            }
+            else{
+                for(int i=0;i<size;i++){
+                    String current=result.remove(0);
+                    for(int j=0;j<dict[index].length;j++){
+                        result.add(current+dict[index][j]);
+                    }
+                }
+            }
+        }
+        return result;
+    }
+//    public List<List<Integer>> fourSum(int[] nums, int target) {
+//
+//    }
     public int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
         int diff  =Integer.MAX_VALUE;

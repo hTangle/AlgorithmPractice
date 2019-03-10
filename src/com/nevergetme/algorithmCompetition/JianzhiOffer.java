@@ -54,6 +54,19 @@ public class JianzhiOffer {
         //HashMap
 
     }
+    public int JumpFloor(int target) {
+        int[] result=new int[]{0,1};
+        if(target<2)return result[target];
+        int fibNMinusOne=1;
+        int fibNMinusTwo=0;
+        int fibN=0;
+        for(int i=2;i<=target;i++){
+            fibN=fibNMinusOne+fibNMinusTwo;
+            fibNMinusTwo=fibNMinusOne;
+            fibNMinusOne=fibN;
+        }
+        return fibN;
+    }
     public ArrayList<String> wordBreak(String s, Set<String> dict) {
         if(s==null||s.length()==0)return new ArrayList<String>();
         int maxLength=0;

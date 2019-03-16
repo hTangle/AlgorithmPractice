@@ -156,6 +156,30 @@ public class algorithmCompetition {
 //        ac.convertBST(t1);
 //        System.out.println();
     }
+    public int jump(int[] nums) {
+        int ret=0;
+        int last=0;
+        int cur=0;
+        for(int i=0;i<nums.length;i++){
+            if(i>cur)return -1;
+            if(i>last){//如果当前步数不能够达到，则需要更新
+                last=cur;//
+                ret++;//步数
+            }
+            cur=Math.max(cur,i+nums[i]);//目前最远能够达到的距离
+        }
+        return ret;
+    }
+    public boolean canJump(int[] nums) {
+        if(nums.length<1)return false;
+        if(nums.length==1)return true;
+        int max=0;
+        int i=0;
+        for(;i<nums.length&&i<=max;i++){
+            max=Math.max(max,i+nums[i]);
+        }
+        return i==nums.length;
+    }
 
     public int mySqrt(int x) {
         int l = 1,r = x;

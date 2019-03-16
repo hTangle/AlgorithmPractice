@@ -22,10 +22,10 @@ public class Solution {
         ListNode l3 = new ListNode(3);
         ListNode l4 = new ListNode(4);
         ListNode l5 = new ListNode(5);
-        l1.next=l2;
-        l2.next=l3;
-        l3.next=l4;
-        l4.next=l5;
+        l1.next = l2;
+        l2.next = l3;
+        l3.next = l4;
+        l4.next = l5;
 //        l1.next = l3;
 //        l3.next = l4;
 //        ListNode l5 = new ListNode(6);
@@ -47,19 +47,20 @@ public class Solution {
         //ConcurrentHashMap
 
         //System.out.println(solution.longestPalindrome("cbbd"));
-        List<String> l=new ArrayList<>();
+        List<String> l = new ArrayList<>();
         l.add("3");
         l.add("321");
         l.add("32");
         Collections.sort(l);
 
-        System.out.println(solution.maxProfit(new int[]{3,3,5,0,0,3,1,4}));
+        System.out.println(solution.maxProfit(new int[]{3, 3, 5, 0, 0, 3, 1, 4}));
         //solution.isValid("()");
         //System.out.println(solution.maxArea(new int[]{1,8,6,2,5,4,8,3,7}));
         //new Solution().PrintToMaxOfNDigits(2);
         //Queue<>
     }
-//    public int maxPathSum(TreeNode root) {
+
+    //    public int maxPathSum(TreeNode root) {
 //        //if(root!=null)
 //    }
 //    private int maxPathSum(TreeNode root,int sum){
@@ -68,16 +69,21 @@ public class Solution {
 //        int left=maxPathSum()
 //        // return
 //    }
+    public void recoverTree(TreeNode root) {
+        List<Integer> result=new ArrayList<>();
+
+    }
+
     public int maxProfit(int[] prices) {
-        int buy1=Integer.MIN_VALUE;//前i天做第一笔交易买入剩下最多的钱
-        int buy2=Integer.MIN_VALUE;//前i天做第二笔交易买入股票后剩下最多的钱
-        int sell1=0;//前i天做第一笔交易卖出股票剩下最多的钱
-        int sell2=0;//
-        for(int i=0;i<prices.length;i++){
-            sell2 = Math.max(sell2, buy2+prices[i]);
-            buy2 = Math.max(buy2, sell1-prices[i]);
-            sell1 = Math.max(sell1, buy1+prices[i]);
-            buy1 = Math.max(buy1,-prices[i]);
+        int buy1 = Integer.MIN_VALUE;//前i天做第一笔交易买入剩下最多的钱
+        int buy2 = Integer.MIN_VALUE;//前i天做第二笔交易买入股票后剩下最多的钱
+        int sell1 = 0;//前i天做第一笔交易卖出股票剩下最多的钱
+        int sell2 = 0;//
+        for (int i = 0; i < prices.length; i++) {
+            sell2 = Math.max(sell2, buy2 + prices[i]);
+            buy2 = Math.max(buy2, sell1 - prices[i]);
+            sell1 = Math.max(sell1, buy1 + prices[i]);
+            buy1 = Math.max(buy1, -prices[i]);
         }
         return sell2;
 //        int m=prices.length;
@@ -90,42 +96,43 @@ public class Solution {
 //        }
 //        return ret;
     }
+
     public int trap(int[] height) {
-        if(height.length<2)return 0;
-        int[] left=new int[height.length];
-        int[] right=new int[height.length];
-        int leftMax=0;
-        int rightMax=0;
-        for(int i=0;i<height.length;i++){
-            left[i]=Math.max(leftMax,height[i]);
-            leftMax=left[i];
+        if (height.length < 2) return 0;
+        int[] left = new int[height.length];
+        int[] right = new int[height.length];
+        int leftMax = 0;
+        int rightMax = 0;
+        for (int i = 0; i < height.length; i++) {
+            left[i] = Math.max(leftMax, height[i]);
+            leftMax = left[i];
         }
-        for(int i=height.length-1;i>=0;i--){
-            right[i]=Math.max(rightMax,height[i]);
-            rightMax=right[i];
+        for (int i = height.length - 1; i >= 0; i--) {
+            right[i] = Math.max(rightMax, height[i]);
+            rightMax = right[i];
         }
-        int sum=0;
-        for(int i=1;i<height.length-1;i++){
-            sum+=(Math.min(left[i],right[i])-height[i]);
+        int sum = 0;
+        for (int i = 1; i < height.length - 1; i++) {
+            sum += (Math.min(left[i], right[i]) - height[i]);
         }
         return sum;
     }
 
-    private boolean findSubstring(String s,Map<String,Integer> dict,int len){
-        Map<String,Integer> fullMap=new HashMap<>();
-        for(Iterator<Map.Entry<String,Integer>> it=dict.entrySet().iterator();it.hasNext();){
-            Map.Entry<String,Integer> entry=it.next();
-            fullMap.put(entry.getKey(),0);
+    private boolean findSubstring(String s, Map<String, Integer> dict, int len) {
+        Map<String, Integer> fullMap = new HashMap<>();
+        for (Iterator<Map.Entry<String, Integer>> it = dict.entrySet().iterator(); it.hasNext(); ) {
+            Map.Entry<String, Integer> entry = it.next();
+            fullMap.put(entry.getKey(), 0);
         }
-        for(int i=0;i<s.length();i+=len){
-            String cur=s.substring(i,i+len);
-            if(dict.containsKey(cur)){
-                if(dict.get(cur)>=fullMap.get(cur)+1){
-                    fullMap.put(cur,fullMap.get(cur)+1);
-                }else{
+        for (int i = 0; i < s.length(); i += len) {
+            String cur = s.substring(i, i + len);
+            if (dict.containsKey(cur)) {
+                if (dict.get(cur) >= fullMap.get(cur) + 1) {
+                    fullMap.put(cur, fullMap.get(cur) + 1);
+                } else {
                     return false;
                 }
-            }else{
+            } else {
                 return false;
             }
         }
@@ -133,21 +140,21 @@ public class Solution {
     }
 
     public List<Integer> findSubstring(String s, String[] words) {
-        List<Integer> result=new ArrayList<>();
-        Map<String,Integer> dict=new HashMap<>();
-        int len=0;
+        List<Integer> result = new ArrayList<>();
+        Map<String, Integer> dict = new HashMap<>();
+        int len = 0;
 
-        for(String word:words){
-            len=word.length();
-            if(dict.containsKey(word)){
-                dict.put(word,dict.get(word)+1);
-            }else
-                dict.put(word,1);
+        for (String word : words) {
+            len = word.length();
+            if (dict.containsKey(word)) {
+                dict.put(word, dict.get(word) + 1);
+            } else
+                dict.put(word, 1);
         }
-        int strLen=len*words.length;
-        for(int i=0;i<len;i++){
-            for(int j=i;j<=s.length()-strLen;j+=len){
-                if(findSubstring(s.substring(j,j+strLen),dict,len)){
+        int strLen = len * words.length;
+        for (int i = 0; i < len; i++) {
+            for (int j = i; j <= s.length() - strLen; j += len) {
+                if (findSubstring(s.substring(j, j + strLen), dict, len)) {
                     result.add(j);
                 }
             }
@@ -204,30 +211,32 @@ public class Solution {
 
 
     public int removeElement(int[] nums, int val) {
-        if(nums.length<0)return 0;
-        int index=0;
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]!=val){
-                nums[index++]=nums[i];
+        if (nums.length < 0) return 0;
+        int index = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {
+                nums[index++] = nums[i];
             }
         }
         return index;
     }
+
     public int removeDuplicates(int[] nums) {
-        if(nums.length<0)return 0;
-        if(nums.length==1)return 1;
-        int first=0,second=1;
-        while (second<nums.length){
-            if(nums[first]==nums[second]){
+        if (nums.length < 0) return 0;
+        if (nums.length == 1) return 1;
+        int first = 0, second = 1;
+        while (second < nums.length) {
+            if (nums[first] == nums[second]) {
                 second++;
-            }else{
-                nums[first+1]=nums[second];
+            } else {
+                nums[first + 1] = nums[second];
                 first++;
                 second++;
             }
         }
-        return first+1;
+        return first + 1;
     }
+
     public ListNode reverseKGroup(ListNode head, int k) {
         ListNode curr = head;
         int count = 0;
@@ -249,198 +258,209 @@ public class Solution {
         }
         return head;
     }
+
     public ListNode swapPairs(ListNode head) {
-        ListNode first=new ListNode(-1);
-        ListNode pHead=first;
-        first.next=head;
-        ListNode second=head;
-        while (second!=null&&second.next!=null){
-            first.next=second.next;
-            second.next=first.next.next;
-            first.next.next=second;
-            first=second;
-            second=second.next;
+        ListNode first = new ListNode(-1);
+        ListNode pHead = first;
+        first.next = head;
+        ListNode second = head;
+        while (second != null && second.next != null) {
+            first.next = second.next;
+            second.next = first.next.next;
+            first.next.next = second;
+            first = second;
+            second = second.next;
         }
         return pHead.next;
     }
+
     public ListNode mergeKLists(ListNode[] lists) {
-        if(lists== null || lists.length == 0) return null;
-        return mergeLists(lists,0,lists.length-1);
+        if (lists == null || lists.length == 0) return null;
+        return mergeLists(lists, 0, lists.length - 1);
     }
-    private ListNode mergeLists(ListNode[] lists,int start,int end){
-        if(start>=end)return lists[start];
-        int mid=(start+end)/2;
-        return mergeTwoLists(mergeLists(lists,start,mid),mergeLists(lists,mid+1,end));
+
+    private ListNode mergeLists(ListNode[] lists, int start, int end) {
+        if (start >= end) return lists[start];
+        int mid = (start + end) / 2;
+        return mergeTwoLists(mergeLists(lists, start, mid), mergeLists(lists, mid + 1, end));
     }
-    private ListNode mergeTwoLists(ListNode p1,ListNode p2){
-        if(p1==null)return p2;
-        if(p2==null)return p1;
-        ListNode pHead=null;
-        if(p1.val<p2.val){
-            pHead=p1;
-            pHead.next=mergeTwoLists(p1.next,p2);
-        }else{
-            pHead=p2;
-            pHead.next=mergeTwoLists(p1,p2.next);
+
+    private ListNode mergeTwoLists(ListNode p1, ListNode p2) {
+        if (p1 == null) return p2;
+        if (p2 == null) return p1;
+        ListNode pHead = null;
+        if (p1.val < p2.val) {
+            pHead = p1;
+            pHead.next = mergeTwoLists(p1.next, p2);
+        } else {
+            pHead = p2;
+            pHead.next = mergeTwoLists(p1, p2.next);
         }
         return pHead;
     }
+
     public List<String> generateParenthesis(int n) {
-        List<String> result=new ArrayList<>();
-        backTrace("",result,n,n);
+        List<String> result = new ArrayList<>();
+        backTrace("", result, n, n);
         return result;
     }
-    public void backTrace(String sub,List<String> result,int left,int right){
-        if(left==right&&left==0){
+
+    public void backTrace(String sub, List<String> result, int left, int right) {
+        if (left == right && left == 0) {
             result.add(sub);
         }
-        if(left>right)
+        if (left > right)
             return;
-        if(left>0)
-            backTrace(sub+"(",result,left-1,right);
-        if(right>0)
-            backTrace(sub+")",result,left,right-1);
+        if (left > 0)
+            backTrace(sub + "(", result, left - 1, right);
+        if (right > 0)
+            backTrace(sub + ")", result, left, right - 1);
     }
+
     public boolean isValid(String s) {
-        if(s=="")return true;
-        Stack<Character> stack=new Stack<>();
-        for(char c:s.toCharArray()){
+        if (s == "") return true;
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
             System.out.println(c);
-            if(c=='('||c=='{'||c=='[')
+            if (c == '(' || c == '{' || c == '[')
                 stack.push(c);
-            else{
-                if(stack.isEmpty())return false;
-                char t=stack.pop();
-                if(c==')'&&t!='(')return false;
-                if(c=='}'&&t!='{')return false;
-                if(c==']'&&t!='[')return false;
+            else {
+                if (stack.isEmpty()) return false;
+                char t = stack.pop();
+                if (c == ')' && t != '(') return false;
+                if (c == '}' && t != '{') return false;
+                if (c == ']' && t != '[') return false;
 
             }
         }
         return stack.isEmpty();
     }
+
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode first=head;
-        ListNode second=head;
-        while (n>0&&first.next!=null){
-            first=first.next;
+        ListNode first = head;
+        ListNode second = head;
+        while (n > 0 && first.next != null) {
+            first = first.next;
             n--;
         }
-        if(n==0) {
+        if (n == 0) {
             while (first.next != null) {
                 first = first.next;
                 second = second.next;
             }
             second.next = second.next.next;
-        }else if(n==1){
+        } else if (n == 1) {
             return head.next;
         }
         return head;
     }
+
     public List<String> letterCombinations(String digits) {
-        char[][] dict=new char[][]{
-                {'a','b','c'},
-                {'d','e','f'},
-                {'g','h','i'},
-                {'j','k','l'},
-                {'m','n','o'},
-                {'p','q','r','s'},
-                {'t','u','v'},
-                {'w','x','y','z'}
+        char[][] dict = new char[][]{
+                {'a', 'b', 'c'},
+                {'d', 'e', 'f'},
+                {'g', 'h', 'i'},
+                {'j', 'k', 'l'},
+                {'m', 'n', 'o'},
+                {'p', 'q', 'r', 's'},
+                {'t', 'u', 'v'},
+                {'w', 'x', 'y', 'z'}
         };
-        List<String> result=new ArrayList<>();
-        if(digits.length()==0){
+        List<String> result = new ArrayList<>();
+        if (digits.length() == 0) {
             result.add("");
             return result;
         }
-        for(char c:digits.toCharArray()){
-            int size=result.size();
-            int index=c-'2';
-            if(index<0)return result;
-            if(size==0){
-                for(int i=0;i<dict[index].length;i++){
-                    result.add(dict[index][i]+"");
+        for (char c : digits.toCharArray()) {
+            int size = result.size();
+            int index = c - '2';
+            if (index < 0) return result;
+            if (size == 0) {
+                for (int i = 0; i < dict[index].length; i++) {
+                    result.add(dict[index][i] + "");
                 }
-            }
-            else{
-                for(int i=0;i<size;i++){
-                    String current=result.remove(0);
-                    for(int j=0;j<dict[index].length;j++){
-                        result.add(current+dict[index][j]);
+            } else {
+                for (int i = 0; i < size; i++) {
+                    String current = result.remove(0);
+                    for (int j = 0; j < dict[index].length; j++) {
+                        result.add(current + dict[index][j]);
                     }
                 }
             }
         }
         return result;
     }
-//    public List<List<Integer>> fourSum(int[] nums, int target) {
+
+    //    public List<List<Integer>> fourSum(int[] nums, int target) {
 //
 //    }
     public int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
-        int diff  =Integer.MAX_VALUE;
+        int diff = Integer.MAX_VALUE;
         int closestSum = 0;
-        for(int i=0;i<nums.length-2;i++){
-            while (i>0&&(i<nums.length-2)&&nums[i]==nums[i-1])
+        for (int i = 0; i < nums.length - 2; i++) {
+            while (i > 0 && (i < nums.length - 2) && nums[i] == nums[i - 1])
                 i++;
-            int left=i+1;
-            int right=nums.length-1;
-            while (left<right){
-                int tempSum=nums[i]+nums[left]+nums[right];
-                int tempDiff=Math.abs(target-tempSum);
-                if(tempDiff<diff){
-                    closestSum=tempSum;
-                    diff=tempDiff;
+            int left = i + 1;
+            int right = nums.length - 1;
+            while (left < right) {
+                int tempSum = nums[i] + nums[left] + nums[right];
+                int tempDiff = Math.abs(target - tempSum);
+                if (tempDiff < diff) {
+                    closestSum = tempSum;
+                    diff = tempDiff;
                 }
-                if(tempSum<target)left++;
-                else if(tempSum>target)right--;
+                if (tempSum < target) left++;
+                else if (tempSum > target) right--;
                 else
                     return tempSum;
             }
         }
         return closestSum;
     }
-    public List<List<Integer>> threeSum(int[] nums,int sum,int beign,int end){
-        List<List<Integer>> results=new ArrayList<>();
-        for(int i=beign;i<end-2;i++){
-            while (i>beign&&(i<end-2)&&nums[i]==nums[i-1])
+
+    public List<List<Integer>> threeSum(int[] nums, int sum, int beign, int end) {
+        List<List<Integer>> results = new ArrayList<>();
+        for (int i = beign; i < end - 2; i++) {
+            while (i > beign && (i < end - 2) && nums[i] == nums[i - 1])
                 i++;
             //if(nums[i]>sum)break;
-            int target=sum-nums[i];
+            int target = sum - nums[i];
             //choose second and third number
-            int left=i+1;
-            int right=end-1;
-            while(left<right){
-                if(nums[left]+nums[right]==target){
-                    List<Integer> result=new ArrayList<>();
+            int left = i + 1;
+            int right = end - 1;
+            while (left < right) {
+                if (nums[left] + nums[right] == target) {
+                    List<Integer> result = new ArrayList<>();
                     result.add(nums[i]);
                     result.add(nums[left]);
                     result.add(nums[right]);
                     results.add(result);
                     left++;
                     right--;
-                    while(left<right&&nums[left]==nums[left-1])left++;
-                    while (left<right&&nums[right]==nums[right+1])right--;
-                }else if(nums[left]+nums[right]<target){
+                    while (left < right && nums[left] == nums[left - 1]) left++;
+                    while (left < right && nums[right] == nums[right + 1]) right--;
+                } else if (nums[left] + nums[right] < target) {
                     left++;
-                    while(left<right&&nums[left]==nums[left-1])left++;
-                }else{
+                    while (left < right && nums[left] == nums[left - 1]) left++;
+                } else {
                     right--;
-                    while (left<right&&nums[right]==nums[right+1])right--;
+                    while (left < right && nums[right] == nums[right + 1]) right--;
                 }
 
             }
         }
         return results;
     }
+
     public List<List<Integer>> threeSum(int[] nums) {
 
-        if(nums.length<3){
-            List<List<Integer>> results=new ArrayList<>();
+        if (nums.length < 3) {
+            List<List<Integer>> results = new ArrayList<>();
             return results;
         }
         Arrays.sort(nums);
-        return threeSum(nums,0,0,nums.length);
+        return threeSum(nums, 0, 0, nums.length);
 
     }
 

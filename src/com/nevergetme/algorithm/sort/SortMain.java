@@ -31,10 +31,10 @@ public abstract class SortMain {
     }
 
     public static void main(String[] args){
-        SortMain sortMain=new HeapSort();
+        SortMain sortMain=new QuickSort();
         Integer[] a=new Integer[]{20,15,14,18,21,36,40,10};
-        Arrays.sort(a);
-        //sortMain.sort(a);
+        //Arrays.sort(a);
+        sortMain.sort(a);
         System.out.println("");
     }
 }

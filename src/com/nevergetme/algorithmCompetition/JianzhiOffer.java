@@ -50,9 +50,543 @@ public class JianzhiOffer {
 //        System.out.println(jzo.pop());
 //        System.out.println(jzo.pop());
 //        System.out.println(jzo.pop());
-        System.out.println(jzo.Fibonacci(3));
+        System.out.println(jzo.Add(30,123));
         //HashMap
 
+    }
+    public boolean duplicate(int[] numbers,int length,int [] duplication) {
+        duplication[0]=-1;
+        if(numbers.length==0){
+
+            return false;
+        }
+        Map<Integer,Integer> map=new HashMap<>();
+        for(int number:numbers){
+            if(map.containsKey(number)){
+                duplication[0]=number;
+                return true;
+            }else{
+                map.put(number,1);
+            }
+        }
+        return false;
+    }
+    public int Add(int num1,int num2) {
+        int sum,carry;
+        do{
+            sum=num1^num2;
+            carry=(num1&num2)<<1;
+            num1=sum;
+            num2=carry;
+        }while (num2!=0);
+        return num1;
+    }
+    public int LastRemaining_Solution(int n, int m) {
+        if(n<1||m<1)return -1;
+        int last=0;
+        for(int i=2;i<=n;i++){
+            last=(last+m)%i;
+        }
+        return last;
+    }
+    public boolean isContinuous(int [] numbers) {
+        if(numbers.length==0)return false;
+        if(numbers.length==1)return true;
+        Arrays.sort(numbers);
+        int zeroNumber=0;
+        int zeroIndex=0;
+        for(zeroIndex=0;zeroIndex<numbers.length;zeroIndex++){
+            if(numbers[zeroIndex]==0)zeroNumber++;
+            else{
+                break;
+            }
+        }
+        if(zeroNumber==numbers.length)return true;
+        int small=zeroIndex;
+        int big=zeroIndex+1;
+        while (big<numbers.length){
+            if(numbers[small]==numbers[big]){
+                return false;
+            }
+            zeroNumber-=(numbers[big]-numbers[small]-1);
+            if(zeroNumber<0)return false;
+            small=big;
+            big++;
+        }
+        return zeroNumber>=0;
+    }
+    public String ReverseSentence(String str) {
+        String res="",tmp="";
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i)==' '){
+                res=" "+tmp+res;
+                tmp="";
+            }else{
+                tmp+=str.charAt(i);
+            }
+        }
+        if(tmp.length()>0)res=tmp+res;
+        return res;
+    }
+    public String LeftRotateString(String str,int n) {
+        if(n==0)return str;
+        if(str.length()==0)return "";
+        n=n%str.length();
+        return str.substring(n)+str.substring(0,n);
+    }
+    public ArrayList<Integer> FindNumbersWithSum(int [] array,int sum) {
+        ArrayList<Integer> output=new ArrayList<>();
+        if(array.length<=1)return output;
+        int small=0;
+        int large=array.length-1;
+        while (true){
+            if(array[small]+array[large]>sum){
+                large--;
+            }else if(array[small]+array[large]==sum){
+                output.add(array[small]);
+                output.add(array[large]);
+                break;
+            }else{
+                small++;
+            }
+            if(small>=large)break;
+        }
+        return output;
+    }
+    public ArrayList<ArrayList<Integer> > FindContinuousSequence(int sum) {
+        int small=1,large=2;
+        int currentSum=3;
+        ArrayList<ArrayList<Integer>> outputs=new ArrayList<>();
+        while (true){
+            if(currentSum<sum){
+                large+=1;
+                currentSum+=large;
+            }else if(currentSum==sum){
+                ArrayList<Integer> output=new ArrayList<>();
+                for(int i=small;i<=large;i++){
+                    output.add(i);
+                }
+                outputs.add(output);
+                large+=1;
+                currentSum+=large;
+            }else{
+                currentSum-=small;
+                small+=1;
+            }
+            if(large>(sum+1)/2||small>=large){
+                break;
+            }
+        }
+        return outputs;
+    }
+    public void FindNumsAppearOnce(int [] array,int num1[] , int num2[]) {
+        if(array.length<2)return;
+        int resultExculsiveOr=0;
+        for(int a:array){
+            resultExculsiveOr^=a;
+        }
+        int index=firstBitOf1(resultExculsiveOr);
+        for(int a:array){
+            if(isBit1(a,index)){
+                num1[0]^=a;
+            }else{
+                num2[0]^=a;
+            }
+        }
+    }
+    public boolean isBit1(int num,int index){
+        return (num>>index)%2==1;
+    }
+    private int firstBitOf1(int num){
+        int indexBit=0;
+        while (num%2==0){
+            num=num>>1;
+            indexBit++;
+        }
+        return indexBit;
+    }
+    private boolean isBalanced=true;
+    public boolean IsBalanced_Solution(TreeNode root) {
+        if(root==null)return true;
+        IsBalancedDepth(root);
+        return isBalanced;
+    }
+
+    public int IsBalancedDepth(TreeNode root) {
+        if(isBalanced==false)return -5;
+        if(root==null)return 0;
+        int left=IsBalancedDepth(root.left);
+        int right=IsBalancedDepth(root.right);
+        isBalanced=Math.abs(left-right)<2?true:false;
+        return Math.max(left,right)+1;
+
+    }
+    public int TreeDepth(TreeNode root) {
+        if(root==null)return 0;
+        return Math.max(TreeDepth(root.left),TreeDepth(root.right))+1;
+    }
+
+    public int GetNumberOfK(int [] array , int k) {
+        int number=0;
+        if(array!=null&&array.length!=0){
+            int first=GetNumberOfFisrtK(array,k,0,array.length-1);
+            int last=GetNumberOfLastK(array,k,0,array.length-1);
+            if(first>-1&&last>-1){
+                number=last-first+1;
+            }
+        }
+        return number;
+        //return GetNumberOfK(array,k,0,array.length-1);
+    }
+    public int GetNumberOfLastK(int [] array , int k,int begin,int end){
+        if(begin>end)return -1;
+        if(begin==end)return array[begin]==k?begin:-1;
+        int mid=(begin+end)>>1;
+        if(array[mid]==k){
+            if((mid<array.length-1&&array[mid+1]!=k)||mid==array.length-1){
+                return mid;
+            }else{
+                begin=mid+1;
+            }
+        }else if(array[mid]>k){
+            end=mid-1;
+        }else{
+            begin=mid+1;
+        }
+        return GetNumberOfLastK(array,k,begin,end);
+    }
+    public int GetNumberOfFisrtK(int [] array , int k,int begin,int end) {
+        if(begin>end)return -1;
+        if(begin==end)return array[begin]==k?begin:-1;
+        int mid=(begin+end)/2;
+        if(array[mid]==k){
+            if((mid>0&&array[mid-1]!=k)||mid==0)
+                return mid;
+            else{
+                end=mid-1;
+            }
+        }else if(array[mid]>k){
+            end=mid-1;
+        }else{
+            begin=mid+1;
+        }
+        return GetNumberOfFisrtK(array,k,begin,end);
+    }
+
+    public ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) {
+        int l1=getListNodeLength(pHead1);
+        int l2=getListNodeLength(pHead2);
+        if(l1<l2)return FindFirstCommonNode(pHead2,pHead1);
+        int diff=l1-l2;
+        ListNode first=pHead1;
+        ListNode second=pHead2;
+        for(int i=0;i<diff;i++){
+            first=first.next;
+        }
+        while (first!=null&&second!=null&&first!=second){
+            first=first.next;
+            second=second.next;
+        }
+        return first;
+    }
+
+    private int getListNodeLength(ListNode root){
+        int len=0;
+        while (root!=null){
+            root=root.next;
+            len++;
+        }
+        return len;
+    }
+
+    public class ListNode {
+        int val;
+        ListNode next = null;
+
+        ListNode(int val) {
+            this.val = val;
+        }
+    }
+    private int count=0;
+
+    public int InversePairs(int [] array) {
+        if(array==null||array.length==0)return -1;
+        mergeSort(array,0,array.length-1);
+        return count;
+    }
+    public void mergeSort(int[] array,int left,int right){
+        if(left<right){
+            int mid=(left+right)/2;
+            mergeSort(array,left,mid);
+            mergeSort(array,mid+1,right);
+            mergeSort(array,left,mid,right);
+        }
+    }
+    public void mergeSort(int[] array,int left,int mid,int right){
+        int[] copy=new int[right-left+1];
+        int t=right-left;
+        int l=mid;
+        int r=right;
+        while (l>=left&&r>=mid+1){
+            if(array[l]>array[r]){
+                count+=(r-mid);
+                copy[t--]=array[l--];
+                if(count>=1000000007){
+                    count%=1000000007;
+                }
+            }else{
+                copy[t--]=array[r--];
+            }
+        }
+        while (l>=left){
+            copy[t--]=array[l--];
+        }
+        while (r>=mid+1){
+            copy[t--]=array[r--];
+        }
+        for(int i=0;i<=right-left;i++){
+            array[left+i]=copy[i];
+        }
+    }
+//    public int InversePairs(int[] array,int[] copy,int start,int end){
+//        if(start==end){
+//            return 0;
+//        }
+//        int length=(end+start)>>2;
+//        int left=InversePairs(array,copy,start,length)%1000000007;
+//        int right=InversePairs(array,copy,length+1,end)%1000000007;
+//        int i=length;
+//        int j=end;
+//        int indexCopy=end;
+//        int count=0;
+//        while (i>=start&&j>=length){
+//            if(array[i]>array[j]){
+//                copy[indexCopy--]=array[i--];
+//                count+=j-length;
+//                count%=1000000007;
+//            }else{
+//                copy[indexCopy--]=array[j--];
+//            }
+//        }
+//        for(;i>=start;i--){
+//            copy[indexCopy--]=array[i];
+//        }
+//        for(;j>length;j--){
+//            copy[indexCopy--]=array[j];
+//        }
+//        for(int s=start;s<=end;s++){
+//            array[s]=copy[s];
+//        }
+//        return (left+right+count)%1000000007;
+//    }
+
+    public int FirstNotRepeatingChar(String str) {
+        Map<Character,Integer> map=new HashMap<>();
+        char[] s=str.toCharArray();
+        for(char c:s){
+            map.put(c,map.getOrDefault(c,0)+1);
+        }
+        for(int i=0;i<s.length;i++){
+            if(map.get(s[i])==1){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int getTranslation(int number){
+        if(number<0)return 0;
+        if(number<9)return 1;
+        String num=number+"";
+        return getTranslation(num);
+    }
+    private int getTranslation(String num){
+        int len=num.length();
+        int[] f=new int[len];
+        f[len-1]=1;
+        for(int i=len-1;i>=0;i--){
+            if(i<len-1){
+                int t=(num.charAt(i)-'0')*10+(num.charAt(i+1)-'0');
+                if(t<=25&&t>=10){
+                    if(i<len-2){
+                        f[i]=f[i+1]+f[i+2];
+                    }else{
+                        f[i]=f[i+1]+1;
+                    }
+                }else{
+                    f[i]=f[i+1];
+                }
+            }
+        }
+        return f[0];
+    }
+    private boolean isUglyNumber(int number){
+        while (number%2==0){
+            number=number>>1;
+        }
+        while (number%3==0){
+            number=number/3;
+        }
+        while (number%5==0){
+            number/=5;
+        }
+        return number==1?true:false;
+    }
+    public int GetUglyNumber_Solution(int index) {
+        if(index<7)return index;
+        int p2=0,p3=0,p5=0,newNum=1;
+        List<Integer> arr=new ArrayList<>();
+        arr.add(newNum);
+        while (arr.size()<index){
+            newNum=Math.min(arr.get(p2)*2,Math.min(arr.get(p3)*3,arr.get(p5)*5));
+            if(arr.get(p2)*2==newNum)p2++;
+            if(arr.get(p3)*3==newNum)p3++;
+            if(arr.get(p5)*5==newNum)p5++;
+            arr.add(newNum);
+        }
+        return newNum;
+    }
+    public String PrintMinNumber(int [] numbers) {
+        List<String> result=new ArrayList<>();
+        for(int i:numbers){
+            result.add(i+"");
+        }
+        Collections.sort(result, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return (o1+o2).compareTo(o2+o1);
+            }
+        });
+        StringBuilder sb=new StringBuilder();
+        for(String s:result){
+            sb.append(s);
+        }
+        return sb.toString();
+    }
+    public int FindGreatestSumOfSubArray(int[] array) {
+        if(array.length==0)return 0;
+        int currentSum=array[0];
+        int maxValue=array[0];
+        for(int i=1;i<array.length;i++){
+            if(currentSum<=0){
+                currentSum=array[i];
+            }else{
+                currentSum+=array[i];
+            }
+            if(currentSum>maxValue){
+                maxValue=currentSum;
+            }
+        }
+        return maxValue;
+    }
+    public ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
+        ArrayList<Integer> results=new ArrayList<>();
+        if(input==null||input.length<k||k<=0)return results;
+        int start=0;int end=input.length-1;
+        int index=partition(input,start,end);
+        while (index!=k-1){
+            if(index>k-1){
+                end=index-1;
+                index=partition(input,start,end);
+            }else{
+                start=index+1;
+                index=partition(input,start,end);
+            }
+        }
+        for(int i=0;i<k;i++){
+            results.add(input[i]);
+        }
+        return results;
+    }
+    private int partition(int[] input,int begin,int end){
+        int i=begin,j=end+1;
+        int x=input[begin];
+        if(begin>=end)return end;
+        while (begin<end){
+            while (input[++i]<x)if(i==end)break;
+            while(input[--j]>x)if(j==begin)break;
+            if(i>=j)break;
+            swap(input,i,j);
+        }
+        swap(input,begin,j);
+        return j;
+    }
+    public int MoreThanHalfNum_Solution(int [] array) {
+        if(array.length==0)return 0;
+        if(array.length==1)return array[0];
+        int begin=array[0],times=1;
+        for(int i=1;i<array.length;i++){
+            if(times==0){
+                begin=array[i];
+                times=1;
+                continue;
+            }
+            if(array[i]!=begin){
+                times--;
+            }else{
+                times++;
+            }
+        }
+        int sum=0;
+        for(int i:array){
+            if(begin==i)
+                sum++;
+        }
+        if(sum<=array.length/2)return 0;
+        return begin;
+    }
+    public TreeNode Convert(TreeNode pRootOfTree) {
+        TreeNode pLast=null;
+        pLast=Convert(pRootOfTree,pLast);
+        TreeNode pHead=pLast;
+        while (pHead!=null&&pHead.left!=null){
+            pHead=pHead.left;
+        }
+        return pHead;
+    }
+    public ArrayList<String> Permutation(String str) {
+        ArrayList<String> results=new ArrayList<>();
+        if(str==null||str.length()==0)return results;
+        Permutation(str.toCharArray(),results,0);
+        Collections.sort(results);
+        return results;
+    }
+    public void Permutation(char[] c,ArrayList<String> result,int begin){
+        if(begin==c.length){
+            result.add(new String(c));
+            return;
+        }
+        HashSet<Character> set=new HashSet<>();
+        for(int i=begin;i<c.length;i++){
+            if(!set.contains(c[i])){
+                set.add(c[i]);
+                swap(c,begin,i);
+                Permutation(c,result,begin+1);
+                swap(c,begin,i);
+            }
+        }
+    }
+    public void swap(char[] c,int i,int j){
+        char temp=c[i];
+        c[i]=c[j];
+        c[j]=temp;
+    }
+    public void swap(int[] c,int i,int j){
+        int temp=c[i];
+        c[i]=c[j];
+        c[j]=temp;
+    }
+    private TreeNode Convert(TreeNode pNode,TreeNode pLast){
+        if(pNode==null)return pLast;
+        TreeNode pCurrent=pNode;
+        if(pCurrent.left!=null){
+            pLast=Convert(pCurrent.left,pLast);
+        }
+        pCurrent.left=pLast;
+        if(pLast!=null)pLast.right=pCurrent;
+        pLast=pCurrent;
+        if(pCurrent.right!=null)pLast=Convert(pCurrent.right,pLast);
+        return pLast;
     }
     public int JumpFloor(int target) {
         int[] result=new int[]{0,1};

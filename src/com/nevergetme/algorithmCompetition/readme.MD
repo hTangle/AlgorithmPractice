@@ -36,5 +36,21 @@ public int jump(int[] nums) {
     return ret;
 }
 ```
+## 53. Maximum Subarray
+#### Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+#### 动态规划，dp[i]=Math.max(num[i],dp[i-1]+num[i]),注意初始化最大值问题
+```
+public int maxSubArray(int[] nums) {
+    if(nums.length==0)return 0;
+    int maxSum=nums[0];
+    int cur=nums[0];
+    for(int i=1;i<nums.length;i++){
+        cur=Math.max(cur+nums[i],nums[i]);
+        maxSum=Math.max(cur,maxSum);
+    }
+    return Math.max(cur,maxSum);
+}
+```
+
 
 

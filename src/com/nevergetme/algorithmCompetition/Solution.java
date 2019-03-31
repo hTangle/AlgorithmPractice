@@ -53,7 +53,7 @@ public class Solution {
 
         //System.out.println(solution.longestPalindrome("cbbd"));
 
-        System.out.println(solution.lengthOfLastWord("hello world"));
+        System.out.println(solution.maxSubArray(new int[]{-2,1,-3,4,-1,2,1,-5,4}));
         //solution.isValid("()");
         //System.out.println(solution.maxArea(new int[]{1,8,6,2,5,4,8,3,7}));
         //new Solution().PrintToMaxOfNDigits(2);
@@ -69,6 +69,16 @@ public class Solution {
 //        int left=maxPathSum()
 //        // return
 //    }
+    public int maxSubArray(int[] nums) {
+        if(nums.length==0)return 0;
+        int maxSum=nums[0];
+        int cur=nums[0];
+        for(int i=1;i<nums.length;i++){
+            cur=Math.max(cur+nums[i],nums[i]);
+            maxSum=Math.max(cur,maxSum);
+        }
+        return Math.max(cur,maxSum);
+    }
     public int jump(int[] nums) {
         int ret=0;//当前跳数
         int last=0;//上一跳达到的最远距离

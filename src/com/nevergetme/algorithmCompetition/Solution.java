@@ -5,9 +5,11 @@ import sun.reflect.generics.tree.Tree;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Solution {
     public static void main(String[] args) {
+        Solution solution = new Solution();
         //Object
 //        TreeNode t1=new TreeNode(1);
 //        TreeNode t2=new TreeNode(2);;
@@ -27,6 +29,8 @@ public class Solution {
         l2.next = l3;
         l3.next = l4;
         l4.next = l5;
+        ListNode l=solution.rotateRight(l1,2);
+//        ReentrantLock
 //        l1.next = l3;
 //        l3.next = l4;
 //        ListNode l5 = new ListNode(6);
@@ -35,7 +39,7 @@ public class Solution {
 //        l5.next = l6;
 //        ListNode output = new Solution().addTwoNumbers(l1, l2);
 //        System.out.println();
-        Solution solution = new Solution();
+
         //for(int i=1;i<20;i++)
         //System.out.println(solution.longestCommonPrefix(new String[]{"dog","racecar","car"}));
 //        List<String> word=new ArrayList<>();
@@ -48,11 +52,6 @@ public class Solution {
         //ConcurrentHashMap
 
         //System.out.println(solution.longestPalindrome("cbbd"));
-        List<String> l = new ArrayList<>();
-        l.add("3");
-        l.add("321");
-        l.add("32");
-        Collections.sort(l);
 
         System.out.println(solution.maxProfit(new int[]{3, 3, 5, 0, 0, 3, 1, 4}));
         //solution.isValid("()");
@@ -70,6 +69,24 @@ public class Solution {
 //        int left=maxPathSum()
 //        // return
 //    }
+
+    public ListNode rotateRight(ListNode head, int k) {
+        if(head==null||k==0)return head;
+        int len=1;
+        ListNode h=head;
+        while (h.next!=null){
+            h=h.next;
+            len++;
+        }
+        h.next=head;
+        int m=k%len;
+        for(int i=0;i<len-m;i++){
+            h=h.next;
+        }
+        head=h.next;
+        h.next=null;
+        return head;
+    }
 
     public void recoverTree(TreeNode root) {
         List<Integer> result=new ArrayList<>();

@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb6626a2-febb-4fe6-bd18-fe2c26232df6" name="Default" comment="huawei">
-      <change afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/readme.MD" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/readme.MD" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/readme.MD" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,10 +40,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="77" column="21" lean-forward="true" selection-start-line="77" selection-start-column="21" selection-end-line="77" selection-end-column="21" />
+            <state relative-caret-position="584">
+              <caret line="84" column="5" lean-forward="true" selection-start-line="71" selection-start-column="4" selection-end-line="84" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#36866#36867#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -53,8 +54,8 @@
         <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/readme.MD">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="660">
-                <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+              <first_editor relative-caret-position="503">
+                <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
               </first_editor>
               <second_editor />
             </state>
@@ -225,8 +226,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="592" />
-    <option name="y" value="88" />
+    <option name="x" value="482" />
+    <option name="y" value="104" />
     <option name="width" value="1250" />
     <option name="height" value="821" />
   </component>
@@ -274,7 +275,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553995395060" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554000459117" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../NevergetmeWeb" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -550,7 +551,7 @@
       <workItem from="1553683933055" duration="7366000" />
       <workItem from="1553769568229" duration="713000" />
       <workItem from="1553947718893" duration="1170000" />
-      <workItem from="1553993367879" duration="1824000" />
+      <workItem from="1553993367879" duration="6882000" />
     </task>
     <task id="LOCAL-00001" summary="update readme">
       <created>1540281412961</created>
@@ -832,11 +833,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553769638495</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="huawei">
+      <created>1553995410003</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1553995410003</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="453475000" />
+    <option name="totallyTimeSpent" value="458533000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -861,8 +869,8 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49733475" weight="0.23752712" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4968017" visible="true" weight="0.27006507" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49733475" visible="true" weight="0.23752712" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4968017" weight="0.27006507" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286334" />
@@ -1329,13 +1337,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>1145</line>
+          <line>1258</line>
           <properties />
           <option name="timeStamp" value="138" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>1146</line>
+          <line>1259</line>
           <properties />
           <option name="timeStamp" value="139" />
         </line-breakpoint>
@@ -1359,25 +1367,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>851</line>
+          <line>964</line>
           <properties />
           <option name="timeStamp" value="143" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>847</line>
+          <line>960</line>
           <properties />
           <option name="timeStamp" value="144" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>850</line>
+          <line>963</line>
           <properties />
           <option name="timeStamp" value="145" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>849</line>
+          <line>962</line>
           <properties />
           <option name="timeStamp" value="146" />
         </line-breakpoint>
@@ -1395,115 +1403,115 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>731</line>
+          <line>844</line>
           <properties />
           <option name="timeStamp" value="149" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>725</line>
+          <line>838</line>
           <properties />
           <option name="timeStamp" value="151" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>726</line>
+          <line>839</line>
           <properties />
           <option name="timeStamp" value="152" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>672</line>
+          <line>785</line>
           <properties />
           <option name="timeStamp" value="153" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>561</line>
+          <line>674</line>
           <properties />
           <option name="timeStamp" value="155" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>552</line>
+          <line>665</line>
           <properties />
           <option name="timeStamp" value="156" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>364</line>
+          <line>477</line>
           <properties />
           <option name="timeStamp" value="157" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>369</line>
+          <line>482</line>
           <properties />
           <option name="timeStamp" value="158" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>343</line>
+          <line>456</line>
           <properties />
           <option name="timeStamp" value="162" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>292</line>
+          <line>405</line>
           <properties />
           <option name="timeStamp" value="163" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>255</line>
+          <line>368</line>
           <properties />
           <option name="timeStamp" value="167" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>239</line>
+          <line>352</line>
           <properties />
           <option name="timeStamp" value="168" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>186</line>
+          <line>299</line>
           <properties />
           <option name="timeStamp" value="180" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>140</line>
+          <line>253</line>
           <properties />
           <option name="timeStamp" value="194" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>157</line>
+          <line>270</line>
           <properties />
           <option name="timeStamp" value="195" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>154</line>
+          <line>267</line>
           <properties />
           <option name="timeStamp" value="196" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>151</line>
+          <line>264</line>
           <properties />
           <option name="timeStamp" value="197" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>132</line>
+          <line>245</line>
           <properties />
           <option name="timeStamp" value="198" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>100</line>
+          <line>213</line>
           <properties />
           <option name="timeStamp" value="199" />
         </line-breakpoint>
@@ -2050,10 +2058,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="77" column="21" lean-forward="true" selection-start-line="77" selection-start-column="21" selection-end-line="77" selection-end-column="21" />
+        <state relative-caret-position="584">
+          <caret line="84" column="5" lean-forward="true" selection-start-line="71" selection-start-column="4" selection-end-line="84" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#36866#36867#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2061,8 +2070,8 @@
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/readme.MD">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="660">
-            <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <first_editor relative-caret-position="503">
+            <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
           </first_editor>
           <second_editor />
         </state>

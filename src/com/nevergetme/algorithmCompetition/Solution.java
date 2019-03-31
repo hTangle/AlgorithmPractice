@@ -19,17 +19,17 @@ public class Solution {
 //        t2.right=t3;
 //        t1.right=t4;
 //        System.out.println(new Solution().binaryTreePaths(t1));
-        ListNode l1 = new ListNode(1);
-        ListNode l2 = new ListNode(2);
-
-        ListNode l3 = new ListNode(3);
-        ListNode l4 = new ListNode(4);
-        ListNode l5 = new ListNode(5);
-        l1.next = l2;
-        l2.next = l3;
-        l3.next = l4;
-        l4.next = l5;
-        ListNode l=solution.rotateRight(l1,2);
+//        ListNode l1 = new ListNode(1);
+//        ListNode l2 = new ListNode(2);
+//
+//        ListNode l3 = new ListNode(3);
+//        ListNode l4 = new ListNode(4);
+//        ListNode l5 = new ListNode(5);
+//        l1.next = l2;
+//        l2.next = l3;
+//        l3.next = l4;
+//        l4.next = l5;
+//        ListNode l=solution.rotateRight(l1,2);
 //        ReentrantLock
 //        l1.next = l3;
 //        l3.next = l4;
@@ -53,7 +53,7 @@ public class Solution {
 
         //System.out.println(solution.longestPalindrome("cbbd"));
 
-        System.out.println(solution.maxProfit(new int[]{3, 3, 5, 0, 0, 3, 1, 4}));
+        System.out.println(solution.lengthOfLastWord("hello world"));
         //solution.isValid("()");
         //System.out.println(solution.maxArea(new int[]{1,8,6,2,5,4,8,3,7}));
         //new Solution().PrintToMaxOfNDigits(2);
@@ -69,6 +69,119 @@ public class Solution {
 //        int left=maxPathSum()
 //        // return
 //    }
+    public int jump(int[] nums) {
+        int ret=0;//当前跳数
+        int last=0;//上一跳达到的最远距离
+        int cur=0;//当前能够达到的最远距离
+        for(int i=0;i<nums.length;i++){
+            if(i>cur)return -1;//达不到终点
+            if(i>last){//进行下一次跳跃
+                last=cur;
+                ret++;
+            }
+            cur=Math.max(cur,i+nums[i]);
+        }
+        return ret;
+    }
+    public int lengthOfLastWord(String s) {
+        boolean isHave=false;
+        int len=0;
+        for(int i=s.length()-1;i>=0;i--){
+            if(isHave){
+                if(s.charAt(i)==' '){
+                    return len;
+                }else{
+                    len++;
+                }
+            }else{
+                if(s.charAt(i)!=' '){
+                    isHave=true;
+                    len=1;
+                }
+            }
+        }
+        return len;
+    }
+    public int[][] generateMatrix(int n) {
+        int[][] matrix=new int[n][n];
+        generateMatrix(matrix,1,0,n,0,n,0);
+        return matrix;
+    }
+    public void generateMatrix(int[][] matrix,int begin,int top,int bottom,int left,int right,int dir){
+        if(top==bottom||left==right)return;
+        dir%=4;
+        if(dir==0){
+            for(int i=left;i<right;i++)matrix[top][i]=begin++;
+            top++;
+        }else if(dir==1){
+            for(int i=top;i<bottom;i++)matrix[i][right-1]=begin++;
+            right--;
+        }else if(dir==2){
+            for(int i=right-1;i>=left;i--)matrix[bottom-1][i]=begin++;
+            bottom--;
+        }else{
+            for(int i=bottom-1;i>=top;i--)matrix[i][left]=begin++;
+            left++;
+        }
+        generateMatrix(matrix,begin,top,bottom,left,right,dir+1);
+    }
+
+    public List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> result=new ArrayList<>();
+        if(matrix==null||matrix.length==0)return result;
+        spiralOrder(matrix,result,0,matrix.length,0,matrix[0].length,0);
+        return result;
+    }
+    private void spiralOrder(int[][] matrix,List<Integer> result,int top,int bottom,int left,int right,int dir){
+        if(top==bottom||left==right)return;
+        dir%=4;
+        if(dir==0){
+            for(int i=left;i<right;i++){
+                result.add(matrix[top][i]);
+            }
+            top++;
+        }else if(dir==1){
+            for(int i=top;i<bottom;i++)result.add(matrix[i][right-1]);
+            right--;
+        }else if(dir==2){
+            for(int i=right-1;i>=left;i--)result.add(matrix[bottom-1][i]);
+            bottom--;
+        }else{
+            for(int i=bottom-1;i>=top;i--)result.add(matrix[i][left]);
+            left++;
+        }
+        spiralOrder(matrix,result,top,bottom,left,right,dir+1);
+    }
+
+    public String getPermutation(int n, int k) {
+        //计算n-1的阶乘
+        List<Integer> numbers=new ArrayList<>();
+        for(int i=1;i<=n;i++){
+            numbers.add(i);
+        }
+        int nF=getFactorial(n);
+        StringBuilder sb=new StringBuilder();
+        getPermutation(n,k,nF,sb,numbers);
+        return sb.toString();
+    }
+    public void getPermutation(int n,int k,int nF,StringBuilder sb,List<Integer> numbers){
+        if(numbers.size()==0)return;
+        if(n==1){sb.append(numbers.get(0));return;}
+        nF=nF/n;
+        int index=(k-1)/nF;
+        int nextK=k-index*nF;
+        sb.append(numbers.get(index));
+        numbers.remove(index);
+        getPermutation(n-1,nextK,nF,sb,numbers);
+    }
+    private int getFactorial(int n){
+        int nF=1;
+        while (n>0){
+            nF*=n;
+            n--;
+        }
+        return nF;
+    }
 
     public ListNode rotateRight(ListNode head, int k) {
         if(head==null||k==0)return head;

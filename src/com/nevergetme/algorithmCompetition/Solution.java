@@ -5,11 +5,14 @@ import sun.reflect.generics.tree.Tree;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
+
         //Object
 //        TreeNode t1=new TreeNode(1);
 //        TreeNode t2=new TreeNode(2);;
@@ -53,7 +56,7 @@ public class Solution {
 
         //System.out.println(solution.longestPalindrome("cbbd"));
 
-        System.out.println(solution.maxSubArray(new int[]{-2,1,-3,4,-1,2,1,-5,4}));
+        System.out.println(solution.isFullNumber(8128));
         //solution.isValid("()");
         //System.out.println(solution.maxArea(new int[]{1,8,6,2,5,4,8,3,7}));
         //new Solution().PrintToMaxOfNDigits(2);
@@ -69,6 +72,45 @@ public class Solution {
 //        int left=maxPathSum()
 //        // return
 //    }
+    public boolean isFullNumber(int number){
+        int sum=1;
+        if(number<=1)return false;
+        int large=number>>1;
+        int k=1;
+        for(int i=2;i<large;i++){
+            if(number%i==0){
+                sum+=i;
+                if((k=number/i)!=i){
+                    sum+=k;
+                    large=k;
+                }
+            }
+        }
+        return sum==number;
+    }
+    public boolean canArrange(String[] arr){
+        boolean[] isVisited=new boolean[arr.length];
+        canArrange(arr,isVisited,0);
+        return arrangeState;
+    }
+    private boolean arrangeState=false;
+    private void canArrange(String[] arr,boolean[] isVisited,int index){
+        if(arrangeState)return;
+        boolean isFinish=true;
+        isVisited[index]=true;
+        for(boolean visit:isVisited)isFinish=isFinish&&visit;
+        if(isFinish){
+            arrangeState=true;
+            return;
+        }
+        char c=arr[index].charAt(arr.length-1);
+
+        for(int i=0;i<arr.length;i++){
+            if(isVisited[i]||arr[i].charAt(0)!=c)continue;
+            canArrange(arr,isVisited,i);
+        }
+        isVisited[index]=false;
+    }
     public int maxSubArray(int[] nums) {
         if(nums.length==0)return 0;
         int maxSum=nums[0];

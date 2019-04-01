@@ -4,7 +4,6 @@
     <list default="true" id="fb6626a2-febb-4fe6-bd18-fe2c26232df6" name="Default" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/readme.MD" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/readme.MD" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,56 +36,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="80" column="5" lean-forward="true" selection-start-line="71" selection-start-column="4" selection-end-line="80" selection-end-column="5" />
+            <state relative-caret-position="353">
+              <caret line="58" column="53" selection-start-line="58" selection-start-column="53" selection-end-line="58" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#37191#37192#0" expanded="true" />
+                <element signature="e#38418#38419#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/readme.MD">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="385">
-                <caret line="45" column="20" lean-forward="true" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
-              </first_editor>
-              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/locks/ReentrantLock.java">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/ThreadPoolExecutor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33">
-              <caret line="399" column="29" selection-start-line="399" selection-start-column="29" selection-end-line="399" selection-end-column="29" />
-              <folding>
-                <element signature="docComment;class#ReentrantLock#0" />
-                <element signature="docComment;class#Sync#0;class#ReentrantLock#0" />
-                <element signature="docComment;method#lock#0;class#Sync#0;class#ReentrantLock#0" />
-                <element signature="docComment;method#nonfairTryAcquire#0;class#Sync#0;class#ReentrantLock#0" />
-                <element signature="e#5562#5563#0" expanded="true" />
-                <element signature="e#5614#5615#0" expanded="true" />
-                <element signature="e#5694#5695#0" expanded="true" />
-                <element signature="e#5775#5776#0" expanded="true" />
-                <element signature="e#5811#5812#0" expanded="true" />
-                <element signature="e#5878#5879#0" expanded="true" />
-                <element signature="e#5914#5915#0" expanded="true" />
-                <element signature="e#5960#5961#0" expanded="true" />
-                <element signature="e#7116#7117#0" expanded="true" />
-                <element signature="e#7150#7151#0" expanded="true" />
-                <element signature="e#8176#8177#0" expanded="true" />
-                <element signature="e#8216#8217#0" expanded="true" />
-                <element signature="e#9117#9118#0" expanded="true" />
-                <element signature="e#9144#9145#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="237">
+              <caret line="322" column="51" lean-forward="true" selection-start-line="322" selection-start-column="51" selection-end-line="322" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/AbstractExecutorService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="209" column="5" lean-forward="true" selection-start-line="140" selection-start-column="4" selection-end-line="209" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -163,6 +139,15 @@
       <find>equals</find>
       <find>great</find>
       <find>GetUglyNumber_Solution</find>
+      <find>compare</find>
+      <find>waitStatus</find>
+      <find>transient</find>
+      <find>newCondition</find>
+      <find>ConditionObject</find>
+      <find>signal()</find>
+      <find>reportInterruptAfterWait</find>
+      <find>unparkSuccessor</find>
+      <find>doInvokeAny</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -220,14 +205,14 @@
         <option value="$PROJECT_DIR$/src/com/nevergetme/codeText/huawei/huawei01/Main.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/codeText/huawei/huawei02/Main.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/codeText/huawei/huawei03/Main.java" />
-        <option value="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/readme.MD" />
+        <option value="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="482" />
-    <option name="y" value="104" />
+    <option name="x" value="161" />
+    <option name="y" value="-12" />
     <option name="width" value="1250" />
     <option name="height" value="821" />
   </component>
@@ -275,7 +260,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554001575273" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554041576725" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../NevergetmeWeb" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -551,7 +536,9 @@
       <workItem from="1553683933055" duration="7366000" />
       <workItem from="1553769568229" duration="713000" />
       <workItem from="1553947718893" duration="1170000" />
-      <workItem from="1553993367879" duration="7998000" />
+      <workItem from="1553993367879" duration="8652000" />
+      <workItem from="1554034256450" duration="7119000" />
+      <workItem from="1554118427346" duration="5030000" />
     </task>
     <task id="LOCAL-00001" summary="update readme">
       <created>1540281412961</created>
@@ -847,11 +834,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554000499950</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="update">
+      <created>1554001586183</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1554001586183</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="459649000" />
+    <option name="totallyTimeSpent" value="472452000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1345,13 +1339,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>1268</line>
+          <line>1310</line>
           <properties />
           <option name="timeStamp" value="138" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>1269</line>
+          <line>1311</line>
           <properties />
           <option name="timeStamp" value="139" />
         </line-breakpoint>
@@ -1363,7 +1357,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>40</line>
+          <line>43</line>
           <properties />
           <option name="timeStamp" value="141" />
         </line-breakpoint>
@@ -1375,25 +1369,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>974</line>
+          <line>1016</line>
           <properties />
           <option name="timeStamp" value="143" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>970</line>
+          <line>1012</line>
           <properties />
           <option name="timeStamp" value="144" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>973</line>
+          <line>1015</line>
           <properties />
           <option name="timeStamp" value="145" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>972</line>
+          <line>1014</line>
           <properties />
           <option name="timeStamp" value="146" />
         </line-breakpoint>
@@ -1411,115 +1405,115 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>854</line>
+          <line>896</line>
           <properties />
           <option name="timeStamp" value="149" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>848</line>
+          <line>890</line>
           <properties />
           <option name="timeStamp" value="151" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>849</line>
+          <line>891</line>
           <properties />
           <option name="timeStamp" value="152" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>795</line>
+          <line>837</line>
           <properties />
           <option name="timeStamp" value="153" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>684</line>
+          <line>726</line>
           <properties />
           <option name="timeStamp" value="155" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>675</line>
+          <line>717</line>
           <properties />
           <option name="timeStamp" value="156" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>487</line>
+          <line>529</line>
           <properties />
           <option name="timeStamp" value="157" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>492</line>
+          <line>534</line>
           <properties />
           <option name="timeStamp" value="158" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>466</line>
+          <line>508</line>
           <properties />
           <option name="timeStamp" value="162" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>415</line>
+          <line>457</line>
           <properties />
           <option name="timeStamp" value="163" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>378</line>
+          <line>420</line>
           <properties />
           <option name="timeStamp" value="167" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>362</line>
+          <line>404</line>
           <properties />
           <option name="timeStamp" value="168" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>309</line>
+          <line>351</line>
           <properties />
           <option name="timeStamp" value="180" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>263</line>
+          <line>305</line>
           <properties />
           <option name="timeStamp" value="194" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>280</line>
+          <line>322</line>
           <properties />
           <option name="timeStamp" value="195" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>277</line>
+          <line>319</line>
           <properties />
           <option name="timeStamp" value="196" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>274</line>
+          <line>316</line>
           <properties />
           <option name="timeStamp" value="197" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>255</line>
+          <line>297</line>
           <properties />
           <option name="timeStamp" value="198" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
-          <line>223</line>
+          <line>265</line>
           <properties />
           <option name="timeStamp" value="199" />
         </line-breakpoint>
@@ -1649,6 +1643,12 @@
           <properties />
           <option name="timeStamp" value="261" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java</url>
+          <line>106</line>
+          <properties />
+          <option name="timeStamp" value="262" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -1660,54 +1660,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/queue/Queue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-150">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/CC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/TwoColor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/Cycle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="33" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/Graph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="822">
-          <caret line="63" column="31" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/leetcode/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor>
-            <caret column="70" selection-start-column="70" selection-end-column="70" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/datastructure/graph/DepthFirstPaths.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
@@ -1776,13 +1728,6 @@
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/Collections.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/HashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="137" column="13" selection-start-line="137" selection-start-column="13" selection-end-line="137" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/Hashtable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="33">
@@ -1794,13 +1739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-9207">
           <caret line="62" column="17" selection-start-line="62" selection-start-column="17" selection-end-line="62" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/ConcurrentHashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="77" column="68" lean-forward="true" selection-start-line="77" selection-start-column="68" selection-end-line="77" selection-end-column="68" />
         </state>
       </provider>
     </entry>
@@ -2000,6 +1938,100 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/locks/Lock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="166" column="17" selection-start-line="166" selection-start-column="17" selection-end-line="166" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/io/Serializable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4193">
+          <caret line="168" column="17" selection-start-line="168" selection-start-column="17" selection-end-line="168" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/readme.MD">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="622">
+            <caret line="53" selection-start-line="53" selection-end-line="53" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/HashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="578" column="79" lean-forward="true" selection-start-line="578" selection-start-column="79" selection-end-line="578" selection-end-column="79" />
+          <folding>
+            <element signature="docComment;class#HashMap#0" />
+            <element signature="e#10630#10703#0" />
+            <element signature="e#10775#10955#0" />
+            <element signature="e#11010#11085#0" />
+            <element signature="e#11143#11508#0" />
+            <element signature="e#11558#11773#0" />
+            <element signature="e#11825#12093#0" />
+            <element signature="e#12147#12297#0" />
+            <element signature="e#13541#14494#0" />
+            <element signature="e#14631#14742#0" />
+            <element signature="e#14631#15535#0" />
+            <element signature="e#15541#15646#0" />
+            <element signature="e#15541#15896#0" />
+            <element signature="e#15902#15979#0" />
+            <element signature="e#15902#16247#0" />
+            <element signature="e#16303#16568#0" />
+            <element signature="e#16607#16722#0" />
+            <element signature="e#16772#16846#0" />
+            <element signature="e#16876#17254#0" />
+            <element signature="e#17288#17393#0" />
+            <element signature="e#17647#17723#0" />
+            <element signature="e#17818#18164#0" />
+            <element signature="e#18791#19062#0" />
+            <element signature="e#19168#19305#0" />
+            <element signature="e#19327#19328#0" expanded="true" />
+            <element signature="e#19410#19411#0" expanded="true" />
+            <element signature="e#19417#19839#0" />
+            <element signature="e#19985#20197#0" />
+            <element signature="e#20945#21084#0" />
+            <element signature="e#21141#21304#0" />
+            <element signature="e#21373#22174#0" />
+            <element signature="e#22309#22472#0" />
+            <element signature="e#23313#23584#0" />
+            <element signature="e#23689#24295#0" />
+            <element signature="e#24401#24732#0" />
+            <element signature="e#26390#26755#0" />
+            <element signature="e#29828#29968#0" />
+            <element signature="e#30672#31000#0" />
+            <element signature="e#31102#31541#0" />
+            <element signature="e#31713#32079#0" />
+            <element signature="e#33739#33854#0" />
+            <element signature="e#34098#34380#0" />
+            <element signature="e#34850#35623#0" />
+            <element signature="e#36991#37805#0" />
+            <element signature="e#39068#39938#0" />
+            <element signature="e#50581#50760#0" />
+            <element signature="e#51474#51996#0" />
+            <element signature="e#52319#52424#0" />
+            <element signature="e#67331#67414#0" />
+            <element signature="e#68360#68532#0" />
+            <element signature="e#68927#68996#0" />
+            <element signature="e#69212#69296#0" />
+            <element signature="e#70177#70366#0" />
+            <element signature="e#71378#71430#0" />
+            <element signature="e#71581#71909#0" />
+            <element signature="e#72280#72385#0" />
+            <element signature="e#74030#74138#0" />
+            <element signature="e#74553#74603#0" />
+            <element signature="e#76529#77125#0" />
+            <element signature="e#80654#81076#0" />
+            <element signature="e#90337#90389#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/algorithmCompetition.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8679">
@@ -2037,10 +2069,175 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="2016" column="9" lean-forward="true" selection-start-line="2010" selection-start-column="8" selection-end-line="2016" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/ConcurrentHashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-809">
+          <caret line="772" column="41" selection-start-line="772" selection-start-column="4" selection-end-line="772" selection-end-column="41" />
+          <folding>
+            <element signature="docComment;class#ConcurrentHashMap#0" />
+            <element signature="e#25216#25521#0" />
+            <element signature="e#25584#25716#0" />
+            <element signature="e#25774#25890#0" />
+            <element signature="e#25957#26103#0" />
+            <element signature="e#26170#26486#0" />
+            <element signature="e#26544#26910#0" />
+            <element signature="e#26960#27175#0" />
+            <element signature="e#27227#27505#0" />
+            <element signature="e#27559#27854#0" />
+            <element signature="e#27915#28034#0" />
+            <element signature="e#28087#28205#0" />
+            <element signature="e#28292#28361#0" />
+            <element signature="e#28805#28859#0" />
+            <element signature="e#28937#28976#0" />
+            <element signature="e#29290#29697#0" />
+            <element signature="e#30789#30876#0" />
+            <element signature="e#31345#32298#0" />
+            <element signature="e#32392#32512#0" />
+            <element signature="e#32790#32901#0" />
+            <element signature="e#33700#33805#0" />
+            <element signature="e#35607#35755#0" />
+            <element signature="e#35803#35874#0" />
+            <element signature="e#35934#36102#0" />
+            <element signature="e#36155#36574#0" />
+            <element signature="e#36624#36699#0" />
+            <element signature="e#36755#36848#0" />
+            <element signature="e#36900#36979#0" />
+            <element signature="e#37262#37347#0" />
+            <element signature="e#37392#37781#0" />
+            <element signature="e#38142#38250#0" />
+            <element signature="e#38386#39025#0" />
+            <element signature="e#39153#40007#0" />
+            <element signature="e#40676#40708#0" />
+            <element signature="e#40897#40929#0" />
+            <element signature="e#41041#41527#0" />
+            <element signature="e#42274#42636#0" />
+            <element signature="e#42726#43191#0" />
+            <element signature="e#43699#44313#0" />
+            <element signature="e#44402#44447#0" />
+            <element signature="e#47212#47470#0" />
+            <element signature="e#47690#48089#0" />
+            <element signature="e#48180#48378#0" />
+            <element signature="e#51546#51607#0" />
+            <element signature="e#52658#53485#0" />
+            <element signature="e#53651#54492#0" />
+            <element signature="e#54650#55407#0" />
+            <element signature="e#55581#55815#0" />
+            <element signature="e#56156#56652#0" />
+            <element signature="e#57377#57830#0" />
+            <element signature="e#58761#58903#0" />
+            <element signature="e#59152#59543#0" />
+            <element signature="e#60838#61118#0" />
+            <element signature="e#64949#65198#0" />
+            <element signature="e#65294#65398#0" />
+            <element signature="e#65606#65714#0" />
+            <element signature="e#65958#66207#0" />
+            <element signature="e#66449#66927#0" />
+            <element signature="e#68263#69523#0" />
+            <element signature="e#72945#74019#0" />
+            <element signature="e#77105#78198#0" />
+            <element signature="e#82845#83929#0" />
+            <element signature="e#87898#88611#0" />
+            <element signature="e#88704#88857#0" />
+            <element signature="e#89034#89191#0" />
+            <element signature="e#89413#89806#0" />
+            <element signature="e#89950#90183#0" />
+            <element signature="e#90358#90802#0" />
+            <element signature="e#91011#91514#0" />
+            <element signature="e#91768#91846#0" />
+            <element signature="e#93141#93215#0" />
+            <element signature="e#93531#93669#0" />
+            <element signature="e#93804#93877#0" />
+            <element signature="e#94737#95178#0" />
+            <element signature="e#96770#96831#0" />
+            <element signature="e#97623#97794#0" />
+            <element signature="e#99470#99578#0" />
+            <element signature="e#105663#105808#0" />
+            <element signature="e#110170#110301#0" />
+            <element signature="e#111364#111445#0" />
+            <element signature="e#111873#111917#0" />
+            <element signature="e#112469#112592#0" />
+            <element signature="e#113825#114171#0" />
+            <element signature="e#114618#114946#0" />
+            <element signature="e#115317#115394#0" />
+            <element signature="e#117113#117183#0" />
+            <element signature="e#117372#117442#0" />
+            <element signature="e#117531#117593#0" />
+            <element signature="e#118360#118550#0" />
+            <element signature="e#119772#119853#0" />
+            <element signature="e#122060#122529#0" />
+            <element signature="e#133750#133802#0" />
+            <element signature="e#135217#135410#0" />
+            <element signature="e#135557#136637#0" />
+            <element signature="e#137385#137477#0" />
+            <element signature="e#138663#138748#0" />
+            <element signature="e#139135#139247#0" />
+            <element signature="e#139807#139926#0" />
+            <element signature="e#142539#142590#0" />
+            <element signature="e#143529#143953#0" />
+            <element signature="e#148553#148927#0" />
+            <element signature="e#149213#149467#0" />
+            <element signature="e#149789#150311#0" />
+            <element signature="e#150777#151497#0" />
+            <element signature="e#151892#152614#0" />
+            <element signature="e#153102#153790#0" />
+            <element signature="e#154335#155023#0" />
+            <element signature="e#155544#156232#0" />
+            <element signature="e#156741#156986#0" />
+            <element signature="e#157298#157811#0" />
+            <element signature="e#158269#158970#0" />
+            <element signature="e#159356#159824#0" />
+            <element signature="e#160172#160866#0" />
+            <element signature="e#161330#161990#0" />
+            <element signature="e#162534#163194#0" />
+            <element signature="e#163714#164374#0" />
+            <element signature="e#164882#165129#0" />
+            <element signature="e#165459#165974#0" />
+            <element signature="e#166440#167146#0" />
+            <element signature="e#167538#167944#0" />
+            <element signature="e#168298#168996#0" />
+            <element signature="e#169487#170151#0" />
+            <element signature="e#170705#171369#0" />
+            <element signature="e#171899#172563#0" />
+            <element signature="e#173081#173328#0" />
+            <element signature="e#173667#174182#0" />
+            <element signature="e#174653#175359#0" />
+            <element signature="e#175759#176167#0" />
+            <element signature="e#176573#177273#0" />
+            <element signature="e#177773#178439#0" />
+            <element signature="e#179003#179669#0" />
+            <element signature="e#180209#180875#0" />
+            <element signature="e#181452#181492#0" />
+            <element signature="e#181796#181913#0" />
+            <element signature="e#181986#182128#0" />
+            <element signature="e#182423#182715#0" />
+            <element signature="e#184848#185406#0" />
+            <element signature="e#187054#187456#0" />
+            <element signature="e#187831#188078#0" />
+            <element signature="e#188140#188249#0" />
+            <element signature="e#188332#188767#0" />
+            <element signature="e#188851#188930#0" />
+            <element signature="e#189175#189637#0" />
+            <element signature="e#189855#190373#0" />
+            <element signature="e#191838#192035#0" />
+            <element signature="e#193951#194125#0" />
+            <element signature="e#195088#195170#0" />
+            <element signature="e#197257#197406#0" />
+            <element signature="e#198261#198313#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/locks/ReentrantLock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="399" column="29" selection-start-line="399" selection-start-column="29" selection-end-line="399" selection-end-column="29" />
+        <state relative-caret-position="369">
+          <caret line="115" column="55" selection-start-line="115" selection-start-column="55" selection-end-line="115" selection-end-column="55" />
           <folding>
             <element signature="docComment;class#ReentrantLock#0" />
             <element signature="docComment;class#Sync#0;class#ReentrantLock#0" />
@@ -2064,24 +2261,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/ExecutorService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="80" column="5" lean-forward="true" selection-start-line="71" selection-start-column="4" selection-end-line="80" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#37191#37192#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="468">
+          <caret line="368" column="74" lean-forward="true" selection-start-line="366" selection-start-column="4" selection-end-line="368" selection-end-column="74" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/readme.MD">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="385">
-            <caret line="45" column="20" lean-forward="true" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
-          </first_editor>
-          <second_editor />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/ThreadPoolExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="322" column="51" lean-forward="true" selection-start-line="322" selection-start-column="51" selection-end-line="322" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/AbstractExecutorService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="209" column="5" lean-forward="true" selection-start-line="140" selection-start-column="4" selection-end-line="209" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="58" column="53" selection-start-line="58" selection-start-column="53" selection-end-line="58" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#38418#38419#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

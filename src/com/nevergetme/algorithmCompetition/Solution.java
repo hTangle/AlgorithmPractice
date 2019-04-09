@@ -12,7 +12,6 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
-
         //Object
 //        TreeNode t1=new TreeNode(1);
 //        TreeNode t2=new TreeNode(2);;
@@ -55,14 +54,160 @@ public class Solution {
         //ConcurrentHashMap
 
         //System.out.println(solution.longestPalindrome("cbbd"));
+//        ArrayList<Integer> list1 = new ArrayList<>();
+//        ArrayList<String> list2 = new ArrayList<>();
+//        System.out.print(list1.getClass() == list2.getClass());
+        //LinkedList
 
-        System.out.println(solution.isFullNumber(8128));
+        //System.out.println(solution.canConcat("abcabcabc"));
+//        StringBuffer
         //solution.isValid("()");
         //System.out.println(solution.maxArea(new int[]{1,8,6,2,5,4,8,3,7}));
         //new Solution().PrintToMaxOfNDigits(2);
         //Queue<>
+    }//77260018937180
+    public String canConcat(String s){
+
+
+        int len=s.length();
+        int begin=s.length()/2;
+        boolean isFind=false;
+        for(int i=begin;i>=1;i--){
+            isFind=false;
+            if(len%i==0){
+                isFind=true;
+                for(int j=0;j<len/i-1;j++){
+                    isFind=isFind&&s.substring(j,j+i).equals(s.substring(j+i,j+2*i));
+                }
+            }
+            if(isFind){
+                return s.substring(0,0+i);
+            }
+        }
+        return "false";
+    }
+    public int kSimilarity(String A, String B) {
+        if(A.equals(B))return 0;
+        if(A.length()!=B.length())return -1;
+        StringBuffer sbA=new StringBuffer();
+        StringBuffer sbB=new StringBuffer();
+        for(int i=0;i<A.length();i++){
+            if(A.charAt(i)==B.charAt(i))continue;
+            sbA.append(A.charAt(i));
+            sbB.append(B.charAt(i));
+        }
+        kSimilarity(sbA,sbB,0);
+        return kSimLen;
+    }
+    private static int kSimLen=-1;
+    public void kSimilarity(StringBuffer A,StringBuffer B,int count){
+        //如果A[i]==B[j] && A[j]==B[i]，可以去除这两个点
+        if(kSimLen!=-1)return;
+        int begin=0,end=0;
+        boolean isFind=false;
+        for(int i=0;i<A.length()&&!isFind;i++){
+            for(int j=i+1;j<B.length()&&!isFind;j++){
+                if(A.charAt(i)==B.charAt(j)){
+                    begin=i;
+                    end=j;
+                }
+                if(A.charAt(i)==B.charAt(j)&&A.charAt(j)==B.charAt(i)){
+                    isFind=true;
+                    break;
+                }
+            }
+        }
+        if(isFind){
+            //去掉begin,end
+            if(A.length()==4||A.length()==2){
+                kSimLen=count+A.length()/2;
+                return;
+            }
+            A.deleteCharAt(begin);
+            A.deleteCharAt(end-1);
+            B.deleteCharAt(begin);
+            B.deleteCharAt(end-1);
+            kSimilarity(A,B,count+1);
+        }else{
+            if(A.length()==3){
+                kSimLen=count+2;
+                return;
+            }
+            A.replace(begin,begin+1,A.charAt(end)+"");
+            A.deleteCharAt(end);
+            B.deleteCharAt(end);
+            kSimilarity(A,B,count+1);
+        }
+    }
+    public String kSimilaritySwap(String A,int begin,int end){
+        StringBuffer sb=new StringBuffer();
+        for(int i=0;i<A.length();i++){
+            if(i==begin){
+                sb.append(A.charAt(end));
+            }else if(i==end){
+                sb.append(A.charAt(begin));
+            }else{
+                sb.append(A.charAt(i));
+            }
+        }
+        return sb.toString();
+
+    }
+    public int maximumGap(int[] nums) {
+        if(nums.length<2)return 0;
+        if(nums.length==2)return Math.abs(nums[0]-nums[1]);
+        Arrays.sort(nums);
+        int k=0;
+        for(int i=0;i<nums.length-1;i++){
+            k=Math.max(nums[i+1]-nums[i],k);
+        }
+        return k;
+    }
+    public List<int[]> getSkyline(int[][] buildings) {
+        List<int[]> res=new ArrayList<>();
+        PriorityQueue<Integer> maxHead=new PriorityQueue<>(11, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2-o1;
+            }
+        });
+        List<int[]> build=new ArrayList<>();
+        for(int i=0;i<buildings.length;i++){
+            build.add(new int[]{buildings[i][0],buildings[i][2]});//设置起点高度大于0
+            build.add(new int[]{buildings[i][1],-buildings[i][2]});//设置终点高度小于0
+        }
+        Collections.sort(build, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] a, int[] b) {//x越小越靠前，高度越大越靠前
+                return a[0]==b[0]?b[1]-a[1]:a[0]-b[0];//如果起点和终点在同一个位置同一高度，这样起点会在终点前
+            }
+        });
+        int pre=0;
+        int cur=0;
+        for(int i=0;i<build.size();i++){
+            int[] b=build.get(i);
+            if(b[1]>0){//如果高度大于0，起点
+                maxHead.add(b[1]);//添加高度
+                cur=maxHead.peek();//获取当前高度
+            }else{//如果是终点
+                maxHead.remove(-b[1]);//需要移除高度
+                cur=(maxHead.peek()==null)?0:maxHead.peek();//更新高度信息
+            }
+            if(cur!=pre){//如果当前高度不等于之前高度，则添加结果
+                res.add(new int[]{b[0],cur});
+                pre=cur;
+            }
+        }
+        return res;
     }
 
+    public double sqrt(double n){
+        double k=1.0;
+        while (Math.abs(k*k-n)>1e-9){
+            k=(k+n/k)/2;
+        }
+        return k;
+    }
     //    public int maxPathSum(TreeNode root) {
 //        //if(root!=null)
 //    }

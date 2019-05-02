@@ -1,6 +1,5 @@
 package com.nevergetme.algorithmCompetition;
 
-import com.nevergetme.datastructure.stack.Stack;
 import sun.reflect.generics.tree.Tree;
 
 import java.util.*;
@@ -65,10 +64,62 @@ public class Solution {
         //System.out.println(solution.maxArea(new int[]{1,8,6,2,5,4,8,3,7}));
         //new Solution().PrintToMaxOfNDigits(2);
         //Queue<>
+        System.out.println(solution.IsPopOrder(new int[]{1,2,3,4,5},new int[]{4,5,2,3,1}));
     }//77260018937180
+    public boolean IsPopOrder(int [] pushA,int [] popA) {
+        Stack<Integer> stack=new Stack<>();
+        int len=popA.length;
+        int x=0,y=0;
+        while (y<=len&&x<len){
+            if(stack.isEmpty()||stack.peek()!=popA[x]){
+                if(y==len)return false;
+                stack.add(pushA[y]);
+                y++;
+            }else{
+                stack.pop();
+                x++;
+            }
+        }
+        return true;
+    }
+    public void Mirror(TreeNode root) {
+        if(root==null)return;
+        if(root.left==null&&root.right==null)return;
+        TreeNode p=root.left;
+        root.left=root.right;
+        root.right=p;
+        if(root.left!=null)Mirror(root.left);
+        if(root.right!=null)Mirror(root.right);
+    }
+
+    public boolean HasSubtree(TreeNode root1,TreeNode root2) {
+        if(root1==null||root2==null)return false;
+        return HasSubtreeSub(root1,root2)||HasSubtree(root1.left,root2)||HasSubtree(root1.right,root2);
+    }
+    public boolean HasSubtreeSub(TreeNode root1,TreeNode root2) {
+        if(root2==null)return true;
+        if(root1==null&&root2!=null)return false;
+        if(root1.val==root2.val){
+            return HasSubtreeSub(root1.left,root2.left)&&HasSubtreeSub(root1.right,root2.right);
+        }else {
+            return false;
+        }
+    }
+    public ListNode Merge(ListNode list1,ListNode list2) {
+        if(list1==null)return list2;
+        if(list2==null)return list1;
+        ListNode head=null;
+        if(list1.val>list2.val){
+            head=list2;
+            head.next=Merge(list1,list2.next);
+        }
+        else {
+            head=list1;
+            head.next=Merge(list1.next,list2);
+        }
+        return head;
+    }
     public String canConcat(String s){
-
-
         int len=s.length();
         int begin=s.length()/2;
         boolean isFind=false;

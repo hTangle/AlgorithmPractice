@@ -27,11 +27,16 @@ public class JianzhiOffer {
 //        Node output=jzo.mergeList(head,tail);
 //        jzo.findKthToTail(head,3);
         //System.out.println(jzo.replaceSpace(new StringBuffer("We Are Happy")));
-//        TreeNode t1=new TreeNode(1);
-//        TreeNode t2=new TreeNode(2);
-//        TreeNode t3=new TreeNode(3);
-//        TreeNode t4=new TreeNode(4);
-//        TreeNode t5=new TreeNode(5);
+        TreeNode t1=new TreeNode(10);
+        TreeNode t2=new TreeNode(5);
+        TreeNode t3=new TreeNode(4);
+        TreeNode t4=new TreeNode(7);
+        TreeNode t5=new TreeNode(12);
+        t1.left=t2;
+        t2.left=t3;
+        t2.right=t4;
+        t1.right=t5;
+        jzo.FindPath(t1,22);
 //        TreeNode t6=new TreeNode(6);
 //        TreeNode t7=new TreeNode(7);
 //        TreeNode t8=new TreeNode(8);
@@ -50,9 +55,42 @@ public class JianzhiOffer {
 //        System.out.println(jzo.pop());
 //        System.out.println(jzo.pop());
 //        System.out.println(jzo.pop());
-        System.out.println(jzo.Add(30,123));
+        //System.out.println(jzo.Add(30,123));
         //HashMap
 
+    }
+    public ArrayList<ArrayList<Integer>> FindPath(TreeNode root,int target) {
+        ArrayList<ArrayList<Integer>> results=new ArrayList<>();
+        ArrayList<Integer> currentPath=new ArrayList<>();
+        FindPath(root,target,results,currentPath);
+        Collections.sort(results, new Comparator<ArrayList<Integer>>() {
+            @Override
+            public int compare(ArrayList<Integer> o1, ArrayList<Integer> o2) {
+                if(o1.size()>o2.size())return -1;
+                else if(o1.size()<o2.size())return 1;
+                else
+                    return 0;
+            }
+        });
+        return results;
+    }
+    public void FindPath(TreeNode root,int target,ArrayList<ArrayList<Integer>> results,ArrayList<Integer> currentPath){
+        if(root==null)return;
+        if(root.left==null&&root.right==null){
+            if(root!=null&&root.val==target){
+                ArrayList<Integer> temp=new ArrayList<>();
+                for(int k:currentPath){
+                    temp.add(k);
+                }
+                temp.add(root.val);
+                results.add(temp);
+            }
+        }else{
+            currentPath.add(root.val);
+            if(root.left!=null)FindPath(root.left,target-root.val,results,currentPath);
+            if(root.right!=null)FindPath(root.right,target-root.val,results,currentPath);
+            currentPath.remove(currentPath.size()-1);
+        }
     }
     public boolean duplicate(int[] numbers,int length,int [] duplication) {
         duplication[0]=-1;

@@ -27,16 +27,16 @@ public class JianzhiOffer {
 //        Node output=jzo.mergeList(head,tail);
 //        jzo.findKthToTail(head,3);
         //System.out.println(jzo.replaceSpace(new StringBuffer("We Are Happy")));
-        TreeNode t1=new TreeNode(10);
-        TreeNode t2=new TreeNode(5);
-        TreeNode t3=new TreeNode(4);
-        TreeNode t4=new TreeNode(7);
-        TreeNode t5=new TreeNode(12);
-        t1.left=t2;
-        t2.left=t3;
-        t2.right=t4;
-        t1.right=t5;
-        jzo.FindPath(t1,22);
+//        TreeNode t1=new TreeNode(10);
+//        TreeNode t2=new TreeNode(5);
+//        TreeNode t3=new TreeNode(4);
+//        TreeNode t4=new TreeNode(7);
+//        TreeNode t5=new TreeNode(12);
+//        t1.left=t2;
+//        t2.left=t3;
+//        t2.right=t4;
+//        t1.right=t5;
+//        jzo.FindPath(t1,22);
 //        TreeNode t6=new TreeNode(6);
 //        TreeNode t7=new TreeNode(7);
 //        TreeNode t8=new TreeNode(8);
@@ -57,7 +57,151 @@ public class JianzhiOffer {
 //        System.out.println(jzo.pop());
         //System.out.println(jzo.Add(30,123));
         //HashMap
+//        int[] array=new int[]{5,7,6,9,11,10,8};
+//        jzo.reOrderArray(array);
+//        System.out.println(jzo.VerifySquenceOfBST(new int[]{5,7,6,9,11,10,8}));
+//        ListNode root=new ListNode(1);
+//        ListNode l1=new ListNode(2);
+//        ListNode l2=new ListNode(3);
+//        ListNode l3=new ListNode(3);
+//        ListNode l4=new ListNode(4);
+//        ListNode l5=new ListNode(4);
+//        ListNode l6=new ListNode(5);
+//        root.next=l1;
+//        l1.next=l2;l2.next=l3;l3.next=l4;l4.next=l5;//l5.next=l6;
+//        ListNode head=jzo.deleteDuplication(root);
+        System.out.println(jzo.match("","a*"));
 
+
+    }
+
+    public boolean match(String str,String pattern){
+        return match(str.toCharArray(),pattern.toCharArray());
+    }
+    public boolean match(char[] str, char[] pattern)
+    {
+        if(str.length==0&&pattern.length==0)return false;
+        return match(str,pattern,0,0);
+    }
+    private boolean match(char[] str, char[] pattern,int sIndex,int pIndex){
+        if(sIndex==str.length&&pIndex==pattern.length)return true;
+        if(sIndex!=str.length&&pIndex==pattern.length)return false;
+        if(sIndex==str.length&&pIndex!=pattern.length){
+            for(;pIndex<pattern.length;){
+                if(pIndex+1<pattern.length&&pattern[pIndex+1]=='*'){
+                    if(pattern[pIndex+1]=='*'){
+                        pIndex+=2;
+                        continue;
+                    }
+                }else{
+                    return false;
+                }
+
+            }
+            return true;
+        }
+        if(isEquals(str,pattern,sIndex,pIndex)){
+            return true;
+        }
+        if(pattern.length-1>pIndex&&pattern[pIndex+1]=='*'){
+            //如果第二个为*
+            if(str[sIndex]==pattern[pIndex]||(pattern[pIndex]=='.'&&sIndex!=str.length)){
+                return match(str,pattern,sIndex+1,pIndex+2)//转移到下一个状态
+                        ||match(str,pattern,sIndex+1,pIndex)//保持当前状态，忽略当前字符
+                        ||match(str,pattern,sIndex,pIndex+2);//跳过*
+            }else{
+                return match(str,pattern,sIndex,pIndex+2);
+            }
+        }else{
+            //如果第二个不是*
+            if(pattern[pIndex]=='.'||(pattern[pIndex]==str[sIndex])){
+                return match(str,pattern,sIndex+1,pIndex+1);
+            }else{
+                return false;
+            }
+        }
+    }
+    private boolean isEquals(char[] str, char[] pattern,int sIndex,int pIndex){
+        if(str.length-sIndex==pattern.length-pIndex){
+            for(int i=0;i<str.length-sIndex;i++){
+                if(str[i+sIndex]!=pattern[i+pIndex]){
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+    boolean isSymmetrical(TreeNode pRoot)
+    {
+        return isSymmetrical(pRoot,pRoot);
+    }
+    boolean isSymmetrical(TreeNode root1,TreeNode root2){
+        if(root1==null&&root2==null)return true;
+        if(root1==null||root2==null)return false;
+        if(root1.val!=root2.val)return false;
+        return isSymmetrical(root1.left,root2.right)&&isSymmetrical(root1.right,root2.left);
+    }
+    public ListNode deleteDuplication(ListNode pHead)
+    {
+        if(pHead==null||pHead.next==null)return pHead;
+        ListNode root=new ListNode(-1);
+        ListNode first=root;
+        ListNode second=pHead;
+        while (second!=null){
+            if(second.next!=null&&second.next.val==second.val){
+                while (second.next!=null&&second.next.val==second.val){
+                    second=second.next;
+                }
+                if(second.next==null)break;
+                second=second.next;
+            }else{
+                first.next=second;
+                first=first.next;
+                second=second.next;
+            }
+        }
+        first.next=null;
+        return root.next;
+    }
+    public void reOrderArray(int [] array) {
+        if(array.length<=1)return;
+        int[] odd=new int[array.length];
+        int[] even=new int[array.length];
+        int oddL=0,evenL=0;
+        for(int a:array){
+            if(a%2==0){
+                even[evenL++]=a;
+            }else{
+                odd[oddL++]=a;
+            }
+        }
+        for(int i=0;i<oddL;i++){
+            array[i]=odd[i];
+        }
+        for(int j=oddL;j<array.length;j++){
+            array[j]=even[j-oddL];
+        }
+    }
+
+    public boolean VerifySquenceOfBST(int [] sequence) {
+        if(sequence.length==0)return false;
+        if(sequence.length==1)return true;
+        return VerifySquenceOfBST(sequence,0,sequence.length-1);
+    }
+    public boolean VerifySquenceOfBST(int[] sequence,int begin,int end){
+        if(begin>=end)return true;
+        int i=begin;
+        for(;i<end;i++){
+            if(sequence[i]>sequence[end]){
+                break;
+            }
+        }
+        int j=i;
+        for(;j<end;j++){
+            if(sequence[j]<sequence[end])return false;
+        }
+        return VerifySquenceOfBST(sequence,begin,i-1)&&VerifySquenceOfBST(sequence,i,end-1);
     }
     public ArrayList<ArrayList<Integer>> FindPath(TreeNode root,int target) {
         ArrayList<ArrayList<Integer>> results=new ArrayList<>();
@@ -74,7 +218,7 @@ public class JianzhiOffer {
         });
         return results;
     }
-    public void FindPath(TreeNode root,int target,ArrayList<ArrayList<Integer>> results,ArrayList<Integer> currentPath){
+    private void FindPath(TreeNode root,int target,ArrayList<ArrayList<Integer>> results,ArrayList<Integer> currentPath){
         if(root==null)return;
         if(root.left==null&&root.right==null){
             if(root!=null&&root.val==target){
@@ -337,7 +481,7 @@ public class JianzhiOffer {
         return len;
     }
 
-    public class ListNode {
+    public static class ListNode {
         int val;
         ListNode next = null;
 

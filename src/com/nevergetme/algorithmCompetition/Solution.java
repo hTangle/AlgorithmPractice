@@ -1,12 +1,6 @@
 package com.nevergetme.algorithmCompetition;
 
-import sun.reflect.generics.tree.Tree;
-
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class Solution {
     public static void main(String[] args) {
@@ -64,201 +58,337 @@ public class Solution {
         //System.out.println(solution.maxArea(new int[]{1,8,6,2,5,4,8,3,7}));
         //new Solution().PrintToMaxOfNDigits(2);
         //Queue<>
-        System.out.println(solution.IsPopOrder(new int[]{1,2,3,4,5},new int[]{4,5,2,3,1}));
+        //System.out.println(solution.candy(new int[]{1, 2, 2}));
+        //System.out.println(solution.cherryPickup(new int[][]{{0, 1, -1}, {1, 0, -1}, {1, 1, 1}}));
+        System.out.println(solution.isRectangleCover(new int[][]{{1,1,3,3},{3,1,4,2},{3,2,4,4},{1,3,2,4},{2,3,3,4}}));
     }//77260018937180
-    public boolean IsPopOrder(int [] pushA,int [] popA) {
-        Stack<Integer> stack=new Stack<>();
-        int len=popA.length;
-        int x=0,y=0;
-        while (y<=len&&x<len){
-            if(stack.isEmpty()||stack.peek()!=popA[x]){
-                if(y==len)return false;
+
+    public int nthMagicalNumber(int N, int A, int B) {
+        int MOD = 1_000_000_007;
+        int L = A / gcd(A, B) * B;//最小公倍数
+        int M = L / A + L / B - 1;//小于等于最小公倍数的Magical数的数量
+        int q = N / M, r = N % M;//N=M*q+r
+
+        long ans = (long) q * L % MOD;
+        if (r == 0)
+            return (int) ans;
+
+        int[] heads = new int[]{A, B};
+        for (int i = 0; i < r - 1; ++i) {
+            if (heads[0] <= heads[1])
+                heads[0] += A;
+            else
+                heads[1] += B;
+        }
+
+        ans += Math.min(heads[0], heads[1]);
+        return (int) (ans % MOD);
+    }
+
+    public int gcd(int x, int y) {
+        if (x == 0) return y;
+        return gcd(y % x, x);
+    }
+
+    public boolean isRectangleCover(int[][] rectangles) {
+        int top=rectangles[0][2];
+        int right=rectangles[0][3];
+        int left=rectangles[0][1];
+        int bottom=rectangles[0][0];
+        HashSet<String> set = new HashSet<String>();
+        int area=0;
+        for(int[] rectangle:rectangles){
+            top=Math.max(top,rectangle[2]);
+            right=Math.max(right,rectangle[3]);
+            left=Math.min(left,rectangle[1]);
+            bottom=Math.min(bottom,rectangle[0]);
+            String s1 = rectangle[0] + " " + rectangle[1];
+            String s2 = rectangle[0] + " " + rectangle[3];
+            String s3 = rectangle[2] + " " + rectangle[3];
+            String s4 = rectangle[2] + " " + rectangle[1];
+            area+=(rectangle[2]-rectangle[0])*(rectangle[3]-rectangle[1]);
+            if (!set.add(s1)) set.remove(s1);
+            if (!set.add(s2)) set.remove(s2);
+            if (!set.add(s3)) set.remove(s3);
+            if (!set.add(s4)) set.remove(s4);
+
+        }
+        if (!set.contains(bottom + " " + left) || !set.contains(bottom + " " + right) || !set.contains(top + " " + left) || !set.contains(top + " " + right) || set.size() != 4) return false;
+        return area==(top-bottom)*(right-left);
+    }
+
+    public boolean reachingPoints(int sx, int sy, int tx, int ty) {
+        while (tx > sx && ty > sy) {
+            if (tx > ty) tx %= ty;
+            else ty %= tx;
+        }
+        return sx == tx && sy <= ty && (ty - sy) % sx == 0 ||
+                sy == ty && sx <= tx && (tx - sx) % sy == 0;
+    }
+
+    //dp(t, x1, x2) = grid(x1, t - x1)
+    //                  + (x1 == x2 ? 0 : grid(x2, t - x2))
+    //                  + max(dp(t-1, x1, x2), dp(t - 1, x1, x2 - 1), dp(t - 1, x1 - 1, x2), dp(t - 1, x1 - 1, x2 - 1))
+    public int cherryPickup(int[][] grid) {
+        int n = grid.length;
+        int[][] dp = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                dp[i][j] = -1;
+            }
+        }
+        dp[0][0] = grid[0][0];
+        for (int k = 1; k < (n << 1) - 1; k++) {//从(0,0)-(n-1,n-1)需要移动的次数
+            for (int i = Math.min(n - 1, k); i >= 0 && i >= k - n + 1; i--) {
+                for (int j = Math.min(n - 1, k); j >= 0 && j >= k - n + 1; j--) {
+                    int p = k - i, q = k - j;
+                    //如果为-1则是不可达的
+                    if (grid[i][p] == -1 || grid[j][q] == -1) {
+                        dp[i][j] = -1;
+                        continue;
+                    }
+                    if (p > 0 && j > 0) {
+                        dp[i][j] = Math.max(dp[i][j], dp[i][j - 1]);
+                    }
+                    if (i > 0) {
+                        if (j > 0) dp[i][j] = Math.max(dp[i][j], dp[i - 1][j - 1]);
+                        if (q > 0) dp[i][j] = Math.max(dp[i][j], dp[i - 1][j]);
+                    }
+                    if (dp[i][j] == -1)
+                        continue;
+                    if (i == j) dp[i][j] += grid[i][p];
+                    else dp[i][j] += grid[i][p] + grid[j][q];
+                }
+            }
+        }
+        return Math.max(dp[n - 1][n - 1], 0);
+    }
+
+    public int candy(int[] ratings) {
+        int[] counts = new int[ratings.length];
+        for (int i = 0; i < ratings.length; i++) {
+            counts[i] = 1;
+        }
+        for (int i = 1; i < ratings.length; i++) {
+            if (ratings[i] > ratings[i - 1] && counts[i] <= counts[i - 1]) {
+                counts[i] = counts[i - 1] + 1;
+            }
+        }
+        for (int i = ratings.length - 2; i >= 0; i--) {
+            if (ratings[i] > ratings[i + 1] && counts[i] <= counts[i + 1]) {
+                counts[i] = counts[i + 1] + 1;
+            }
+        }
+        int sum = 0;
+        for (int k : counts) {
+            sum += k;
+        }
+        return sum;
+    }
+
+    public boolean IsPopOrder(int[] pushA, int[] popA) {
+        Stack<Integer> stack = new Stack<>();
+        int len = popA.length;
+        int x = 0, y = 0;
+        while (y <= len && x < len) {
+            if (stack.isEmpty() || stack.peek() != popA[x]) {
+                if (y == len) return false;
                 stack.add(pushA[y]);
                 y++;
-            }else{
+            } else {
                 stack.pop();
                 x++;
             }
         }
         return true;
     }
+
     public void Mirror(TreeNode root) {
-        if(root==null)return;
-        if(root.left==null&&root.right==null)return;
-        TreeNode p=root.left;
-        root.left=root.right;
-        root.right=p;
-        if(root.left!=null)Mirror(root.left);
-        if(root.right!=null)Mirror(root.right);
+        if (root == null) return;
+        if (root.left == null && root.right == null) return;
+        TreeNode p = root.left;
+        root.left = root.right;
+        root.right = p;
+        if (root.left != null) Mirror(root.left);
+        if (root.right != null) Mirror(root.right);
     }
 
-    public boolean HasSubtree(TreeNode root1,TreeNode root2) {
-        if(root1==null||root2==null)return false;
-        return HasSubtreeSub(root1,root2)||HasSubtree(root1.left,root2)||HasSubtree(root1.right,root2);
+    public boolean HasSubtree(TreeNode root1, TreeNode root2) {
+        if (root1 == null || root2 == null) return false;
+        return HasSubtreeSub(root1, root2) || HasSubtree(root1.left, root2) || HasSubtree(root1.right, root2);
     }
-    public boolean HasSubtreeSub(TreeNode root1,TreeNode root2) {
-        if(root2==null)return true;
-        if(root1==null&&root2!=null)return false;
-        if(root1.val==root2.val){
-            return HasSubtreeSub(root1.left,root2.left)&&HasSubtreeSub(root1.right,root2.right);
-        }else {
+
+    public boolean HasSubtreeSub(TreeNode root1, TreeNode root2) {
+        if (root2 == null) return true;
+        if (root1 == null && root2 != null) return false;
+        if (root1.val == root2.val) {
+            return HasSubtreeSub(root1.left, root2.left) && HasSubtreeSub(root1.right, root2.right);
+        } else {
             return false;
         }
     }
-    public ListNode Merge(ListNode list1,ListNode list2) {
-        if(list1==null)return list2;
-        if(list2==null)return list1;
-        ListNode head=null;
-        if(list1.val>list2.val){
-            head=list2;
-            head.next=Merge(list1,list2.next);
-        }
-        else {
-            head=list1;
-            head.next=Merge(list1.next,list2);
+
+    public ListNode Merge(ListNode list1, ListNode list2) {
+        if (list1 == null) return list2;
+        if (list2 == null) return list1;
+        ListNode head = null;
+        if (list1.val > list2.val) {
+            head = list2;
+            head.next = Merge(list1, list2.next);
+        } else {
+            head = list1;
+            head.next = Merge(list1.next, list2);
         }
         return head;
     }
-    public String canConcat(String s){
-        int len=s.length();
-        int begin=s.length()/2;
-        boolean isFind=false;
-        for(int i=begin;i>=1;i--){
-            isFind=false;
-            if(len%i==0){
-                isFind=true;
-                for(int j=0;j<len/i-1;j++){
-                    isFind=isFind&&s.substring(j,j+i).equals(s.substring(j+i,j+2*i));
+
+    public String canConcat(String s) {
+        int len = s.length();
+        int begin = s.length() / 2;
+        boolean isFind = false;
+        for (int i = begin; i >= 1; i--) {
+            isFind = false;
+            if (len % i == 0) {
+                isFind = true;
+                for (int j = 0; j < len / i - 1; j++) {
+                    isFind = isFind && s.substring(j, j + i).equals(s.substring(j + i, j + 2 * i));
                 }
             }
-            if(isFind){
-                return s.substring(0,0+i);
+            if (isFind) {
+                return s.substring(0, 0 + i);
             }
         }
         return "false";
     }
+
     public int kSimilarity(String A, String B) {
-        if(A.equals(B))return 0;
-        if(A.length()!=B.length())return -1;
-        StringBuffer sbA=new StringBuffer();
-        StringBuffer sbB=new StringBuffer();
-        for(int i=0;i<A.length();i++){
-            if(A.charAt(i)==B.charAt(i))continue;
+        if (A.equals(B)) return 0;
+        if (A.length() != B.length()) return -1;
+        StringBuffer sbA = new StringBuffer();
+        StringBuffer sbB = new StringBuffer();
+        for (int i = 0; i < A.length(); i++) {
+            if (A.charAt(i) == B.charAt(i)) continue;
             sbA.append(A.charAt(i));
             sbB.append(B.charAt(i));
         }
-        kSimilarity(sbA,sbB,0);
+        kSimilarity(sbA, sbB, 0);
         return kSimLen;
     }
-    private static int kSimLen=-1;
-    public void kSimilarity(StringBuffer A,StringBuffer B,int count){
+
+    private static int kSimLen = -1;
+
+    public void kSimilarity(StringBuffer A, StringBuffer B, int count) {
         //如果A[i]==B[j] && A[j]==B[i]，可以去除这两个点
-        if(kSimLen!=-1)return;
-        int begin=0,end=0;
-        boolean isFind=false;
-        for(int i=0;i<A.length()&&!isFind;i++){
-            for(int j=i+1;j<B.length()&&!isFind;j++){
-                if(A.charAt(i)==B.charAt(j)){
-                    begin=i;
-                    end=j;
+        if (kSimLen != -1) return;
+        int begin = 0, end = 0;
+        boolean isFind = false;
+        for (int i = 0; i < A.length() && !isFind; i++) {
+            for (int j = i + 1; j < B.length() && !isFind; j++) {
+                if (A.charAt(i) == B.charAt(j)) {
+                    begin = i;
+                    end = j;
                 }
-                if(A.charAt(i)==B.charAt(j)&&A.charAt(j)==B.charAt(i)){
-                    isFind=true;
+                if (A.charAt(i) == B.charAt(j) && A.charAt(j) == B.charAt(i)) {
+                    isFind = true;
                     break;
                 }
             }
         }
-        if(isFind){
+        if (isFind) {
             //去掉begin,end
-            if(A.length()==4||A.length()==2){
-                kSimLen=count+A.length()/2;
+            if (A.length() == 4 || A.length() == 2) {
+                kSimLen = count + A.length() / 2;
                 return;
             }
             A.deleteCharAt(begin);
-            A.deleteCharAt(end-1);
+            A.deleteCharAt(end - 1);
             B.deleteCharAt(begin);
-            B.deleteCharAt(end-1);
-            kSimilarity(A,B,count+1);
-        }else{
-            if(A.length()==3){
-                kSimLen=count+2;
+            B.deleteCharAt(end - 1);
+            kSimilarity(A, B, count + 1);
+        } else {
+            if (A.length() == 3) {
+                kSimLen = count + 2;
                 return;
             }
-            A.replace(begin,begin+1,A.charAt(end)+"");
+            A.replace(begin, begin + 1, A.charAt(end) + "");
             A.deleteCharAt(end);
             B.deleteCharAt(end);
-            kSimilarity(A,B,count+1);
+            kSimilarity(A, B, count + 1);
         }
     }
-    public String kSimilaritySwap(String A,int begin,int end){
-        StringBuffer sb=new StringBuffer();
-        for(int i=0;i<A.length();i++){
-            if(i==begin){
+
+    public String kSimilaritySwap(String A, int begin, int end) {
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < A.length(); i++) {
+            if (i == begin) {
                 sb.append(A.charAt(end));
-            }else if(i==end){
+            } else if (i == end) {
                 sb.append(A.charAt(begin));
-            }else{
+            } else {
                 sb.append(A.charAt(i));
             }
         }
         return sb.toString();
 
     }
+
     public int maximumGap(int[] nums) {
-        if(nums.length<2)return 0;
-        if(nums.length==2)return Math.abs(nums[0]-nums[1]);
+        if (nums.length < 2) return 0;
+        if (nums.length == 2) return Math.abs(nums[0] - nums[1]);
         Arrays.sort(nums);
-        int k=0;
-        for(int i=0;i<nums.length-1;i++){
-            k=Math.max(nums[i+1]-nums[i],k);
+        int k = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            k = Math.max(nums[i + 1] - nums[i], k);
         }
         return k;
     }
+
     public List<int[]> getSkyline(int[][] buildings) {
-        List<int[]> res=new ArrayList<>();
-        PriorityQueue<Integer> maxHead=new PriorityQueue<>(11, new Comparator<Integer>() {
+        List<int[]> res = new ArrayList<>();
+        PriorityQueue<Integer> maxHead = new PriorityQueue<>(11, new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
-                return o2-o1;
+                return o2 - o1;
             }
         });
-        List<int[]> build=new ArrayList<>();
-        for(int i=0;i<buildings.length;i++){
-            build.add(new int[]{buildings[i][0],buildings[i][2]});//设置起点高度大于0
-            build.add(new int[]{buildings[i][1],-buildings[i][2]});//设置终点高度小于0
+        List<int[]> build = new ArrayList<>();
+        for (int i = 0; i < buildings.length; i++) {
+            build.add(new int[]{buildings[i][0], buildings[i][2]});//设置起点高度大于0
+            build.add(new int[]{buildings[i][1], -buildings[i][2]});//设置终点高度小于0
         }
         Collections.sort(build, new Comparator<int[]>() {
             @Override
             public int compare(int[] a, int[] b) {//x越小越靠前，高度越大越靠前
-                return a[0]==b[0]?b[1]-a[1]:a[0]-b[0];//如果起点和终点在同一个位置同一高度，这样起点会在终点前
+                return a[0] == b[0] ? b[1] - a[1] : a[0] - b[0];//如果起点和终点在同一个位置同一高度，这样起点会在终点前
             }
         });
-        int pre=0;
-        int cur=0;
-        for(int i=0;i<build.size();i++){
-            int[] b=build.get(i);
-            if(b[1]>0){//如果高度大于0，起点
+        int pre = 0;
+        int cur = 0;
+        for (int i = 0; i < build.size(); i++) {
+            int[] b = build.get(i);
+            if (b[1] > 0) {//如果高度大于0，起点
                 maxHead.add(b[1]);//添加高度
-                cur=maxHead.peek();//获取当前高度
-            }else{//如果是终点
+                cur = maxHead.peek();//获取当前高度
+            } else {//如果是终点
                 maxHead.remove(-b[1]);//需要移除高度
-                cur=(maxHead.peek()==null)?0:maxHead.peek();//更新高度信息
+                cur = (maxHead.peek() == null) ? 0 : maxHead.peek();//更新高度信息
             }
-            if(cur!=pre){//如果当前高度不等于之前高度，则添加结果
-                res.add(new int[]{b[0],cur});
-                pre=cur;
+            if (cur != pre) {//如果当前高度不等于之前高度，则添加结果
+                res.add(new int[]{b[0], cur});
+                pre = cur;
             }
         }
         return res;
     }
 
-    public double sqrt(double n){
-        double k=1.0;
-        while (Math.abs(k*k-n)>1e-9){
-            k=(k+n/k)/2;
+    public double sqrt(double n) {
+        double k = 1.0;
+        while (Math.abs(k * k - n) > 1e-9) {
+            k = (k + n / k) / 2;
         }
         return k;
     }
+
     //    public int maxPathSum(TreeNode root) {
 //        //if(root!=null)
 //    }
@@ -268,189 +398,203 @@ public class Solution {
 //        int left=maxPathSum()
 //        // return
 //    }
-    public boolean isFullNumber(int number){
-        int sum=1;
-        if(number<=1)return false;
-        int large=number>>1;
-        int k=1;
-        for(int i=2;i<large;i++){
-            if(number%i==0){
-                sum+=i;
-                if((k=number/i)!=i){
-                    sum+=k;
-                    large=k;
+    public boolean isFullNumber(int number) {
+        int sum = 1;
+        if (number <= 1) return false;
+        int large = number >> 1;
+        int k = 1;
+        for (int i = 2; i < large; i++) {
+            if (number % i == 0) {
+                sum += i;
+                if ((k = number / i) != i) {
+                    sum += k;
+                    large = k;
                 }
             }
         }
-        return sum==number;
+        return sum == number;
     }
-    public boolean canArrange(String[] arr){
-        boolean[] isVisited=new boolean[arr.length];
-        canArrange(arr,isVisited,0);
+
+    public boolean canArrange(String[] arr) {
+        boolean[] isVisited = new boolean[arr.length];
+        canArrange(arr, isVisited, 0);
         return arrangeState;
     }
-    private boolean arrangeState=false;
-    private void canArrange(String[] arr,boolean[] isVisited,int index){
-        if(arrangeState)return;
-        boolean isFinish=true;
-        isVisited[index]=true;
-        for(boolean visit:isVisited)isFinish=isFinish&&visit;
-        if(isFinish){
-            arrangeState=true;
+
+    private boolean arrangeState = false;
+
+    private void canArrange(String[] arr, boolean[] isVisited, int index) {
+        if (arrangeState) return;
+        boolean isFinish = true;
+        isVisited[index] = true;
+        for (boolean visit : isVisited) isFinish = isFinish && visit;
+        if (isFinish) {
+            arrangeState = true;
             return;
         }
-        char c=arr[index].charAt(arr.length-1);
+        char c = arr[index].charAt(arr.length - 1);
 
-        for(int i=0;i<arr.length;i++){
-            if(isVisited[i]||arr[i].charAt(0)!=c)continue;
-            canArrange(arr,isVisited,i);
+        for (int i = 0; i < arr.length; i++) {
+            if (isVisited[i] || arr[i].charAt(0) != c) continue;
+            canArrange(arr, isVisited, i);
         }
-        isVisited[index]=false;
+        isVisited[index] = false;
     }
+
     public int maxSubArray(int[] nums) {
-        if(nums.length==0)return 0;
-        int maxSum=nums[0];
-        int cur=nums[0];
-        for(int i=1;i<nums.length;i++){
-            cur=Math.max(cur+nums[i],nums[i]);
-            maxSum=Math.max(cur,maxSum);
+        if (nums.length == 0) return 0;
+        int maxSum = nums[0];
+        int cur = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            cur = Math.max(cur + nums[i], nums[i]);
+            maxSum = Math.max(cur, maxSum);
         }
-        return Math.max(cur,maxSum);
+        return Math.max(cur, maxSum);
     }
+
     public int jump(int[] nums) {
-        int ret=0;//当前跳数
-        int last=0;//上一跳达到的最远距离
-        int cur=0;//当前能够达到的最远距离
-        for(int i=0;i<nums.length;i++){
-            if(i>cur)return -1;//达不到终点
-            if(i>last){//进行下一次跳跃
-                last=cur;
+        int ret = 0;//当前跳数
+        int last = 0;//上一跳达到的最远距离
+        int cur = 0;//当前能够达到的最远距离
+        for (int i = 0; i < nums.length; i++) {
+            if (i > cur) return -1;//达不到终点
+            if (i > last) {//进行下一次跳跃
+                last = cur;
                 ret++;
             }
-            cur=Math.max(cur,i+nums[i]);
+            cur = Math.max(cur, i + nums[i]);
         }
         return ret;
     }
+
     public int lengthOfLastWord(String s) {
-        boolean isHave=false;
-        int len=0;
-        for(int i=s.length()-1;i>=0;i--){
-            if(isHave){
-                if(s.charAt(i)==' '){
+        boolean isHave = false;
+        int len = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (isHave) {
+                if (s.charAt(i) == ' ') {
                     return len;
-                }else{
+                } else {
                     len++;
                 }
-            }else{
-                if(s.charAt(i)!=' '){
-                    isHave=true;
-                    len=1;
+            } else {
+                if (s.charAt(i) != ' ') {
+                    isHave = true;
+                    len = 1;
                 }
             }
         }
         return len;
     }
+
     public int[][] generateMatrix(int n) {
-        int[][] matrix=new int[n][n];
-        generateMatrix(matrix,1,0,n,0,n,0);
+        int[][] matrix = new int[n][n];
+        generateMatrix(matrix, 1, 0, n, 0, n, 0);
         return matrix;
     }
-    public void generateMatrix(int[][] matrix,int begin,int top,int bottom,int left,int right,int dir){
-        if(top==bottom||left==right)return;
-        dir%=4;
-        if(dir==0){
-            for(int i=left;i<right;i++)matrix[top][i]=begin++;
+
+    public void generateMatrix(int[][] matrix, int begin, int top, int bottom, int left, int right, int dir) {
+        if (top == bottom || left == right) return;
+        dir %= 4;
+        if (dir == 0) {
+            for (int i = left; i < right; i++) matrix[top][i] = begin++;
             top++;
-        }else if(dir==1){
-            for(int i=top;i<bottom;i++)matrix[i][right-1]=begin++;
+        } else if (dir == 1) {
+            for (int i = top; i < bottom; i++) matrix[i][right - 1] = begin++;
             right--;
-        }else if(dir==2){
-            for(int i=right-1;i>=left;i--)matrix[bottom-1][i]=begin++;
+        } else if (dir == 2) {
+            for (int i = right - 1; i >= left; i--) matrix[bottom - 1][i] = begin++;
             bottom--;
-        }else{
-            for(int i=bottom-1;i>=top;i--)matrix[i][left]=begin++;
+        } else {
+            for (int i = bottom - 1; i >= top; i--) matrix[i][left] = begin++;
             left++;
         }
-        generateMatrix(matrix,begin,top,bottom,left,right,dir+1);
+        generateMatrix(matrix, begin, top, bottom, left, right, dir + 1);
     }
 
     public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> result=new ArrayList<>();
-        if(matrix==null||matrix.length==0)return result;
-        spiralOrder(matrix,result,0,matrix.length,0,matrix[0].length,0);
+        List<Integer> result = new ArrayList<>();
+        if (matrix == null || matrix.length == 0) return result;
+        spiralOrder(matrix, result, 0, matrix.length, 0, matrix[0].length, 0);
         return result;
     }
-    private void spiralOrder(int[][] matrix,List<Integer> result,int top,int bottom,int left,int right,int dir){
-        if(top==bottom||left==right)return;
-        dir%=4;
-        if(dir==0){
-            for(int i=left;i<right;i++){
+
+    private void spiralOrder(int[][] matrix, List<Integer> result, int top, int bottom, int left, int right, int dir) {
+        if (top == bottom || left == right) return;
+        dir %= 4;
+        if (dir == 0) {
+            for (int i = left; i < right; i++) {
                 result.add(matrix[top][i]);
             }
             top++;
-        }else if(dir==1){
-            for(int i=top;i<bottom;i++)result.add(matrix[i][right-1]);
+        } else if (dir == 1) {
+            for (int i = top; i < bottom; i++) result.add(matrix[i][right - 1]);
             right--;
-        }else if(dir==2){
-            for(int i=right-1;i>=left;i--)result.add(matrix[bottom-1][i]);
+        } else if (dir == 2) {
+            for (int i = right - 1; i >= left; i--) result.add(matrix[bottom - 1][i]);
             bottom--;
-        }else{
-            for(int i=bottom-1;i>=top;i--)result.add(matrix[i][left]);
+        } else {
+            for (int i = bottom - 1; i >= top; i--) result.add(matrix[i][left]);
             left++;
         }
-        spiralOrder(matrix,result,top,bottom,left,right,dir+1);
+        spiralOrder(matrix, result, top, bottom, left, right, dir + 1);
     }
 
     public String getPermutation(int n, int k) {
         //计算n-1的阶乘
-        List<Integer> numbers=new ArrayList<>();
-        for(int i=1;i<=n;i++){
+        List<Integer> numbers = new ArrayList<>();
+        for (int i = 1; i <= n; i++) {
             numbers.add(i);
         }
-        int nF=getFactorial(n);
-        StringBuilder sb=new StringBuilder();
-        getPermutation(n,k,nF,sb,numbers);
+        int nF = getFactorial(n);
+        StringBuilder sb = new StringBuilder();
+        getPermutation(n, k, nF, sb, numbers);
         return sb.toString();
     }
-    public void getPermutation(int n,int k,int nF,StringBuilder sb,List<Integer> numbers){
-        if(numbers.size()==0)return;
-        if(n==1){sb.append(numbers.get(0));return;}
-        nF=nF/n;
-        int index=(k-1)/nF;
-        int nextK=k-index*nF;
+
+    public void getPermutation(int n, int k, int nF, StringBuilder sb, List<Integer> numbers) {
+        if (numbers.size() == 0) return;
+        if (n == 1) {
+            sb.append(numbers.get(0));
+            return;
+        }
+        nF = nF / n;
+        int index = (k - 1) / nF;
+        int nextK = k - index * nF;
         sb.append(numbers.get(index));
         numbers.remove(index);
-        getPermutation(n-1,nextK,nF,sb,numbers);
+        getPermutation(n - 1, nextK, nF, sb, numbers);
     }
-    private int getFactorial(int n){
-        int nF=1;
-        while (n>0){
-            nF*=n;
+
+    private int getFactorial(int n) {
+        int nF = 1;
+        while (n > 0) {
+            nF *= n;
             n--;
         }
         return nF;
     }
 
     public ListNode rotateRight(ListNode head, int k) {
-        if(head==null||k==0)return head;
-        int len=1;
-        ListNode h=head;
-        while (h.next!=null){
-            h=h.next;
+        if (head == null || k == 0) return head;
+        int len = 1;
+        ListNode h = head;
+        while (h.next != null) {
+            h = h.next;
             len++;
         }
-        h.next=head;
-        int m=k%len;
-        for(int i=0;i<len-m;i++){
-            h=h.next;
+        h.next = head;
+        int m = k % len;
+        for (int i = 0; i < len - m; i++) {
+            h = h.next;
         }
-        head=h.next;
-        h.next=null;
+        head = h.next;
+        h.next = null;
         return head;
     }
 
     public void recoverTree(TreeNode root) {
-        List<Integer> result=new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
 
     }
 

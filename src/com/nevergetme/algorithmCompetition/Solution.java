@@ -60,8 +60,51 @@ public class Solution {
         //Queue<>
         //System.out.println(solution.candy(new int[]{1, 2, 2}));
         //System.out.println(solution.cherryPickup(new int[][]{{0, 1, -1}, {1, 0, -1}, {1, 1, 1}}));
-        System.out.println(solution.isRectangleCover(new int[][]{{1,1,3,3},{3,1,4,2},{3,2,4,4},{1,3,2,4},{2,3,3,4}}));
+        System.out.println(solution.numFactoredBinaryTrees(new int[]{2, 4, 5, 10}));
     }//77260018937180
+    // select A.tagid, count(*) count,T.value from ArticleTags A left join tags T on T.id=A.tagid group by A.tagid;
+
+
+    public int maximalSquare(char[][] matrix) {
+        int M=matrix.length,N=M>0?matrix[0].length:0;
+        int[][] dp=new int[M+1][N+1];
+        int maxSquareLen=0;
+        for(int i=1;i<=M;i++){
+            for(int j=1;j<=N;j++){
+                if(matrix[i-1][j-1]=='1'){
+                    dp[i][j]=Math.min(Math.min(dp[i][j-1],dp[i-1][j]),dp[i-1][j-1])+1;
+                    maxSquareLen=Math.max(dp[i][j],maxSquareLen);
+                }
+            }
+        }
+        return maxSquareLen;
+    }
+
+    public int numFactoredBinaryTrees(int[] A) {
+        int MOD = 1_000_000_007;
+        int N = A.length;
+        Arrays.sort(A);
+        long[] dp = new long[N];
+        Arrays.fill(dp, 1);
+
+        Map<Integer, Integer> index = new HashMap();
+        for (int i = 0; i < N; ++i)
+            index.put(A[i], i);
+
+        for (int i = 0; i < N; ++i)
+            for (int j = 0; j < i; ++j) {
+                if (A[i] % A[j] == 0) { // A[j] is left child
+                    int right = A[i] / A[j];
+                    if (index.containsKey(right)) {
+                        dp[i] = (dp[i] + dp[j] * dp[index.get(right)]) % MOD;
+                    }
+                }
+            }
+
+        long ans = 0;
+        for (long x: dp) ans += x;
+        return (int) (ans % MOD);
+    }
 
     public int nthMagicalNumber(int N, int A, int B) {
         int MOD = 1_000_000_007;

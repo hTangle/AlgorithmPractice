@@ -1,6 +1,8 @@
 package com.nevergetme.algorithmCompetition;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Solution {
     public static void main(String[] args) {
@@ -60,10 +62,106 @@ public class Solution {
         //Queue<>
         //System.out.println(solution.candy(new int[]{1, 2, 2}));
         //System.out.println(solution.cherryPickup(new int[][]{{0, 1, -1}, {1, 0, -1}, {1, 1, 1}}));
-        System.out.println(solution.numFactoredBinaryTrees(new int[]{2, 4, 5, 10}));
+//        System.out.println(solution.findMin(new int[]{3,5,1}));
+
+//        System.out.println(matcher.toString());
     }//77260018937180
     // select A.tagid, count(*) count,T.value from ArticleTags A left join tags T on T.id=A.tagid group by A.tagid;
 
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        int M=obstacleGrid.length;
+        int N=M>0?obstacleGrid[0].length:0;
+        int[][] dp=new int[M+1][N+1];
+        dp[1][0]=1;
+        dp[0][1]=0;
+        for(int i=1;i<M+1;i++){
+            for(int j=1;j<N+1;j++){
+                dp[i][j]=obstacleGrid[i-1][j-1]==0?(dp[i-1][j]+dp[i][j-1]):0;
+            }
+        }
+        return dp[M][N];
+    }
+
+    public int findMin(int[] nums) {
+        int begin=0,end=nums.length-1,mid=begin;
+        while (nums[begin]>=nums[end]){
+            if(end-begin==1){
+                mid=end;
+                break;
+            }
+            mid=(begin+end)>>1;
+            if(nums[begin]==nums[end]&&nums[mid]==nums[begin]){
+                return MinOrder(nums,begin,end);
+            }
+            if(nums[mid]>=nums[begin])begin=mid;
+            else if(nums[mid]<=nums[end])end=mid;
+        }
+        return nums[mid];
+    }
+    private int MinOrder(int[] nums,int begin,int end){
+        int result=nums[begin];
+        for(begin=begin+1;begin<=end;begin++){
+            result=Math.min(result,nums[begin]);
+        }
+        return result;
+    }
+
+    public boolean search(int[] nums, int target) {
+        int begin=0,end=nums.length-1,mid;
+        while (begin<=end){
+            mid=(begin+end)>>1;
+            if(mid==begin){
+                if(nums[mid]==target)return true;
+                if(nums[end]==target)return true;
+                return false;
+            }
+            if(nums[mid]==target)return true;
+            if(nums[mid]==nums[begin])begin++;
+            else if(nums[mid]==nums[end])end--;
+            else if(nums[mid]>nums[begin]){
+                //左边有序
+                if(target<nums[mid]&&target>=nums[begin])end=mid-1;
+                else begin=mid+1;
+            }else{
+                //右边有序
+                if(target<=nums[end]&&target>nums[mid]) begin=mid+1;
+                else end=mid-1;
+            }
+        }
+        return false;
+    }
+
+    public int search(int[] nums, int target,boolean isM) {
+        int begin=0,end=nums.length-1;
+        int mid;
+        while (begin<=end){
+            mid=(begin+end)>>1;
+            if(mid==begin){
+                if(nums[mid]==target)return mid;
+                if(nums[end]==target)return end;
+                return -1;
+            }
+            if(nums[mid]==target)return mid;
+            if(nums[mid]>nums[end]){
+                //说明左半边有序,判断是否在左半边
+                if(target>=nums[begin]&&target<nums[mid]){
+                    //说明在左半边
+                    end=mid-1;
+                }else{
+                    begin=mid+1;
+                }
+            }else{
+                //说明右半边有序
+                if(target<=nums[end]&&target>nums[mid]){
+                    //说明在右半边
+                    begin=mid+1;
+                }else{
+                    end=mid-1;
+                }
+            }
+        }
+        return -1;
+    }
 
     public int maximalSquare(char[][] matrix) {
         int M=matrix.length,N=M>0?matrix[0].length:0;

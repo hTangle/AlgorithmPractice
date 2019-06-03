@@ -1,8 +1,6 @@
 package com.nevergetme.algorithmCompetition;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Solution {
     public static void main(String[] args) {
@@ -63,100 +61,199 @@ public class Solution {
         //System.out.println(solution.candy(new int[]{1, 2, 2}));
         //System.out.println(solution.cherryPickup(new int[][]{{0, 1, -1}, {1, 0, -1}, {1, 1, 1}}));
 //        System.out.println(solution.findMin(new int[]{3,5,1}));
-
+        System.out.println(solution.findLUSlength(new String[]{"aabbcc", "aabbcc","cb","abc"}));
 //        System.out.println(matcher.toString());
     }//77260018937180
     // select A.tagid, count(*) count,T.value from ArticleTags A left join tags T on T.id=A.tagid group by A.tagid;
 
+//    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+//        Stack<Integer> s1 = new Stack<>();
+//        Stack<Integer> s2 = new Stack<>();
+//        while (l1 != null) {
+//            s1.push(l1.val);
+//            l1 = l1.next;
+//        }
+//        while (l2 != null) {
+//            s2.push(l2.val);
+//            l2 = l2.next;
+//        }
+//        int carry = 0;
+//        int sum = 0;
+//        ListNode head = new ListNode(-1);
+//        while (!s1.empty() || !s2.empty()) {
+//            if (s1.empty()) sum = carry + s2.pop();
+//            else if (s2.empty()) sum = carry + s1.pop();
+//            else sum = carry + s1.pop() + s2.pop();
+//            carry = sum / 10;
+//            head.val = sum % 10;
+//            ListNode res = new ListNode(carry);
+//            res.next = head;
+//            head = res;
+//        }
+//        return head.val == 0 ? head.next : head;
+//    }
+
+    public int findLUSlength(String[] strs) {
+        Arrays.sort(strs, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                if(o1.length()>o2.length())return -1;
+                else if(o1.length()==o2.length())return 0;
+                else return 1;
+            }
+        });
+        Map<String,Integer> map=new HashMap<>();
+        for(String s:strs){
+            map.put(s,map.getOrDefault(s,0)+1);
+        }
+        for(int i=0;i<strs.length;i++){
+            if(map.get(strs[i])==1){
+                boolean isSub=true;
+                for(int j=0;j<i&&isSub;j++){
+                    isSub=isSub&&(!isSubSequence(strs[j],strs[i]));
+                }
+                if(isSub){
+                    return strs[i].length();
+                }
+            }
+        }
+        return -1;
+    }
+    private boolean isSubSequence(String s,String p){
+        if(s.equals(p))return true;
+        if(s.length()==p.length())return false;
+        int i=0;
+        for(int j=0;j<s.length()&&i<p.length();j++){
+            if(s.charAt(j)==p.charAt(i)){
+                i++;
+            }
+        }
+        return i==p.length();
+    }
+
+    public int findLUSlength(String a, String b) {
+        if(a.equals(b))return -1;
+        else return Math.max(a.length(),b.length());
+    }
+
+    public boolean canPartition(int[] nums) {
+        int sum = 0;
+        for (int n : nums) {
+            sum += n;
+        }
+        if (sum % 2 == 1) return false;
+        sum = sum / 2;
+        int N = nums.length;
+        int[] dp = new int[sum + 1];
+        for (int i = 0; i < N; i++) {
+            for (int j = sum; j >= nums[i]; j--) {
+                dp[j] = Math.max(dp[j], dp[j - nums[i]] + nums[i]);
+            }
+        }
+        return dp[sum] == sum;
+    }
+
+    public int lastStoneWeightII(int[] stones) {
+        int[] basket = new int[101];
+        for (int i = 0; i < stones.length; i++) {
+            if (basket[stones[i]] == 0)
+                basket[stones[i]]++;
+            else
+                basket[stones[i]] = 0;
+        }
+        return 1;
+    }
+
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
-        int M=obstacleGrid.length;
-        int N=M>0?obstacleGrid[0].length:0;
-        int[][] dp=new int[M+1][N+1];
-        dp[1][0]=1;
-        dp[0][1]=0;
-        for(int i=1;i<M+1;i++){
-            for(int j=1;j<N+1;j++){
-                dp[i][j]=obstacleGrid[i-1][j-1]==0?(dp[i-1][j]+dp[i][j-1]):0;
+        int M = obstacleGrid.length;
+        int N = M > 0 ? obstacleGrid[0].length : 0;
+        int[][] dp = new int[M + 1][N + 1];
+        dp[1][0] = 1;
+        dp[0][1] = 0;
+        for (int i = 1; i < M + 1; i++) {
+            for (int j = 1; j < N + 1; j++) {
+                dp[i][j] = obstacleGrid[i - 1][j - 1] == 0 ? (dp[i - 1][j] + dp[i][j - 1]) : 0;
             }
         }
         return dp[M][N];
     }
 
     public int findMin(int[] nums) {
-        int begin=0,end=nums.length-1,mid=begin;
-        while (nums[begin]>=nums[end]){
-            if(end-begin==1){
-                mid=end;
+        int begin = 0, end = nums.length - 1, mid = begin;
+        while (nums[begin] >= nums[end]) {
+            if (end - begin == 1) {
+                mid = end;
                 break;
             }
-            mid=(begin+end)>>1;
-            if(nums[begin]==nums[end]&&nums[mid]==nums[begin]){
-                return MinOrder(nums,begin,end);
+            mid = (begin + end) >> 1;
+            if (nums[begin] == nums[end] && nums[mid] == nums[begin]) {
+                return MinOrder(nums, begin, end);
             }
-            if(nums[mid]>=nums[begin])begin=mid;
-            else if(nums[mid]<=nums[end])end=mid;
+            if (nums[mid] >= nums[begin]) begin = mid;
+            else if (nums[mid] <= nums[end]) end = mid;
         }
         return nums[mid];
     }
-    private int MinOrder(int[] nums,int begin,int end){
-        int result=nums[begin];
-        for(begin=begin+1;begin<=end;begin++){
-            result=Math.min(result,nums[begin]);
+
+    private int MinOrder(int[] nums, int begin, int end) {
+        int result = nums[begin];
+        for (begin = begin + 1; begin <= end; begin++) {
+            result = Math.min(result, nums[begin]);
         }
         return result;
     }
 
     public boolean search(int[] nums, int target) {
-        int begin=0,end=nums.length-1,mid;
-        while (begin<=end){
-            mid=(begin+end)>>1;
-            if(mid==begin){
-                if(nums[mid]==target)return true;
-                if(nums[end]==target)return true;
+        int begin = 0, end = nums.length - 1, mid;
+        while (begin <= end) {
+            mid = (begin + end) >> 1;
+            if (mid == begin) {
+                if (nums[mid] == target) return true;
+                if (nums[end] == target) return true;
                 return false;
             }
-            if(nums[mid]==target)return true;
-            if(nums[mid]==nums[begin])begin++;
-            else if(nums[mid]==nums[end])end--;
-            else if(nums[mid]>nums[begin]){
+            if (nums[mid] == target) return true;
+            if (nums[mid] == nums[begin]) begin++;
+            else if (nums[mid] == nums[end]) end--;
+            else if (nums[mid] > nums[begin]) {
                 //左边有序
-                if(target<nums[mid]&&target>=nums[begin])end=mid-1;
-                else begin=mid+1;
-            }else{
+                if (target < nums[mid] && target >= nums[begin]) end = mid - 1;
+                else begin = mid + 1;
+            } else {
                 //右边有序
-                if(target<=nums[end]&&target>nums[mid]) begin=mid+1;
-                else end=mid-1;
+                if (target <= nums[end] && target > nums[mid]) begin = mid + 1;
+                else end = mid - 1;
             }
         }
         return false;
     }
 
-    public int search(int[] nums, int target,boolean isM) {
-        int begin=0,end=nums.length-1;
+    public int search(int[] nums, int target, boolean isM) {
+        int begin = 0, end = nums.length - 1;
         int mid;
-        while (begin<=end){
-            mid=(begin+end)>>1;
-            if(mid==begin){
-                if(nums[mid]==target)return mid;
-                if(nums[end]==target)return end;
+        while (begin <= end) {
+            mid = (begin + end) >> 1;
+            if (mid == begin) {
+                if (nums[mid] == target) return mid;
+                if (nums[end] == target) return end;
                 return -1;
             }
-            if(nums[mid]==target)return mid;
-            if(nums[mid]>nums[end]){
+            if (nums[mid] == target) return mid;
+            if (nums[mid] > nums[end]) {
                 //说明左半边有序,判断是否在左半边
-                if(target>=nums[begin]&&target<nums[mid]){
+                if (target >= nums[begin] && target < nums[mid]) {
                     //说明在左半边
-                    end=mid-1;
-                }else{
-                    begin=mid+1;
+                    end = mid - 1;
+                } else {
+                    begin = mid + 1;
                 }
-            }else{
+            } else {
                 //说明右半边有序
-                if(target<=nums[end]&&target>nums[mid]){
+                if (target <= nums[end] && target > nums[mid]) {
                     //说明在右半边
-                    begin=mid+1;
-                }else{
-                    end=mid-1;
+                    begin = mid + 1;
+                } else {
+                    end = mid - 1;
                 }
             }
         }
@@ -164,14 +261,14 @@ public class Solution {
     }
 
     public int maximalSquare(char[][] matrix) {
-        int M=matrix.length,N=M>0?matrix[0].length:0;
-        int[][] dp=new int[M+1][N+1];
-        int maxSquareLen=0;
-        for(int i=1;i<=M;i++){
-            for(int j=1;j<=N;j++){
-                if(matrix[i-1][j-1]=='1'){
-                    dp[i][j]=Math.min(Math.min(dp[i][j-1],dp[i-1][j]),dp[i-1][j-1])+1;
-                    maxSquareLen=Math.max(dp[i][j],maxSquareLen);
+        int M = matrix.length, N = M > 0 ? matrix[0].length : 0;
+        int[][] dp = new int[M + 1][N + 1];
+        int maxSquareLen = 0;
+        for (int i = 1; i <= M; i++) {
+            for (int j = 1; j <= N; j++) {
+                if (matrix[i - 1][j - 1] == '1') {
+                    dp[i][j] = Math.min(Math.min(dp[i][j - 1], dp[i - 1][j]), dp[i - 1][j - 1]) + 1;
+                    maxSquareLen = Math.max(dp[i][j], maxSquareLen);
                 }
             }
         }
@@ -200,7 +297,7 @@ public class Solution {
             }
 
         long ans = 0;
-        for (long x: dp) ans += x;
+        for (long x : dp) ans += x;
         return (int) (ans % MOD);
     }
 
@@ -232,30 +329,31 @@ public class Solution {
     }
 
     public boolean isRectangleCover(int[][] rectangles) {
-        int top=rectangles[0][2];
-        int right=rectangles[0][3];
-        int left=rectangles[0][1];
-        int bottom=rectangles[0][0];
+        int top = rectangles[0][2];
+        int right = rectangles[0][3];
+        int left = rectangles[0][1];
+        int bottom = rectangles[0][0];
         HashSet<String> set = new HashSet<String>();
-        int area=0;
-        for(int[] rectangle:rectangles){
-            top=Math.max(top,rectangle[2]);
-            right=Math.max(right,rectangle[3]);
-            left=Math.min(left,rectangle[1]);
-            bottom=Math.min(bottom,rectangle[0]);
+        int area = 0;
+        for (int[] rectangle : rectangles) {
+            top = Math.max(top, rectangle[2]);
+            right = Math.max(right, rectangle[3]);
+            left = Math.min(left, rectangle[1]);
+            bottom = Math.min(bottom, rectangle[0]);
             String s1 = rectangle[0] + " " + rectangle[1];
             String s2 = rectangle[0] + " " + rectangle[3];
             String s3 = rectangle[2] + " " + rectangle[3];
             String s4 = rectangle[2] + " " + rectangle[1];
-            area+=(rectangle[2]-rectangle[0])*(rectangle[3]-rectangle[1]);
+            area += (rectangle[2] - rectangle[0]) * (rectangle[3] - rectangle[1]);
             if (!set.add(s1)) set.remove(s1);
             if (!set.add(s2)) set.remove(s2);
             if (!set.add(s3)) set.remove(s3);
             if (!set.add(s4)) set.remove(s4);
 
         }
-        if (!set.contains(bottom + " " + left) || !set.contains(bottom + " " + right) || !set.contains(top + " " + left) || !set.contains(top + " " + right) || set.size() != 4) return false;
-        return area==(top-bottom)*(right-left);
+        if (!set.contains(bottom + " " + left) || !set.contains(bottom + " " + right) || !set.contains(top + " " + left) || !set.contains(top + " " + right) || set.size() != 4)
+            return false;
+        return area == (top - bottom) * (right - left);
     }
 
     public boolean reachingPoints(int sx, int sy, int tx, int ty) {

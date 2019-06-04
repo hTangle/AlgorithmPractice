@@ -64,6 +64,38 @@ public class Solution {
         System.out.println(solution.findLUSlength(new String[]{"aabbcc", "aabbcc","cb","abc"}));
 //        System.out.println(matcher.toString());
     }//77260018937180
+    public List<Integer> majorityElement(int[] nums) {
+        int cn1=0,cn2=0,ans1=0,ans2=1;
+        for(int n:nums){
+            if(n==ans1){
+                cn1++;
+            }else if(n==ans2){
+                cn2++;
+            }else if(cn1==0){
+                ans1=n;
+                cn1++;
+            }else if(cn2==0){
+                ans2=n;
+                cn2++;
+            }else{
+                cn1--;
+                cn2--;
+            }
+        }
+        cn1=cn2=0;
+        for(int n:nums){
+            if(n==ans1){
+                cn1++;
+            }
+            else if(n==ans2){
+                cn2++;
+            }
+        }
+        List<Integer> l=new ArrayList<>();
+        if(cn1>nums.length/3)l.add(ans1);
+        if(cn2>nums.length/3)l.add(ans2);
+        return l;
+    }
     // select A.tagid, count(*) count,T.value from ArticleTags A left join tags T on T.id=A.tagid group by A.tagid;
 
 //    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {

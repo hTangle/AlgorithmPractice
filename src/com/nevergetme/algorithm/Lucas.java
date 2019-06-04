@@ -9,75 +9,34 @@ import java.util.Scanner;
  * Create by Alden He on 2019/5/20
  */
 public class Lucas {
-    static class Node implements Comparable<Node>{
-        int time,level;
-        boolean isUsed=false;
-        Node(int time,int level){
-            this.time=time;
-            this.level=level;
+    long pow(long a,long b,long p){
+        long ans=1;
+        a%=p;
+        while (b!=0){
+            if(b%2==1){
+                ans=(ans%p)*(a%p)%p;
+            }
+            b=b>>1;
+            a=(a%p)*(a%p)%p;
         }
-
-        @Override
-        public int compareTo(@NotNull Lucas.Node o) {
-            if(this.time==o.time){
-                if(this.level==o.level)return 0;
-                else if(this.level>o.level)return -1;
-                else return 1;
-            }else if(this.time>o.time)
-                return -1;
-            else
-                return 1;
-        }
+        return ans%p;
+    }
+    long inv(long x,long p){
+        return pow(x,p-2,p);
+    }
+    long C(long n,long m,long p){
+        if(m>n)return 0;
+        long up=1,down=1;
+        for(long i=n-m+1;i<=n;i++)up=up*i%p;
+        for(long i=1;i<=m;i++)down=down*i%p;
+        return up*inv(down,p)%p;
+    }
+    long Lucas(long n,long m,long p){
+        if(m==0)return 1;
+        return C(n%p,m%p,p)*Lucas(n/p,m/p,p)%p;
     }
     public static void main(String[] args){
-        Scanner sc=new Scanner(System.in);
-        int N=sc.nextInt();
-        int M=sc.nextInt();
-        Node[] vm=new Node[N];
-        Node[] tsk=new Node[M];
-        for(int i=0;i<N;i++){
-            vm[i]=new Node(sc.nextInt(),sc.nextInt());
-        }
-        for(int i=0;i<M;i++){
-            tsk[i]=new Node(sc.nextInt(),sc.nextInt());
-        }
-        Arrays.sort(vm);
-        Arrays.sort(tsk);
-        int source=0;
-        int[] dp=new int[101];
-        int j=0,counts=0;
-        for(int i=0;i<M;i++){
-            while (j<N&&vm[j].time>=tsk[i].time){
-                dp[vm[j].level]++;
-                j++;
-            }
-            for(int k=tsk[i].level;k<101;k++){
-                if(dp[k]!=0){
-                    dp[k]--;
-                    source+=200*tsk[i].time+3*tsk[i].level;
-                    counts++;
-                    break;
-                }
-            }
-        }
-//        for(Node t:tsk){
-//            for(int i=0;i<N;i++){
-//                if(!vm[i].isUsed&&vm[i].time>=t.time&&vm[i].level>=t.level){
-//                    source+=(200*t.time+3*t.level);
-//                    vm[i].isUsed=true;
-//                    break;
-//                }
-//            }
-//        }
-        System.out.println(counts+" "+source);
+        Lucas l=new Lucas();
+        System.out.println(l.Lucas(9,2,1_000_000_000+7));
     }
-//    public int lucas(long n,long m,int p){
-//
-//    }
-//    public long mul(long a,long b,long p){
-//        long ret=0;
-//        while (b!=0){
-//
-//        }
-//    }
 }

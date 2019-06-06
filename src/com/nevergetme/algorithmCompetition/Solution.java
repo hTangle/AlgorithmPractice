@@ -61,9 +61,52 @@ public class Solution {
         //System.out.println(solution.candy(new int[]{1, 2, 2}));
         //System.out.println(solution.cherryPickup(new int[][]{{0, 1, -1}, {1, 0, -1}, {1, 1, 1}}));
 //        System.out.println(solution.findMin(new int[]{3,5,1}));
-        System.out.println(solution.findLUSlength(new String[]{"aabbcc", "aabbcc","cb","abc"}));
+        System.out.println(solution.searchMatrix(new int[][]{{1},{2}},0));
 //        System.out.println(matcher.toString());
     }//77260018937180
+    public int canCompleteCircuit(int[] gas, int[] cost) {
+        int start=0,remain=0,debt=0;
+        for(int i=0;i<gas.length;i++){
+            remain+=gas[i]-cost[i];
+            if(remain<0){
+                debt+=remain;
+                start=i+1;
+                remain=0;
+            }
+        }
+        return remain+debt>=0?start:-1;
+    }
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int row=matrix.length;
+        int col=row>0?matrix[0].length:0;
+        if(row==0||col==0)return false;
+        int up=0,down=row-1;
+        int mid=-1;
+        while (up<down){
+            mid=(up+down)>>1;
+            if(matrix[mid][0]<=target&&matrix[mid][col-1]>=target){
+                break;
+            }else if(matrix[mid][0]>target){
+                down=mid-1;
+            }else if(matrix[mid][col-1]<target){
+                up=mid+1;
+            }
+        }
+        if(up==down&&(matrix[up][0]>target||matrix[up][col-1]<target)){
+            return false;
+        }else if(up==down)
+            mid=(up+down)>>1;
+        int left=0,right=col-1;
+        if(left==right)return target==matrix[mid][left];
+        while (left<=right){
+            int m=(left+right)>>1;
+            if(matrix[mid][m]==target)return true;
+            else if(matrix[mid][m]>target)right=m-1;
+            else left=m+1;
+        }
+        return false;
+
+    }
     public List<Integer> majorityElement(int[] nums) {
         int cn1=0,cn2=0,ans1=0,ans2=1;
         for(int n:nums){

@@ -1,10 +1,12 @@
 package com.nevergetme.algorithmCompetition;
 
+import java.io.BufferedOutputStream;
 import java.util.*;
 
 public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
+//        BufferedOutputStream
         //Object
 //        TreeNode t1=new TreeNode(1);
 //        TreeNode t2=new TreeNode(2);;
@@ -61,9 +63,125 @@ public class Solution {
         //System.out.println(solution.candy(new int[]{1, 2, 2}));
         //System.out.println(solution.cherryPickup(new int[][]{{0, 1, -1}, {1, 0, -1}, {1, 1, 1}}));
 //        System.out.println(solution.findMin(new int[]{3,5,1}));
-        System.out.println(solution.searchMatrix(new int[][]{{1},{2}},0));
+        System.out.println();
+        solution.textTreeMap();
 //        System.out.println(matcher.toString());
+//        ArrayList
     }//77260018937180
+
+    public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
+        if(desiredTotal<=maxChoosableInteger)return true;
+        if((1+maxChoosableInteger)*maxChoosableInteger/2<desiredTotal)return false;
+        boolean[] used=new boolean[maxChoosableInteger+1];
+        int[] f=new int[1<<maxChoosableInteger];
+        //数字序列是否被选过了
+        Arrays.fill(f,-1);
+        return canIWin(used,f,desiredTotal);
+    }
+    private boolean canIWin(boolean[] used,int[] f,int n){
+        if(n<=0)return false;
+        int idx=canIWinFormat(used);
+        if(f[idx]==-1){
+           for(int i=1;i<used.length;i++){
+               if(!used[i]){
+                   used[i]=true;
+                   if(!canIWin(used,f,n-i)){
+                       f[idx]=1;
+                       used[i]=false;
+                       return true;
+                   }
+                   used[i]=false;
+               }
+           }
+           f[idx]=0;
+        }
+        return f[idx]==1;//只有等于1的时候说明是能够成功的
+    }
+    private int canIWinFormat(boolean[] used){
+        int idx=0;
+        for(boolean b:used){
+            idx<<=1;
+            if(b){
+                idx|=1;
+            }
+        }
+        return idx;
+    }
+
+    public void textTreeMap(){
+        Map<Integer,String> map=new TreeMap<>();
+        map.put(2,"2");
+        map.put(1,"1");
+        map.put(3,"3");
+        map.forEach((Integer i,String s)->{
+            System.out.println(i+"---"+s);
+        });
+    }
+
+    public double new21Game(int N, int K, int W) {
+        double[] dp = new double[N + W + 1];
+        // dp[x] = the answer when Alice has x points
+        for (int k = K; k <= N; ++k)
+            dp[k] = 1.0;
+
+        double S = Math.min(N - K + 1, W);
+        // S = dp[k+1] + dp[k+2] + ... + dp[k+W]
+        for (int k = K - 1; k >= 0; --k) {
+            dp[k] = S / W;
+            S += dp[k] - dp[k + W];
+        }
+        return dp[0];
+    }
+
+    int[][][] dp=null;
+//    Object
+    int P=1_000_000_000+7;
+    public int findPaths(int m, int n, int N, int x, int y) {
+        if(x<0||y<0||x>=m||y>=n)return 0;
+        if(N==0)return 0;
+        if(dp==null){
+            dp=new int[m][n][N+1];
+            for(int[][] arr:dp){
+                for(int[] a:arr){
+                    Arrays.fill(a,-1);
+                }
+            }
+        }
+        if(dp[x][y][N]!=-1)return dp[x][y][N];
+        long num=0;
+        if(x<1)num+=1;
+        else num=(num+findPaths(m,n,N-1,x-1,y))%P;
+
+        if(y<1)num+=1;
+        else num=(num+findPaths(m,n,N-1,x,y-1))%P;
+
+        if(x>=m-1)num+=1;
+        else num=(num+findPaths(m,n,N-1,x+1,y))%P;
+        if(y>=n-1)num+=1;
+        else num=(num+findPaths(m,n,N-1,x,y+1))%P;
+
+        dp[x][y][N]=(int)num%P;
+        return (int)num%P;
+
+//        int M=1_000_000_000+7;
+//        int[][] dp=new int[m][n];
+//        dp[x][y]=1;
+//        int count=0;
+//        for(int moves=1;moves<=N;moves++){
+//            int[][] temp=new int[m][n];
+//            for(int i=0;i<m;i++){
+//                for(int j=0;j<n;j++){
+//                    if(i==m-1)count=(count+dp[i][j])%M;
+//                    if(j==n-1)count=(count+dp[i][j])%M;
+//                    if(i==0)count=(count+dp[i][j])%M;
+//                    if(j==0)count=(count+dp[i][j])%M;
+//                    temp[i][j]=(((i > 0 ? dp[i - 1][j] : 0) + (i < m - 1 ? dp[i + 1][j] : 0)) % M + ((j > 0 ? dp[i][j - 1] : 0) + (j < n - 1 ? dp[i][j + 1] : 0)) % M) % M;
+//                }
+//            }
+//            dp=temp;
+//        }
+//        return count;
+    }
     public int canCompleteCircuit(int[] gas, int[] cost) {
         int start=0,remain=0,debt=0;
         for(int i=0;i<gas.length;i++){

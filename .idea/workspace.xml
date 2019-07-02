@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb6626a2-febb-4fe6-bd18-fe2c26232df6" name="Default" comment="update">
-      <change afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/First/Solution.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/First/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/First/Solution.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -93,8 +93,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/First/Solution.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+            <state relative-caret-position="594">
+              <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -232,7 +232,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -271,6 +270,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -636,21 +636,8 @@
       <workItem from="1561641119109" duration="869000" />
       <workItem from="1561727238398" duration="86000" />
       <workItem from="1561903377365" duration="3220000" />
-      <workItem from="1561981941610" duration="3000000" />
-    </task>
-    <task id="LOCAL-00008" summary="Update">
-      <created>1540882095400</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1540882095400</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Update">
-      <created>1540885759431</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1540885759431</updated>
+      <workItem from="1561981941610" duration="5236000" />
+      <workItem from="1562076580999" duration="1119000" />
     </task>
     <task id="LOCAL-00010" summary="Update">
       <created>1540975595943</created>
@@ -981,11 +968,25 @@
       <option name="project" value="LOCAL" />
       <updated>1561905734676</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="update">
+      <created>1561984950218</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1561984950218</updated>
+    </task>
+    <task id="LOCAL-00058" summary="update">
+      <created>1561986578723</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1561986578723</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="659797000" />
+    <option name="totallyTimeSpent" value="663152000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1000,7 +1001,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49874055" visible="true" weight="0.14978679" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49874055" visible="true" weight="0.15138593" />
       <window_info id="Structure" order="1" weight="0.17857143" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1011,8 +1012,8 @@
       <window_info id="JRebel" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6684435" visible="true" weight="0.28416485" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49413645" weight="0.15509762" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6684435" visible="true" weight="0.22342733" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49413645" weight="0.20824295" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286334" />
@@ -1914,6 +1915,12 @@
           <properties />
           <option name="timeStamp" value="317" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/First/Solution.java</url>
+          <line>57</line>
+          <properties />
+          <option name="timeStamp" value="318" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -2189,8 +2196,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/First/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+        <state relative-caret-position="594">
+          <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
         </state>
       </provider>
     </entry>

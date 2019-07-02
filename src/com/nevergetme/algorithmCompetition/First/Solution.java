@@ -3,9 +3,59 @@ package com.nevergetme.algorithmCompetition.First;
 import java.util.Arrays;
 
 public class Solution {
+
     public static void main(String[] args){
         Solution s=new Solution();
-        System.out.println(s.findMedianSortedArrays(new int[]{2},new int[]{1,3}));
+        System.out.println(s.countWays(36196));
+    }
+    public int countWays(int[][] map, int x, int y) {
+        // write code here
+        int mod=1000000007;
+        int[][] pos=new int[x][y];
+        for(int i=0;i<x;i++){
+            for(int j=0;j<y;j++){
+                if(i==0&&j==0){
+                    pos[i][j]=map[i][j]==0?0:1;
+                }else if(i==0){
+                    pos[i][j]=map[i][j]==0?0:pos[i][j-1]%mod;
+                }else if(j==0){
+                    pos[i][j]=map[i][j]==0?0:pos[i-1][j]%mod;
+                }else{
+                    pos[i][j]=map[i][j]==0?0:(pos[i-1][j]+pos[i][j-1])%mod;
+                }
+            }
+        }
+        return pos[x-1][y-1];
+    }
+    public int countWays(int x, int y) {
+        int[][] pos=new int[x][y];
+        for(int i=0;i<x;i++){
+            for(int j=0;j<y;j++){
+                if(i==0||j==0){
+                    pos[i][j]=1;
+                }else{
+                    pos[i][j]=pos[i-1][j]+pos[i][j-1];
+                }
+            }
+        }
+        return pos[x-1][y-1];
+
+    }
+    public int countWays(int n) {
+        // write code here
+        int f1=1,f2=2,f3=4;
+        int mod=1000000007;
+        if(n==1)return f1;
+        if(n==2)return f2;
+        if(n==3)return f3;
+//        n-=3;
+        while (--n>=3){
+            int temp=((f1+f2)%mod+f3)%mod;
+            f1=f2;
+            f2=f3;
+            f3=temp;
+        }
+        return f3;
     }
     public double findMedianSortedArrays(int[] A, int[] B) {
         int m = A.length;

@@ -8,6 +8,13 @@ public class Solution {
         Solution s = new Solution();
         System.out.println(s.nQueens(8));
     }
+    public int getResult(int n, int m) {
+        // write code here
+        if(n<1||m<1)return -1;
+        int last=0;
+        for(int i=2;i<=n;i++)last=(last+m)%i;
+        return last;
+    }
 
     int count=0;
     public int nQueens(int n) {

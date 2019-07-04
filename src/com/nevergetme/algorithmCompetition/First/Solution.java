@@ -1,42 +1,88 @@
 package com.nevergetme.algorithmCompetition.First;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Solution {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        System.out.println(s.nQueens(8));
+        System.out.println(s.countPairs(new int[]{1,2,3,4,5},5,6));
     }
+
+    public int countPairs(int[] A, int n, int sum) {
+        // write code here
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int a : A) {
+            map.put(a, map.getOrDefault(a, 0) + 1);
+        }
+        int pair = 0;
+        for (int a : A) {
+            if (map.containsKey(a)) {
+                if (a == sum - a) {
+                    pair += (map.get(a) * (map.get(a) - 1) / 2);
+                    map.remove(a);
+                } else if (map.containsKey(sum - a)) {
+                    pair += map.get(a) * map.get(sum - a);
+                    map.remove(a);
+                    map.remove(sum - a);
+                }
+            }
+        }
+        return pair;
+    }
+
+    public int getMaxSum(int[] A) {
+        // write code here
+        if (A.length < 1) return -1;
+        if (A.length == 1) return A[0];
+        int maxSum = A[0];
+        int current = 0;
+        for (int i = 0; i < A.length; i++) {
+            current += A[i];
+            if (current < 0) {
+                maxSum = Math.max(current, maxSum);
+                current = 0;
+            } else {
+                maxSum = Math.max(current, maxSum);
+            }
+        }
+        return maxSum;
+    }
+
     public int getResult(int n, int m) {
         // write code here
-        if(n<1||m<1)return -1;
-        int last=0;
-        for(int i=2;i<=n;i++)last=(last+m)%i;
+        if (n < 1 || m < 1) return -1;
+        int last = 0;
+        for (int i = 2; i <= n; i++) last = (last + m) % i;
         return last;
     }
 
-    int count=0;
+    int count = 0;
+
     public int nQueens(int n) {
         // write code here
-        count=0;
-        int[] a=new int[n+1];
-        nQueens(a,1,n);
+        count = 0;
+        int[] a = new int[n + 1];
+        nQueens(a, 1, n);
         return count;
     }
-    private void nQueens(int[] a,int i,int n){
-        if(i>n){
+
+    private void nQueens(int[] a, int i, int n) {
+        if (i > n) {
             count++;
             return;
         }
-        for(int j=1;j<=n;j++){
-            a[i]=j;
-            if(hasQueen(a,i))nQueens(a,i+1,n);
+        for (int j = 1; j <= n; j++) {
+            a[i] = j;
+            if (hasQueen(a, i)) nQueens(a, i + 1, n);
         }
     }
-    private boolean hasQueen(int[] a,int i){
-        for(int j=1;j<i;j++){
-            if(a[j]==a[i]||a[j]-a[i]==(j-i)||a[j]-a[i]==i-j){
+
+    private boolean hasQueen(int[] a, int i) {
+        for (int j = 1; j < i; j++) {
+            if (a[j] == a[i] || a[j] - a[i] == (j - i) || a[j] - a[i] == i - j) {
                 return false;
             }
         }
@@ -46,12 +92,12 @@ public class Solution {
     public int countCoins(int n) {
         // write code here
         int[] v = new int[]{1, 5, 10, 25};
-        int mod=1000000007;
-        int[] dp=new int[100001];
-        dp[0]=1;
-        for(int i=0;i<4;i++){
-            for(int j=v[i];j<=n;j++){
-                dp[j]=(dp[j]+dp[j-v[i]])%mod;
+        int mod = 1000000007;
+        int[] dp = new int[100001];
+        dp[0] = 1;
+        for (int i = 0; i < 4; i++) {
+            for (int j = v[i]; j <= n; j++) {
+                dp[j] = (dp[j] + dp[j - v[i]]) % mod;
             }
         }
         return dp[n];

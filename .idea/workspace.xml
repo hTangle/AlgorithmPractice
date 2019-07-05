@@ -93,10 +93,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/First/Solution.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="10" column="60" selection-start-line="10" selection-start-column="60" selection-end-line="10" selection-end-column="60" />
+            <state relative-caret-position="216">
+              <caret line="27" selection-start-line="27" selection-start-column="2" selection-end-line="35" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1461#1482#0" expanded="true" />
+                <element signature="e#1529#1530#0" expanded="true" />
+                <element signature="e#1563#1564#0" expanded="true" />
+                <element signature="class#ListNode#0;class#Solution#0" />
+                <element signature="e#1681#1682#0" expanded="true" />
+                <element signature="e#1719#1720#0" expanded="true" />
+                <element signature="e#1872#1873#0" expanded="true" />
+                <element signature="e#1910#1911#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -222,8 +230,8 @@
     <option name="jrebelEnabledAutocompile" value="true" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="224" />
-    <option name="y" value="57" />
+    <option name="x" value="-175" />
+    <option name="y" value="-21" />
     <option name="width" value="1616" />
     <option name="height" value="876" />
   </component>
@@ -642,14 +650,7 @@
       <workItem from="1561981941610" duration="5236000" />
       <workItem from="1562076580999" duration="1358000" />
       <workItem from="1562153483169" duration="3510000" />
-      <workItem from="1562245700583" duration="1286000" />
-    </task>
-    <task id="LOCAL-00013" summary="Update">
-      <created>1541753259149</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1541753259149</updated>
+      <workItem from="1562245700583" duration="4100000" />
     </task>
     <task id="LOCAL-00014" summary="Update">
       <created>1542269324040</created>
@@ -987,11 +988,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562164263478</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="update">
+      <created>1562246994230</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1562246994231</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="668187000" />
+    <option name="totallyTimeSpent" value="671001000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1018,7 +1026,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6684435" visible="true" weight="0.26681128" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49413645" weight="0.20824295" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49413645" weight="0.43383947" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286334" />
@@ -1922,7 +1930,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/First/Solution.java</url>
-          <line>154</line>
+          <line>258</line>
           <properties />
           <option name="timeStamp" value="318" />
         </line-breakpoint>
@@ -2201,10 +2209,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/First/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="10" column="60" selection-start-line="10" selection-start-column="60" selection-end-line="10" selection-end-column="60" />
+        <state relative-caret-position="216">
+          <caret line="27" selection-start-line="27" selection-start-column="2" selection-end-line="35" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1461#1482#0" expanded="true" />
+            <element signature="e#1529#1530#0" expanded="true" />
+            <element signature="e#1563#1564#0" expanded="true" />
+            <element signature="class#ListNode#0;class#Solution#0" />
+            <element signature="e#1681#1682#0" expanded="true" />
+            <element signature="e#1719#1720#0" expanded="true" />
+            <element signature="e#1872#1873#0" expanded="true" />
+            <element signature="e#1910#1911#0" expanded="true" />
           </folding>
         </state>
       </provider>

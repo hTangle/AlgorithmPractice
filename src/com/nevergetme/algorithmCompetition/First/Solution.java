@@ -1,5 +1,8 @@
 package com.nevergetme.algorithmCompetition.First;
 
+import com.nevergetme.datastructure.stack.Stack;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +11,108 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        System.out.println(s.countPairs(new int[]{1,2,3,4,5},5,6));
+        ListNode l1 = new ListNode(1);
+        ListNode l2 = new ListNode(2);
+        ListNode l3 = new ListNode(3);
+        ListNode l4 = new ListNode(3);
+        ListNode l5 = new ListNode(2);
+        ListNode l6 = new ListNode(0);
+        l1.next = l2;
+        l2.next = l3;
+        l3.next = l4;
+        l4.next = l5;
+        l5.next = l6;
+        System.out.println(s.isPalindrome(l1));
+    }
+
+//    public ListNode getTreeLevel(TreeNode root, int dep) {
+//        // write code here
+//        ListNode head=new ListNode(-1);
+//    }
+//    private void getTreeLevel(TreeNode root,int dep,int current,ListNode head){
+//        if(current==dep){
+//            head.next
+//        }
+//    }
+    private boolean balance = true;
+
+    public boolean isBalance(TreeNode root) {
+        // write code here
+        isBalanceHelper(root);
+        return balance;
+    }
+
+    private int isBalanceHelper(TreeNode root) {
+        if (root == null) return 0;
+        if (!balance) return -1;
+        if (root.left == null && root.right == null) return 1;
+        int left = isBalanceHelper(root.left);
+        int right = isBalanceHelper(root.right);
+        if (left == -1 || right == -1 || Math.abs(left - right) > 1) {
+            balance = false;
+            return -1;
+        } else {
+            return Math.max(left, right) + 1;
+        }
+    }
+
+
+    public class UndirectedGraphNode {
+        int label = 0;
+        UndirectedGraphNode left = null;
+        UndirectedGraphNode right = null;
+        ArrayList<UndirectedGraphNode> neighbors = new ArrayList<UndirectedGraphNode>();
+
+        public UndirectedGraphNode(int label) {
+            this.label = label;
+        }
+    }
+
+    public static class ListNode {
+        int val;
+        ListNode next = null;
+
+        ListNode(int val) {
+            this.val = val;
+        }
+    }
+
+    public class TreeNode {
+        int val = 0;
+        TreeNode left = null;
+        TreeNode right = null;
+
+        public TreeNode(int val) {
+            this.val = val;
+        }
+    }
+
+    public boolean isPalindrome(ListNode pHead) {
+        // write code here
+        if (pHead == null || pHead.next == null) return true;
+        ListNode fast = pHead;
+        ListNode slow = pHead;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        Stack<Integer> stack = new Stack<>();
+        ListNode p = pHead;
+        while (p != slow) {
+            stack.push(p.val);
+            p = p.next;
+        }
+        if (fast != null) {
+            //说明长度为奇数
+            slow = slow.next;
+        }
+        while (slow != null && !stack.isEmpty()) {
+            if (slow.val != stack.pop()) {
+                return false;
+            }
+            slow = slow.next;
+        }
+        return true;
     }
 
     public int countPairs(int[] A, int n, int sum) {

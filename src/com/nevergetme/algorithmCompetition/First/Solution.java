@@ -19,7 +19,36 @@ public class Solution {
         l3.next = l4;
         l4.next = l5;
         l5.next = l6;
-        System.out.println(s.exchangeOddEven(10));
+        System.out.println(s.RectCover(4));
+    }
+    public double Power(double base, int exponent) {
+        double res=1,curr=base;
+        int exp;
+        if(exponent>0){
+            exp=exponent;
+        }else if(exponent<0){
+            if(base==0)throw new RuntimeException("除0error");
+            exp=-exponent;
+        }else{
+            return 1;
+        }
+        while (exp!=0){
+            if(exp%2==1)res*=curr;
+            curr*=curr;
+            exp>>=1;
+        }
+        return exponent>=0?res:(1/res);
+    }
+    public int RectCover(int target) {
+        int f1=1;
+        int f2=2;
+        if(target<=2)return target;
+        while (--target>1){
+            int temp=f1+f2;
+            f1=f2;
+            f2=temp;
+        }
+        return f2;
     }
     int exchangeOddEven(int x) {
         // write code here
@@ -27,6 +56,7 @@ public class Solution {
         int even = ((x&0xAAAAAAAA)>>1)&0x7fffffff;
         return even|odd;
     }
+
     public int calcCost(int A, int B) {
         // write code here
         A=A^B;

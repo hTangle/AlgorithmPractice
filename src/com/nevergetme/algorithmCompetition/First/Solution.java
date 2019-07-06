@@ -2,10 +2,7 @@ package com.nevergetme.algorithmCompetition.First;
 
 import com.nevergetme.datastructure.stack.Stack;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Solution {
 
@@ -22,18 +19,123 @@ public class Solution {
         l3.next = l4;
         l4.next = l5;
         l5.next = l6;
-        System.out.println(s.isPalindrome(l1));
+        System.out.println(s.exchangeOddEven(10));
+    }
+    int exchangeOddEven(int x) {
+        // write code here
+        int odd  = ((x&0x55555555)<<1);
+        int even = ((x&0xAAAAAAAA)>>1)&0x7fffffff;
+        return even|odd;
+    }
+    public int calcCost(int A, int B) {
+        // write code here
+        A=A^B;
+        int count=0;
+        while (A!=0){
+            count++;
+            A=A&(A-1);
+        }
+        return count;
+
+    }
+    public int binInsert(int n, int m, int j, int i) {
+
+        // write code here
+        m<<=j;
+        return n|m;
+    }
+    public ArrayList<ArrayList<Integer>> FindPath(TreeNode root,int target) {
+        ArrayList<ArrayList<Integer>> results=new ArrayList<>();
+        ArrayList<Integer> result=new ArrayList<>();
+        FindPath(root,target,results,result);
+        Collections.sort(results, new Comparator<ArrayList<Integer>>() {
+            @Override
+            public int compare(ArrayList<Integer> o1, ArrayList<Integer> o2) {
+                return o2.size()-o1.size();
+            }
+        });
+        return results;
+    }
+    private void FindPath(TreeNode root,int target,ArrayList<ArrayList<Integer>> results,ArrayList<Integer> result){
+        if(root==null)return;
+        if(root.left==null&&root.right==null&&target==root.val){
+            ArrayList<Integer> r=new ArrayList<>();
+            for(int k:result){
+                r.add(k);
+            }
+            r.add(root.val);
+            results.add(r);
+            return;
+        }
+        result.add(root.val);
+        FindPath(root.left,target-root.val,results,result);
+        FindPath(root.right,target-root.val,results,result);
+        result.remove(result.size()-1);
+    }
+    public int getLCA(int a, int b) {
+        // write code here
+        while (a!=b){
+            if(a>b)a>>=1;
+            else b>>=1;
+        }
+        return a;
+    }
+    private int getLCAInterval(int a){
+        int begin=1;
+        while (a>=begin<<1){
+            begin=begin<<1;
+        }
+        return begin;
+    }
+    private int nextNode=-2;
+    public int findSucc(TreeNode root, int p) {
+        // write code here
+        //如果有右子树，则是右子树的第一个节点
+        //如果没有右子树
+        //  如果是父节点的左子树，则为父节点
+        //  如果为父节点的右子树，则需要递归判断父节点的父节点与父节点的关系
+        findSucc(root,p,0);
+        return nextNode;
+    }
+    private void findSucc(TreeNode root,int p,int pos){
+        if(nextNode>=0||root==null)return;
+        findSucc(root.left,p,0);
+        if(nextNode==-1){
+            nextNode=root.val;
+            return;
+        }
+        if(root.val==p){
+            nextNode=-1;//下一个节点是需要寻找的节点
+        }
+        findSucc(root.right,p,0);
+    }
+    private int isBSTLast=Integer.MIN_VALUE;
+    public boolean checkBST(TreeNode root) {
+        // write code here
+        if(root==null)return true;
+        if(!checkBST(root.left))return false;
+        if(root.val<=isBSTLast)return false;
+        isBSTLast=root.val;
+        if(!checkBST(root.right))return false;
+        return true;
     }
 
-//    public ListNode getTreeLevel(TreeNode root, int dep) {
-//        // write code here
-//        ListNode head=new ListNode(-1);
-//    }
-//    private void getTreeLevel(TreeNode root,int dep,int current,ListNode head){
-//        if(current==dep){
-//            head.next
-//        }
-//    }
+    ListNode head=new ListNode(-1);
+    public ListNode getTreeLevel(TreeNode root, int dep) {
+        // write code here
+        ListNode pHead=head;
+        getTreeLevel(root,dep,1);
+        return pHead.next;
+    }
+    private void getTreeLevel(TreeNode root,int dep,int current){
+        if(current==dep){
+            head.next=new ListNode(root.val);
+            head=head.next;
+        }else if(current<dep){
+            getTreeLevel(root.left,dep,current+1);
+            getTreeLevel(root.right,dep,current+1);
+        }
+    }
     private boolean balance = true;
 
     public boolean isBalance(TreeNode root) {

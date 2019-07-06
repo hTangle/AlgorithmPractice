@@ -11,15 +11,99 @@ public class Solution {
         ListNode l1 = new ListNode(1);
         ListNode l2 = new ListNode(2);
         ListNode l3 = new ListNode(3);
-        ListNode l4 = new ListNode(3);
-        ListNode l5 = new ListNode(2);
-        ListNode l6 = new ListNode(0);
+        ListNode l4 = new ListNode(4);
+        ListNode l5 = new ListNode(5);
+        ListNode l6 = new ListNode(6);
         l1.next = l2;
         l2.next = l3;
         l3.next = l4;
         l4.next = l5;
         l5.next = l6;
-        System.out.println(s.RectCover(4));
+        ListNode root=s.reverseBetween(l1,1,6);
+        System.out.println(root);
+//        s.reorderList(l1);
+//        System.out.println(s.RectCover(4));
+    }
+    public ListNode reverseBetween(ListNode head, int m, int n) {
+        if(m==n)return head;
+        boolean isFirst=m==1;
+        ListNode pre=new ListNode(-1);
+        pre.next=head;
+        ListNode before=head;
+        ListNode cur=head.next;
+        while (m>1){
+            n--;
+            m--;
+            pre=before;
+            before=before.next;
+            cur=cur.next;
+        }
+        while (n>1){
+            before.next=cur.next;
+            cur.next=pre.next;
+            pre.next=cur;
+            cur=before.next;
+            n--;
+        }
+        return isFirst?pre.next:head;
+
+
+//        ListNode begin=null,end=null;
+//        ListNode root=head;
+//        ListNode before=null;
+//        int pos=1;
+//        while (root!=null){
+//            if(pos==m)begin=root;
+//            if(pos==n)end=root;
+//            if(begin==null)before=root;
+//            root=root.next;
+//            pos++;
+//            if(begin!=null&&end!=null)break;
+//        }
+//        end.next=null;
+//        begin=reverseList(begin);
+//        if(before!=null)before.next=begin;
+//        else head=begin;
+//        end=head;
+//        while (end.next!=null){
+//            end=end.next;
+//        }
+//        end.next=root;
+//        return head;
+
+    }
+    public void reorderList(ListNode head) {
+        if(head==null||head.next==null)return;
+        ListNode fast=head,slow=head;
+        while (fast!=null&&fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+        }
+        ListNode pHead=reverseList(slow.next);
+        slow.next=null;
+        fast=head;
+        while (pHead!=null){
+            slow=fast.next;
+            fast.next=pHead;
+            pHead=pHead.next;
+            fast.next.next=slow;
+            fast=slow;
+        }
+
+
+    }
+    private ListNode reverseList(ListNode head){
+        if(head==null||head.next==null)return head;
+        ListNode before=null;
+        ListNode current=head;
+        ListNode after=head.next;
+        while (current!=null){
+            current.next=before;
+            before=current;
+            current=after;
+            after=after==null?null:after.next;
+        }
+        return before;
     }
     public double Power(double base, int exponent) {
         double res=1,curr=base;
@@ -206,6 +290,18 @@ public class Solution {
 
         ListNode(int val) {
             this.val = val;
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder sb=new StringBuilder();
+            ListNode l=this;
+            while (l!=null){
+                sb.append(l.val);
+                if(l.next!=null)sb.append(",");
+                l=l.next;
+            }
+            return sb.toString();
         }
     }
 

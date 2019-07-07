@@ -19,10 +19,44 @@ public class Solution {
         l3.next = l4;
         l4.next = l5;
         l5.next = l6;
-        ListNode root=s.reverseBetween(l1,1,6);
-        System.out.println(root);
+//        ListNode root=s.reverseBetween(l1,1,6);
+//        s.testCanDivideBy();
+        System.out.println(-5%4);
 //        s.reorderList(l1);
 //        System.out.println(s.RectCover(4));
+    }
+    private void testCanDivideBy(){
+        Scanner sc=new Scanner(System.in);
+        int N=sc.nextInt();
+        String dir=sc.next();
+        int cur=0;
+        for(int i=0;i<N;i++){
+            if(dir.charAt(i)=='L'){
+                cur++;
+            }else{
+                cur--;
+            }
+        }
+        cur=cur%4;
+        char[] result=new char[]{'N','W','S','E'};
+        System.out.println(result[cur<0?cur+4:cur]);
+//        Scanner sc=new Scanner(System.in);
+//        int n=sc.nextInt();
+//        for(int i=0;i<n;i++){
+//            int m=sc.nextInt();
+//            String s=sc.nextLine();
+//            int count=0;
+//            for(int j=0;j<s.length();j++){
+//                if(s.charAt(j)=='.'){
+//                    count++;
+//                    j+=2;
+//                }
+//            }
+//            System.out.println(count);
+//        }
+//        int l=sc.nextInt();
+//        int r=sc.nextInt();
+//        System.out.println(r-l+1-(r+2)/3+(l+1)/3);
     }
     public ListNode reverseBetween(ListNode head, int m, int n) {
         if(m==n)return head;

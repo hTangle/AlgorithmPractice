@@ -60,17 +60,17 @@ public class Solution {
         return true;
     }
 
-    public ListNode FindKthToTail(ListNode head, int k) {
-        ListNode p = head;
-        while (--k > 0 && p != null) {
-            p = p.next;
-        }
-        ListNode temp = head;
-        while (p != null) {
-            p = p.next;
-            temp = temp.next;
-        }
-    }
+//    public ListNode FindKthToTail(ListNode head, int k) {
+//        ListNode p = head;
+//        while (--k > 0 && p != null) {
+//            p = p.next;
+//        }
+//        ListNode temp = head;
+//        while (p != null) {
+//            p = p.next;
+//            temp = temp.next;
+//        }
+//    }
 
     public boolean checkReverseEqual(String s1, String s2) {
         // write code here

@@ -21,25 +21,77 @@ public class Solution {
         l5.next = l6;
 //        ListNode root=s.reverseBetween(l1,1,6);
 //        s.testCanDivideBy();
-        System.out.println(-5%4);
+        System.out.println(-5 % 4);
+//        Thread
 //        s.reorderList(l1);
 //        System.out.println(s.RectCover(4));
     }
-    private void testCanDivideBy(){
-        Scanner sc=new Scanner(System.in);
-        int N=sc.nextInt();
-        String dir=sc.next();
-        int cur=0;
-        for(int i=0;i<N;i++){
-            if(dir.charAt(i)=='L'){
+
+    public ListNode partition(ListNode pHead, int x) {
+        // write code here
+        if (pHead == null || pHead.next == null) return pHead;
+        ListNode pMax = new ListNode(-1);
+        ListNode pMin = new ListNode(-1);
+        ListNode pMaxT = pMax;
+        ListNode pMinT = pMin;
+        ListNode p = pHead;
+        while (p != null) {
+            if (p.val >= x) {
+                pMaxT.next = p;
+                pMaxT = pMaxT.next;
+            } else {
+                pMinT.next = p;
+                pMinT = pMinT.next;
+            }
+            p = p.next;
+        }
+        pMaxT.next=null;
+        pMinT.next=pMax.next;
+        return pMin.next;
+    }
+
+    public boolean removeNode(ListNode pNode) {
+        // write code here
+        if (pNode == null || pNode.next == null) {
+            return false;
+        }
+        pNode.val = pNode.next.val;
+        pNode.next = pNode.next.next;
+        return true;
+    }
+
+    public ListNode FindKthToTail(ListNode head, int k) {
+        ListNode p = head;
+        while (--k > 0 && p != null) {
+            p = p.next;
+        }
+        ListNode temp = head;
+        while (p != null) {
+            p = p.next;
+            temp = temp.next;
+        }
+    }
+
+    public boolean checkReverseEqual(String s1, String s2) {
+        // write code here
+        return (s1 + s1).contains(s2);
+    }
+
+    private void testCanDivideBy() {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        String dir = sc.next();
+        int cur = 0;
+        for (int i = 0; i < N; i++) {
+            if (dir.charAt(i) == 'L') {
                 cur++;
-            }else{
+            } else {
                 cur--;
             }
         }
-        cur=cur%4;
-        char[] result=new char[]{'N','W','S','E'};
-        System.out.println(result[cur<0?cur+4:cur]);
+        cur = cur % 4;
+        char[] result = new char[]{'N', 'W', 'S', 'E'};
+        System.out.println(result[cur < 0 ? cur + 4 : cur]);
 //        Scanner sc=new Scanner(System.in);
 //        int n=sc.nextInt();
 //        for(int i=0;i<n;i++){
@@ -58,28 +110,29 @@ public class Solution {
 //        int r=sc.nextInt();
 //        System.out.println(r-l+1-(r+2)/3+(l+1)/3);
     }
+
     public ListNode reverseBetween(ListNode head, int m, int n) {
-        if(m==n)return head;
-        boolean isFirst=m==1;
-        ListNode pre=new ListNode(-1);
-        pre.next=head;
-        ListNode before=head;
-        ListNode cur=head.next;
-        while (m>1){
+        if (m == n) return head;
+        boolean isFirst = m == 1;
+        ListNode pre = new ListNode(-1);
+        pre.next = head;
+        ListNode before = head;
+        ListNode cur = head.next;
+        while (m > 1) {
             n--;
             m--;
-            pre=before;
-            before=before.next;
-            cur=cur.next;
+            pre = before;
+            before = before.next;
+            cur = cur.next;
         }
-        while (n>1){
-            before.next=cur.next;
-            cur.next=pre.next;
-            pre.next=cur;
-            cur=before.next;
+        while (n > 1) {
+            before.next = cur.next;
+            cur.next = pre.next;
+            pre.next = cur;
+            cur = before.next;
             n--;
         }
-        return isFirst?pre.next:head;
+        return isFirst ? pre.next : head;
 
 
 //        ListNode begin=null,end=null;
@@ -106,109 +159,117 @@ public class Solution {
 //        return head;
 
     }
+
     public void reorderList(ListNode head) {
-        if(head==null||head.next==null)return;
-        ListNode fast=head,slow=head;
-        while (fast!=null&&fast.next!=null){
-            fast=fast.next.next;
-            slow=slow.next;
+        if (head == null || head.next == null) return;
+        ListNode fast = head, slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
         }
-        ListNode pHead=reverseList(slow.next);
-        slow.next=null;
-        fast=head;
-        while (pHead!=null){
-            slow=fast.next;
-            fast.next=pHead;
-            pHead=pHead.next;
-            fast.next.next=slow;
-            fast=slow;
+        ListNode pHead = reverseList(slow.next);
+        slow.next = null;
+        fast = head;
+        while (pHead != null) {
+            slow = fast.next;
+            fast.next = pHead;
+            pHead = pHead.next;
+            fast.next.next = slow;
+            fast = slow;
         }
 
 
     }
-    private ListNode reverseList(ListNode head){
-        if(head==null||head.next==null)return head;
-        ListNode before=null;
-        ListNode current=head;
-        ListNode after=head.next;
-        while (current!=null){
-            current.next=before;
-            before=current;
-            current=after;
-            after=after==null?null:after.next;
+
+    private ListNode reverseList(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode before = null;
+        ListNode current = head;
+        ListNode after = head.next;
+        while (current != null) {
+            current.next = before;
+            before = current;
+            current = after;
+            after = after == null ? null : after.next;
         }
         return before;
     }
+
     public double Power(double base, int exponent) {
-        double res=1,curr=base;
+        double res = 1, curr = base;
         int exp;
-        if(exponent>0){
-            exp=exponent;
-        }else if(exponent<0){
-            if(base==0)throw new RuntimeException("除0error");
-            exp=-exponent;
-        }else{
+        if (exponent > 0) {
+            exp = exponent;
+        } else if (exponent < 0) {
+            if (base == 0) throw new RuntimeException("除0error");
+            exp = -exponent;
+        } else {
             return 1;
         }
-        while (exp!=0){
-            if(exp%2==1)res*=curr;
-            curr*=curr;
-            exp>>=1;
+        while (exp != 0) {
+            if (exp % 2 == 1) res *= curr;
+            curr *= curr;
+            exp >>= 1;
         }
-        return exponent>=0?res:(1/res);
+        return exponent >= 0 ? res : (1 / res);
     }
+
     public int RectCover(int target) {
-        int f1=1;
-        int f2=2;
-        if(target<=2)return target;
-        while (--target>1){
-            int temp=f1+f2;
-            f1=f2;
-            f2=temp;
+        int f1 = 1;
+        int f2 = 2;
+        if (target <= 2) return target;
+        while (--target > 1) {
+            int temp = f1 + f2;
+            f1 = f2;
+            f2 = temp;
         }
         return f2;
     }
+
     int exchangeOddEven(int x) {
         // write code here
-        int odd  = ((x&0x55555555)<<1);
-        int even = ((x&0xAAAAAAAA)>>1)&0x7fffffff;
-        return even|odd;
+        int odd = ((x & 0x55555555) << 1);
+        int even = ((x & 0xAAAAAAAA) >> 1) & 0x7fffffff;
+        return even | odd;
     }
 
     public int calcCost(int A, int B) {
         // write code here
-        A=A^B;
-        int count=0;
-        while (A!=0){
+        A = A ^ B;
+        int count = 0;
+        while (A != 0) {
             count++;
-            A=A&(A-1);
+            A = A & (A - 1);
         }
         return count;
 
     }
+
     public int binInsert(int n, int m, int j, int i) {
 
         // write code here
-        m<<=j;
-        return n|m;
+        m <<= j;
+        return n | m;
     }
-    public ArrayList<ArrayList<Integer>> FindPath(TreeNode root,int target) {
-        ArrayList<ArrayList<Integer>> results=new ArrayList<>();
-        ArrayList<Integer> result=new ArrayList<>();
-        FindPath(root,target,results,result);
+
+    public ArrayList<ArrayList<Integer>> FindPath(TreeNode root, int target) {
+        ArrayList<ArrayList<Integer>> results = new ArrayList<>();
+        ArrayList<Integer> result = new ArrayList<>();
+        FindPath(root, target, results, result);
         Collections.sort(results, new Comparator<ArrayList<Integer>>() {
             @Override
             public int compare(ArrayList<Integer> o1, ArrayList<Integer> o2) {
-                return o2.size()-o1.size();
+                return o2.size() - o1.size();
             }
         });
         return results;
     }
-    private void FindPath(TreeNode root,int target,ArrayList<ArrayList<Integer>> results,ArrayList<Integer> result){
-        if(root==null)return;
-        if(root.left==null&&root.right==null&&target==root.val){
-            ArrayList<Integer> r=new ArrayList<>();
-            for(int k:result){
+
+    private void FindPath(TreeNode root, int target, ArrayList<ArrayList<Integer>> results, ArrayList<Integer> result) {
+        if (root == null) return;
+        if (root.left == null && root.right == null && target == root.val) {
+            ArrayList<Integer> r = new ArrayList<>();
+            for (int k : result) {
                 r.add(k);
             }
             r.add(root.val);
@@ -216,74 +277,84 @@ public class Solution {
             return;
         }
         result.add(root.val);
-        FindPath(root.left,target-root.val,results,result);
-        FindPath(root.right,target-root.val,results,result);
-        result.remove(result.size()-1);
+        FindPath(root.left, target - root.val, results, result);
+        FindPath(root.right, target - root.val, results, result);
+        result.remove(result.size() - 1);
     }
+
     public int getLCA(int a, int b) {
         // write code here
-        while (a!=b){
-            if(a>b)a>>=1;
-            else b>>=1;
+        while (a != b) {
+            if (a > b) a >>= 1;
+            else b >>= 1;
         }
         return a;
     }
-    private int getLCAInterval(int a){
-        int begin=1;
-        while (a>=begin<<1){
-            begin=begin<<1;
+
+    private int getLCAInterval(int a) {
+        int begin = 1;
+        while (a >= begin << 1) {
+            begin = begin << 1;
         }
         return begin;
     }
-    private int nextNode=-2;
+
+    private int nextNode = -2;
+
     public int findSucc(TreeNode root, int p) {
         // write code here
         //如果有右子树，则是右子树的第一个节点
         //如果没有右子树
         //  如果是父节点的左子树，则为父节点
         //  如果为父节点的右子树，则需要递归判断父节点的父节点与父节点的关系
-        findSucc(root,p,0);
+        findSucc(root, p, 0);
         return nextNode;
     }
-    private void findSucc(TreeNode root,int p,int pos){
-        if(nextNode>=0||root==null)return;
-        findSucc(root.left,p,0);
-        if(nextNode==-1){
-            nextNode=root.val;
+
+    private void findSucc(TreeNode root, int p, int pos) {
+        if (nextNode >= 0 || root == null) return;
+        findSucc(root.left, p, 0);
+        if (nextNode == -1) {
+            nextNode = root.val;
             return;
         }
-        if(root.val==p){
-            nextNode=-1;//下一个节点是需要寻找的节点
+        if (root.val == p) {
+            nextNode = -1;//下一个节点是需要寻找的节点
         }
-        findSucc(root.right,p,0);
+        findSucc(root.right, p, 0);
     }
-    private int isBSTLast=Integer.MIN_VALUE;
+
+    private int isBSTLast = Integer.MIN_VALUE;
+
     public boolean checkBST(TreeNode root) {
         // write code here
-        if(root==null)return true;
-        if(!checkBST(root.left))return false;
-        if(root.val<=isBSTLast)return false;
-        isBSTLast=root.val;
-        if(!checkBST(root.right))return false;
+        if (root == null) return true;
+        if (!checkBST(root.left)) return false;
+        if (root.val <= isBSTLast) return false;
+        isBSTLast = root.val;
+        if (!checkBST(root.right)) return false;
         return true;
     }
 
-    ListNode head=new ListNode(-1);
+    ListNode head = new ListNode(-1);
+
     public ListNode getTreeLevel(TreeNode root, int dep) {
         // write code here
-        ListNode pHead=head;
-        getTreeLevel(root,dep,1);
+        ListNode pHead = head;
+        getTreeLevel(root, dep, 1);
         return pHead.next;
     }
-    private void getTreeLevel(TreeNode root,int dep,int current){
-        if(current==dep){
-            head.next=new ListNode(root.val);
-            head=head.next;
-        }else if(current<dep){
-            getTreeLevel(root.left,dep,current+1);
-            getTreeLevel(root.right,dep,current+1);
+
+    private void getTreeLevel(TreeNode root, int dep, int current) {
+        if (current == dep) {
+            head.next = new ListNode(root.val);
+            head = head.next;
+        } else if (current < dep) {
+            getTreeLevel(root.left, dep, current + 1);
+            getTreeLevel(root.right, dep, current + 1);
         }
     }
+
     private boolean balance = true;
 
     public boolean isBalance(TreeNode root) {
@@ -328,12 +399,12 @@ public class Solution {
 
         @Override
         public String toString() {
-            StringBuilder sb=new StringBuilder();
-            ListNode l=this;
-            while (l!=null){
+            StringBuilder sb = new StringBuilder();
+            ListNode l = this;
+            while (l != null) {
                 sb.append(l.val);
-                if(l.next!=null)sb.append(",");
-                l=l.next;
+                if (l.next != null) sb.append(",");
+                l = l.next;
             }
             return sb.toString();
         }

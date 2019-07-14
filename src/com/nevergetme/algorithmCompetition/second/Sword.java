@@ -6,11 +6,55 @@ import java.util.List;
 
 public class Sword {
     public static void main(String[] args) {
-        Sword sword=new Sword();
-        System.out.println(sword.NumberOf1(3));
+//        Sword sword=new Sword();
+//        ListNode l1=new ListNode(1);
+//        ListNode l2=new ListNode(2);
+//        ListNode l3=new ListNode(3);
+//        ListNode l4=new ListNode(4);
+//        ListNode l5=new ListNode(5);
+//        l1.next=l2;
+//        l2.next=l3;
+//        l3.next=l4;
+//        l4.next=l5;
+//        ListNode root=sword.ReverseList(l1);
+//        System.out.println();
+    }
+//    public boolean HasSubtree(TreeNode root1,TreeNode root2) {
+//        if(root1==null||root2==null)return false;
+//    }
+    public ListNode Merge(ListNode list1,ListNode list2) {
+        if(list1==null)return list2;
+        if(list2==null)return list1;
+        ListNode root=null;
+        if(list1.val>list2.val){
+            root=list2;
+            root.next=Merge(list1,list2.next);
+        }else{
+            root=list1;
+            root.next=Merge(list1.next,list2);
+        }
+        return root;
+    }
+    public ListNode ReverseList(ListNode head) {
+        if(head==null||head.next==null)return head;
+        if(head.next.next==null){
+            ListNode t=head.next;
+            t.next=head;
+            t.next.next=null;
+            return t;
+        }
+        ListNode pre=null,cur=head,next=head.next;
+        while (cur!=null){
+            cur.next=pre;
+            pre=cur;
+            cur=next;
+            if(cur==null)break;
+            next=next.next;
+        }
+        return pre;
     }
     public ListNode FindKthToTail(ListNode head,int k) {
-        if(head==null)return head;
+        if(head==null||k==0)return null;
         ListNode first=head;
         while (k>1&&first!=null){
             first=first.next;
@@ -144,7 +188,7 @@ public class Sword {
         return sb.toString();
     }
 
-    public class ListNode {
+    public static class ListNode {
         int val;
         ListNode next = null;
 

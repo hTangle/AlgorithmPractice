@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb6626a2-febb-4fe6-bd18-fe2c26232df6" name="Default" comment="update">
-      <change afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/second/LRUCache.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/First/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/First/Offer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,11 +48,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/First/Offer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+            <state relative-caret-position="216">
+              <caret line="28" column="64" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -60,7 +60,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/second/Sword.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
+            <state relative-caret-position="1080">
               <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
               <folding>
                 <element signature="method#Merge#0;class#Sword#0" />
@@ -70,11 +70,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/second/LRUCache.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+            <state relative-caret-position="252">
+              <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/algorithmCompetition.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3627">
+              <caret line="9" column="35" lean-forward="true" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -82,8 +91,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/LinkedHashMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-502">
-              <caret line="203" column="44" lean-forward="true" selection-start-line="203" selection-start-column="44" selection-end-line="203" selection-end-column="44" />
+            <state relative-caret-position="6300">
+              <caret line="203" column="44" selection-start-line="203" selection-start-column="44" selection-end-line="203" selection-end-column="44" />
               <folding>
                 <element signature="e#19667#19668#0" expanded="true" />
                 <element signature="e#19695#19696#0" expanded="true" />
@@ -144,7 +153,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>put</find>
       <find>final V put</find>
       <find>V get(</find>
       <find>reverse</find>
@@ -174,6 +182,7 @@
       <find>ConditionObject</find>
       <find>\[</find>
       <find>HashMap</find>
+      <find>canPartition</find>
     </findStrings>
     <replaceStrings>
       <replace>{</replace>
@@ -225,7 +234,6 @@
         <option value="$PROJECT_DIR$/src/com/nevergetme/algorithm/sort/HeapSort.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/algorithm/Lucas.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/Solution.java" />
-        <option value="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/First/Offer.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/algorithm/sortList/SelectionSortList.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/nowcoder/Test01.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/nowcoder/Test02.java" />
@@ -236,6 +244,7 @@
         <option value="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/second/MinStack.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/second/Sword.java" />
         <option value="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/second/LRUCache.java" />
+        <option value="$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/First/Offer.java" />
       </list>
     </option>
   </component>
@@ -243,8 +252,8 @@
     <option name="jrebelEnabledAutocompile" value="true" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="34" />
-    <option name="y" value="-9" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -256,8 +265,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -283,18 +290,12 @@
               <item name="nevergetme" type="462c0819:PsiDirectoryNode" />
               <item name="algorithmCompetition" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="AlgorithmPractice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AlgorithmPractice" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="nevergetme" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithmCompetition" type="462c0819:PsiDirectoryNode" />
-              <item name="second" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -670,14 +671,9 @@
       <workItem from="1562757906360" duration="1492000" />
       <workItem from="1563093524563" duration="7440000" />
       <workItem from="1563194150468" duration="4936000" />
-      <workItem from="1563363345165" duration="1429000" />
-    </task>
-    <task id="LOCAL-00026" summary="Update">
-      <created>1544015303629</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1544015303629</updated>
+      <workItem from="1563363345165" duration="2055000" />
+      <workItem from="1563598034656" duration="780000" />
+      <workItem from="1563891158758" duration="1016000" />
     </task>
     <task id="LOCAL-00027" summary="Update BST">
       <created>1544339286327</created>
@@ -1015,11 +1011,18 @@
       <option name="project" value="LOCAL" />
       <updated>1563198771334</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="update">
+      <created>1563367236519</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1563367236519</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="710758000" />
+    <option name="totallyTimeSpent" value="713180000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1034,8 +1037,8 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49874055" weight="0.1609808" />
-      <window_info active="true" id="Structure" order="1" visible="true" weight="0.15138593" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49874055" visible="true" weight="0.1609808" />
+      <window_info id="Structure" order="1" weight="0.15458423" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -1975,7 +1978,6 @@
     </SUITE>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/lang/Integer.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/locks/ReentrantLock.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java" />
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/designmode/productconsumer/ProducterAndConsumer.java">
@@ -2231,10 +2233,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/First/Offer.java">
+    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/second/Sword.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+        <state relative-caret-position="1080">
+          <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
+          <folding>
+            <element signature="method#Merge#0;class#Sword#0" />
+            <element signature="method#ReverseList#0;class#Sword#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/LinkedHashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6300">
+          <caret line="203" column="44" selection-start-line="203" selection-start-column="44" selection-end-line="203" selection-end-column="44" />
+          <folding>
+            <element signature="e#19667#19668#0" expanded="true" />
+            <element signature="e#19695#19696#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2270,32 +2287,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/second/Sword.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
-          <folding>
-            <element signature="method#Merge#0;class#Sword#0" />
-            <element signature="method#ReverseList#0;class#Sword#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/LinkedHashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-502">
-          <caret line="203" column="44" lean-forward="true" selection-start-line="203" selection-start-column="44" selection-end-line="203" selection-end-column="44" />
-          <folding>
-            <element signature="e#19667#19668#0" expanded="true" />
-            <element signature="e#19695#19696#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/second/LRUCache.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        <state relative-caret-position="252">
+          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/algorithmCompetition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3627">
+          <caret line="9" column="35" lean-forward="true" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nevergetme/algorithmCompetition/First/Offer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="28" column="64" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
         </state>
       </provider>
     </entry>

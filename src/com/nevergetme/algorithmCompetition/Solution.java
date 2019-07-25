@@ -63,33 +63,82 @@ public class Solution {
         //System.out.println(solution.candy(new int[]{1, 2, 2}));
         //System.out.println(solution.cherryPickup(new int[][]{{0, 1, -1}, {1, 0, -1}, {1, 1, 1}}));
 //        System.out.println(solution.findMin(new int[]{3,5,1}));
-        System.out.println();
-        solution.textTreeMap();
+        System.out.println(solution.rob(new int[]{2,3,2}));
+//        solution.textTreeMap();
 //        Thread
 //        System.out.println(matcher.toString());
 //        ArrayList
     }//77260018937180
 
+    class Money{
+        int notUse=0;
+        int use=0;
+    }
+
+    public int rob(TreeNode root) {
+        Money rootMoney=getMoney(root);
+        return Math.max(rootMoney.notUse,rootMoney.use);
+    }
+    private Money getMoney(TreeNode root){
+        if(root==null)return new Money();
+        Money left=getMoney(root.left);
+        Money right=getMoney(root.right);
+        Money rootMoney=new Money();
+        rootMoney.use=root.val+left.notUse+right.notUse;
+        rootMoney.notUse=Math.max(left.notUse,left.use)+Math.max(right.use,right.notUse);
+        return rootMoney;
+    }
+
+    public int rob(int[] nums) {
+        if(nums.length<1)return 0;
+        if(nums.length==1)return nums[0];
+        if(nums.length==2)return Math.max(nums[0],nums[1]);
+        return Math.max(rob(nums,0,nums.length-1),rob(nums,1,nums.length));
+    }
+    private int rob(int[] nums,int begin,int end){
+        if(end-begin==2)return Math.max(nums[begin],nums[begin+1]);
+        int[] dp=new int[end-begin];
+        dp[0]=nums[begin];
+        dp[1]=Math.max(nums[begin],nums[begin+1]);
+        for(int i=2;i<end-begin;i++){
+            dp[i]=Math.max(dp[i-2]+nums[begin+i],dp[i-1]);
+        }
+        return dp[end-begin-1];
+    }
+
+//    public int rob(int[] nums) {
+//        if (nums.length == 0) return 0;
+//        if (nums.length == 1) return nums[0];
+//        if (nums.length == 2) return Math.max(nums[0], nums[1]);
+//        int[] dp = new int[nums.length];
+//        dp[0] = nums[0];
+//        dp[1] = Math.max(nums[0], nums[1]);
+//        for (int i = 2; i < nums.length; i++) {
+//            dp[i] = Math.max(dp[i - 2] + nums[i], dp[i - 1]);
+//        }
+//        return Math.max(dp[nums.length - 1],dp[nums.length-2]);
+//    }
+
     public int superEggDrop(int K, int N) {
         // Right now, dp[i] represents dp(1, i)
-        int[] dp = new int[N+1];
+        int[] dp = new int[N + 1];
         for (int i = 0; i <= N; ++i)
             dp[i] = i;
 
         for (int k = 2; k <= K; ++k) {
             // Now, we will develop dp2[i] = dp(k, i)
-            int[] dp2 = new int[N+1];
+            int[] dp2 = new int[N + 1];
             int x = 1;
             for (int n = 1; n <= N; ++n) {
                 // Let's find dp2[n] = dp(k, n)
                 // Increase our optimal x while we can make our answer better.
                 // Notice max(dp[x-1], dp2[n-x]) > max(dp[x], dp2[n-x-1])
                 // is simply max(T1(x-1), T2(x-1)) > max(T1(x), T2(x)).
-                while (x < n && Math.max(dp[x-1], dp2[n-x]) > Math.max(dp[x], dp2[n-x-1]))
+                while (x < n && Math.max(dp[x - 1], dp2[n - x]) > Math.max(dp[x], dp2[n - x - 1]))
                     x++;
 
                 // The final answer happens at this x.
-                dp2[n] = 1 + Math.max(dp[x-1], dp2[n-x]);
+                dp2[n] = 1 + Math.max(dp[x - 1], dp2[n - x]);
             }
 
             dp = dp2;
@@ -99,51 +148,53 @@ public class Solution {
     }
 
     public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
-        if(desiredTotal<=maxChoosableInteger)return true;
-        if((1+maxChoosableInteger)*maxChoosableInteger/2<desiredTotal)return false;
-        boolean[] used=new boolean[maxChoosableInteger+1];
-        int[] f=new int[1<<maxChoosableInteger];
+        if (desiredTotal <= maxChoosableInteger) return true;
+        if ((1 + maxChoosableInteger) * maxChoosableInteger / 2 < desiredTotal) return false;
+        boolean[] used = new boolean[maxChoosableInteger + 1];
+        int[] f = new int[1 << maxChoosableInteger];
         //数字序列是否被选过了
-        Arrays.fill(f,-1);
-        return canIWin(used,f,desiredTotal);
+        Arrays.fill(f, -1);
+        return canIWin(used, f, desiredTotal);
     }
-    private boolean canIWin(boolean[] used,int[] f,int n){
-        if(n<=0)return false;
-        int idx=canIWinFormat(used);
-        if(f[idx]==-1){
-           for(int i=1;i<used.length;i++){
-               if(!used[i]){
-                   used[i]=true;
-                   if(!canIWin(used,f,n-i)){
-                       f[idx]=1;
-                       used[i]=false;
-                       return true;
-                   }
-                   used[i]=false;
-               }
-           }
-           f[idx]=0;
+
+    private boolean canIWin(boolean[] used, int[] f, int n) {
+        if (n <= 0) return false;
+        int idx = canIWinFormat(used);
+        if (f[idx] == -1) {
+            for (int i = 1; i < used.length; i++) {
+                if (!used[i]) {
+                    used[i] = true;
+                    if (!canIWin(used, f, n - i)) {
+                        f[idx] = 1;
+                        used[i] = false;
+                        return true;
+                    }
+                    used[i] = false;
+                }
+            }
+            f[idx] = 0;
         }
-        return f[idx]==1;//只有等于1的时候说明是能够成功的
+        return f[idx] == 1;//只有等于1的时候说明是能够成功的
     }
-    private int canIWinFormat(boolean[] used){
-        int idx=0;
-        for(boolean b:used){
-            idx<<=1;
-            if(b){
-                idx|=1;
+
+    private int canIWinFormat(boolean[] used) {
+        int idx = 0;
+        for (boolean b : used) {
+            idx <<= 1;
+            if (b) {
+                idx |= 1;
             }
         }
         return idx;
     }
 
-    public void textTreeMap(){
-        Map<Integer,String> map=new TreeMap<>();
-        map.put(2,"2");
-        map.put(1,"1");
-        map.put(3,"3");
-        map.forEach((Integer i,String s)->
-            System.out.println(i+"---"+s)
+    public void textTreeMap() {
+        Map<Integer, String> map = new TreeMap<>();
+        map.put(2, "2");
+        map.put(1, "1");
+        map.put(3, "3");
+        map.forEach((Integer i, String s) ->
+                System.out.println(i + "---" + s)
         );
     }
 
@@ -162,35 +213,36 @@ public class Solution {
         return dp[0];
     }
 
-    int[][][] dp=null;
-//    Object
-    int P=1_000_000_000+7;
+    int[][][] dp = null;
+    //    Object
+    int P = 1_000_000_000 + 7;
+
     public int findPaths(int m, int n, int N, int x, int y) {
-        if(x<0||y<0||x>=m||y>=n)return 0;
-        if(N==0)return 0;
-        if(dp==null){
-            dp=new int[m][n][N+1];
-            for(int[][] arr:dp){
-                for(int[] a:arr){
-                    Arrays.fill(a,-1);
+        if (x < 0 || y < 0 || x >= m || y >= n) return 0;
+        if (N == 0) return 0;
+        if (dp == null) {
+            dp = new int[m][n][N + 1];
+            for (int[][] arr : dp) {
+                for (int[] a : arr) {
+                    Arrays.fill(a, -1);
                 }
             }
         }
-        if(dp[x][y][N]!=-1)return dp[x][y][N];
-        long num=0;
-        if(x<1)num+=1;
-        else num=(num+findPaths(m,n,N-1,x-1,y))%P;
+        if (dp[x][y][N] != -1) return dp[x][y][N];
+        long num = 0;
+        if (x < 1) num += 1;
+        else num = (num + findPaths(m, n, N - 1, x - 1, y)) % P;
 
-        if(y<1)num+=1;
-        else num=(num+findPaths(m,n,N-1,x,y-1))%P;
+        if (y < 1) num += 1;
+        else num = (num + findPaths(m, n, N - 1, x, y - 1)) % P;
 
-        if(x>=m-1)num+=1;
-        else num=(num+findPaths(m,n,N-1,x+1,y))%P;
-        if(y>=n-1)num+=1;
-        else num=(num+findPaths(m,n,N-1,x,y+1))%P;
+        if (x >= m - 1) num += 1;
+        else num = (num + findPaths(m, n, N - 1, x + 1, y)) % P;
+        if (y >= n - 1) num += 1;
+        else num = (num + findPaths(m, n, N - 1, x, y + 1)) % P;
 
-        dp[x][y][N]=(int)num%P;
-        return (int)num%P;
+        dp[x][y][N] = (int) num % P;
+        return (int) num % P;
 
 //        int M=1_000_000_000+7;
 //        int[][] dp=new int[m][n];
@@ -211,79 +263,81 @@ public class Solution {
 //        }
 //        return count;
     }
+
     public int canCompleteCircuit(int[] gas, int[] cost) {
-        int start=0,remain=0,debt=0;
-        for(int i=0;i<gas.length;i++){
-            remain+=gas[i]-cost[i];
-            if(remain<0){
-                debt+=remain;
-                start=i+1;
-                remain=0;
+        int start = 0, remain = 0, debt = 0;
+        for (int i = 0; i < gas.length; i++) {
+            remain += gas[i] - cost[i];
+            if (remain < 0) {
+                debt += remain;
+                start = i + 1;
+                remain = 0;
             }
         }
-        return remain+debt>=0?start:-1;
+        return remain + debt >= 0 ? start : -1;
     }
+
     public boolean searchMatrix(int[][] matrix, int target) {
-        int row=matrix.length;
-        int col=row>0?matrix[0].length:0;
-        if(row==0||col==0)return false;
-        int up=0,down=row-1;
-        int mid=-1;
-        while (up<down){
-            mid=(up+down)>>1;
-            if(matrix[mid][0]<=target&&matrix[mid][col-1]>=target){
+        int row = matrix.length;
+        int col = row > 0 ? matrix[0].length : 0;
+        if (row == 0 || col == 0) return false;
+        int up = 0, down = row - 1;
+        int mid = -1;
+        while (up < down) {
+            mid = (up + down) >> 1;
+            if (matrix[mid][0] <= target && matrix[mid][col - 1] >= target) {
                 break;
-            }else if(matrix[mid][0]>target){
-                down=mid-1;
-            }else if(matrix[mid][col-1]<target){
-                up=mid+1;
+            } else if (matrix[mid][0] > target) {
+                down = mid - 1;
+            } else if (matrix[mid][col - 1] < target) {
+                up = mid + 1;
             }
         }
-        if(up==down&&(matrix[up][0]>target||matrix[up][col-1]<target)){
+        if (up == down && (matrix[up][0] > target || matrix[up][col - 1] < target)) {
             return false;
-        }else if(up==down)
-            mid=(up+down)>>1;
-        int left=0,right=col-1;
-        if(left==right)return target==matrix[mid][left];
-        while (left<=right){
-            int m=(left+right)>>1;
-            if(matrix[mid][m]==target)return true;
-            else if(matrix[mid][m]>target)right=m-1;
-            else left=m+1;
+        } else if (up == down)
+            mid = (up + down) >> 1;
+        int left = 0, right = col - 1;
+        if (left == right) return target == matrix[mid][left];
+        while (left <= right) {
+            int m = (left + right) >> 1;
+            if (matrix[mid][m] == target) return true;
+            else if (matrix[mid][m] > target) right = m - 1;
+            else left = m + 1;
         }
         return false;
 
     }
+
     public List<Integer> majorityElement(int[] nums) {
-        int cn1=0,cn2=0,ans1=0,ans2=1;
-        for(int n:nums){
-            if(n==ans1){
+        int cn1 = 0, cn2 = 0, ans1 = 0, ans2 = 1;
+        for (int n : nums) {
+            if (n == ans1) {
                 cn1++;
-            }else if(n==ans2){
+            } else if (n == ans2) {
                 cn2++;
-            }else if(cn1==0){
-                ans1=n;
+            } else if (cn1 == 0) {
+                ans1 = n;
                 cn1++;
-            }else if(cn2==0){
-                ans2=n;
+            } else if (cn2 == 0) {
+                ans2 = n;
                 cn2++;
-            }else{
+            } else {
                 cn1--;
                 cn2--;
             }
         }
-        cn1=cn2=0;
-        for(int n:nums){
-            if(n==ans1){
+        cn1 = cn2 = 0;
+        for (int n : nums) {
+            if (n == ans1) {
                 cn1++;
-            }
-            else if(n==ans2){
+            } else if (n == ans2) {
                 cn2++;
             }
         }
-        List<Integer> l=new ArrayList<>();
-        if(cn1>nums.length/3)l.add(ans1);
-        if(cn2>nums.length/3)l.add(ans2);
+        List<Integer> l = new ArrayList<>();
+        if (cn1 > nums.length / 3) l.add(ans1);
+        if (cn2 > nums.length / 3) l.add(ans2);
         return l;
     }
     // select A.tagid, count(*) count,T.value from ArticleTags A left join tags T on T.id=A.tagid group by A.tagid;
@@ -319,43 +373,44 @@ public class Solution {
         Arrays.sort(strs, new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
-                if(o1.length()>o2.length())return -1;
-                else if(o1.length()==o2.length())return 0;
+                if (o1.length() > o2.length()) return -1;
+                else if (o1.length() == o2.length()) return 0;
                 else return 1;
             }
         });
-        Map<String,Integer> map=new HashMap<>();
-        for(String s:strs){
-            map.put(s,map.getOrDefault(s,0)+1);
+        Map<String, Integer> map = new HashMap<>();
+        for (String s : strs) {
+            map.put(s, map.getOrDefault(s, 0) + 1);
         }
-        for(int i=0;i<strs.length;i++){
-            if(map.get(strs[i])==1){
-                boolean isSub=true;
-                for(int j=0;j<i&&isSub;j++){
-                    isSub=isSub&&(!isSubSequence(strs[j],strs[i]));
+        for (int i = 0; i < strs.length; i++) {
+            if (map.get(strs[i]) == 1) {
+                boolean isSub = true;
+                for (int j = 0; j < i && isSub; j++) {
+                    isSub = isSub && (!isSubSequence(strs[j], strs[i]));
                 }
-                if(isSub){
+                if (isSub) {
                     return strs[i].length();
                 }
             }
         }
         return -1;
     }
-    private boolean isSubSequence(String s,String p){
-        if(s.equals(p))return true;
-        if(s.length()==p.length())return false;
-        int i=0;
-        for(int j=0;j<s.length()&&i<p.length();j++){
-            if(s.charAt(j)==p.charAt(i)){
+
+    private boolean isSubSequence(String s, String p) {
+        if (s.equals(p)) return true;
+        if (s.length() == p.length()) return false;
+        int i = 0;
+        for (int j = 0; j < s.length() && i < p.length(); j++) {
+            if (s.charAt(j) == p.charAt(i)) {
                 i++;
             }
         }
-        return i==p.length();
+        return i == p.length();
     }
 
     public int findLUSlength(String a, String b) {
-        if(a.equals(b))return -1;
-        else return Math.max(a.length(),b.length());
+        if (a.equals(b)) return -1;
+        else return Math.max(a.length(), b.length());
     }
 
     public boolean canPartition(int[] nums) {

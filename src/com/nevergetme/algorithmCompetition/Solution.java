@@ -63,55 +63,80 @@ public class Solution {
         //System.out.println(solution.candy(new int[]{1, 2, 2}));
         //System.out.println(solution.cherryPickup(new int[][]{{0, 1, -1}, {1, 0, -1}, {1, 1, 1}}));
 //        System.out.println(solution.findMin(new int[]{3,5,1}));
-        System.out.println(solution.rob(new int[]{2,3,2}));
+        System.out.println(solution.removeKdigits("112",1));
 //        solution.textTreeMap();
 //        Thread
 //        System.out.println(matcher.toString());
 //        ArrayList
     }//77260018937180
 
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if(root==null||p==root||q==root)return root;
-        TreeNode left=lowestCommonAncestor(root.left,p,q);
-        TreeNode right=lowestCommonAncestor(root.right,p,q);
-        if(left!=null&&right!=null)return root;
-        else return left==null?right:left;
+    public String removeKdigits(String num, int k) {
+        if(num.length()==0||num.length()==k)return "0";
+        List<Character> list=new ArrayList<>();
+        int n=k,len=num.length(),cnt=0;
+        for(char c:num.toCharArray()){
+            while (list.size()!=0&&n>0&&c<list.get(list.size()-1)){
+                n--;
+                list.remove(list.size()-1);
+            }
+            list.add(c);
+        }
+        if(list.size()>0){
+            while (cnt<list.size()&&list.get(cnt)=='0'){
+                cnt++;
+            }
+        }
+        StringBuilder sb=new StringBuilder();
+        for(;cnt<list.size()&&cnt<len-k;cnt++){
+            sb.append(list.get(cnt));
+        }
+        return list.size()==0?"0":(sb.length()==0?"0":sb.toString());
     }
 
-    class Money{
-        int notUse=0;
-        int use=0;
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || p == root || q == root) return root;
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        if (left != null && right != null) return root;
+        else return left == null ? right : left;
+    }
+
+    class Money {
+        int notUse = 0;
+        int use = 0;
     }
 
     public int rob(TreeNode root) {
-        Money rootMoney=getMoney(root);
-        return Math.max(rootMoney.notUse,rootMoney.use);
+        Money rootMoney = getMoney(root);
+        return Math.max(rootMoney.notUse, rootMoney.use);
     }
-    private Money getMoney(TreeNode root){
-        if(root==null)return new Money();
-        Money left=getMoney(root.left);
-        Money right=getMoney(root.right);
-        Money rootMoney=new Money();
-        rootMoney.use=root.val+left.notUse+right.notUse;
-        rootMoney.notUse=Math.max(left.notUse,left.use)+Math.max(right.use,right.notUse);
+
+    private Money getMoney(TreeNode root) {
+        if (root == null) return new Money();
+        Money left = getMoney(root.left);
+        Money right = getMoney(root.right);
+        Money rootMoney = new Money();
+        rootMoney.use = root.val + left.notUse + right.notUse;
+        rootMoney.notUse = Math.max(left.notUse, left.use) + Math.max(right.use, right.notUse);
         return rootMoney;
     }
 
     public int rob(int[] nums) {
-        if(nums.length<1)return 0;
-        if(nums.length==1)return nums[0];
-        if(nums.length==2)return Math.max(nums[0],nums[1]);
-        return Math.max(rob(nums,0,nums.length-1),rob(nums,1,nums.length));
+        if (nums.length < 1) return 0;
+        if (nums.length == 1) return nums[0];
+        if (nums.length == 2) return Math.max(nums[0], nums[1]);
+        return Math.max(rob(nums, 0, nums.length - 1), rob(nums, 1, nums.length));
     }
-    private int rob(int[] nums,int begin,int end){
-        if(end-begin==2)return Math.max(nums[begin],nums[begin+1]);
-        int[] dp=new int[end-begin];
-        dp[0]=nums[begin];
-        dp[1]=Math.max(nums[begin],nums[begin+1]);
-        for(int i=2;i<end-begin;i++){
-            dp[i]=Math.max(dp[i-2]+nums[begin+i],dp[i-1]);
+
+    private int rob(int[] nums, int begin, int end) {
+        if (end - begin == 2) return Math.max(nums[begin], nums[begin + 1]);
+        int[] dp = new int[end - begin];
+        dp[0] = nums[begin];
+        dp[1] = Math.max(nums[begin], nums[begin + 1]);
+        for (int i = 2; i < end - begin; i++) {
+            dp[i] = Math.max(dp[i - 2] + nums[begin + i], dp[i - 1]);
         }
-        return dp[end-begin-1];
+        return dp[end - begin - 1];
     }
 
 //    public int rob(int[] nums) {

@@ -63,34 +63,71 @@ public class Solution {
         //System.out.println(solution.candy(new int[]{1, 2, 2}));
         //System.out.println(solution.cherryPickup(new int[][]{{0, 1, -1}, {1, 0, -1}, {1, 1, 1}}));
 //        System.out.println(solution.findMin(new int[]{3,5,1}));
-        System.out.println(solution.removeKdigits("112",1));
+//        System.out.println(solution.binarySearch(new int[]{0, 1, 2, 3, 5, 6, 7, 8}, 8));
 //        solution.textTreeMap();
 //        Thread
 //        System.out.println(matcher.toString());
 //        ArrayList
+        System.out.println(solution.getRepresentByUniqueTwo(2));
     }//77260018937180
 
+    private int uniqueTwoCount = 0;
+
+    public int getRepresentByUniqueTwo(int num) {
+        //找到num最多可以用多少个二进制数表示
+        int k = 0, cur = 1;
+        while (num >= cur << k) {
+            k++;
+        }
+        return getRepresentByUniqueTwo(num, cur << (k - 1));
+    }
+
+    private int getRepresentByUniqueTwo(int num, int cur) {
+        if (num < 0) return 0;
+        if (num == 0) return 1;
+        if (cur == 0) return 0;
+        return getRepresentByUniqueTwo(num, cur >> 1) +
+                getRepresentByUniqueTwo(num - cur, cur >> 1) +
+                getRepresentByUniqueTwo(num - cur * 2, cur >> 1);
+    }
+
+    public int binarySearch(int[] array, int target) {
+        int begin = 0, end = array.length - 1;
+        while (begin <= end) {
+            if (begin == end) return array[begin] == target ? begin : -1;
+            int mid = (begin + end) >> 1;
+            if (array[mid] == target) {
+                return mid;
+            } else if (array[mid] < target) {
+                begin = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+        return -1;
+    }
+
     public String removeKdigits(String num, int k) {
-        if(num.length()==0||num.length()==k)return "0";
-        List<Character> list=new ArrayList<>();
-        int n=k,len=num.length(),cnt=0;
-        for(char c:num.toCharArray()){
-            while (list.size()!=0&&n>0&&c<list.get(list.size()-1)){
+        if (num.length() == 0 || num.length() == k) return "0";
+        List<Character> list = new ArrayList<>();
+        int n = k, len = num.length(), cnt = 0;
+        for (char c : num.toCharArray()) {
+            while (list.size() != 0 && n > 0 && c < list.get(list.size() - 1)) {
                 n--;
-                list.remove(list.size()-1);
+                list.remove(list.size() - 1);
             }
             list.add(c);
         }
-        if(list.size()>0){
-            while (cnt<list.size()&&list.get(cnt)=='0'){
+        if (list.size() > 0) {
+            while (cnt < list.size() && list.get(cnt) == '0') {
                 cnt++;
             }
         }
-        StringBuilder sb=new StringBuilder();
-        for(;cnt<list.size()&&cnt<len-k;cnt++){
+        StringBuilder sb = new StringBuilder();
+        for (; cnt < list.size() && cnt < len - k; cnt++) {
             sb.append(list.get(cnt));
         }
-        return list.size()==0?"0":(sb.length()==0?"0":sb.toString());
+        return list.size() == 0 ? "0" : (sb.length() == 0 ? "0" : sb.toString());
     }
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {

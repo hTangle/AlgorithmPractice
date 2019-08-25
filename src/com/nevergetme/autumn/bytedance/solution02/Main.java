@@ -4,7 +4,7 @@ package com.nevergetme.autumn.bytedance.solution02;
 import java.util.Scanner;
 
 public class Main{
-    public static void main(String args[]){
+    public static void main(String args[]) throws Exception {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         int k = scanner.nextInt();
@@ -19,6 +19,7 @@ public class Main{
         }
 
         System.out.println(new String(result));
+        throw new Exception("");
     }
 
     private static char xor(char a, char b) {

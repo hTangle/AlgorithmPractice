@@ -68,12 +68,170 @@ public class Solution {
 //        Thread
 //        System.out.println(matcher.toString());
 //        ArrayList
-        System.out.println(solution.getRepresentByUniqueTwo(2));
+//        System.out.println(solution.getRepresentByUniqueTwo(2));
+//        getTotalCircles(new int[][]{{0, 4, 0}, {4, 0, 0}, {0, 0, 0}}, 3);
+        get2048MoveResult(new int[][]{{0, 0, 0, 2}, {0, 0, 0, 2}, {0, 0, 4, 8,}, {0, 0, 4, 8}}, 3);
+//        System.out.println();
     }//77260018937180
+
+    public static void get2048MoveResult(int[][] nums, int dir) {
+        int index = 0;
+        if (dir == 1) {
+            for (int i = 0; i < 4; i++) {
+                index = 0;
+                while (index < 4) {
+                    int putIndex = 0, beforeIndex = -1, lastIndex = -1;
+                    while (putIndex < 4 && nums[putIndex][i] != 0) putIndex++;//寻找第一个0，表示可以放
+                    while (index < 4 && nums[index][i] == 0) index++;//寻找index开始第一个不为0的数
+                    if (index < 4) beforeIndex = index++;
+                    if (beforeIndex == -1) break;
+                    while (index < 4 && nums[index][i] == 0) index++;//寻找index开始第二个不为0的数
+                    if (index < 4) lastIndex = index;
+                    if (lastIndex == -1 || nums[lastIndex][i] != nums[beforeIndex][i]) {
+                        //表示没有找到可以替换的数，但是有不为0的数，此时把第一个不为0的数放到指定位置
+                        if (putIndex < beforeIndex) {
+                            nums[putIndex][i] = nums[beforeIndex][i];
+                            nums[beforeIndex][i] = 0;
+                        }
+                    } else {
+                        nums[beforeIndex][i] += nums[lastIndex][i];
+                        nums[lastIndex][i] = 0;
+                        if (putIndex < beforeIndex) {
+                            nums[putIndex][i] = nums[beforeIndex][i];
+                            nums[beforeIndex][i] = 0;
+                        }
+                        index++;
+                    }
+                }
+            }
+        } else if (dir == 2) {
+            for (int i = 3; i >= 0; i--) {
+                index = 3;
+                while (index >= 0) {
+                    int putIndex = 3, beforeIndex = -1, lastIndex = -1;
+                    while (putIndex >= 0 && nums[putIndex][i] != 0) putIndex--;//寻找第一个0，表示可以放
+                    while (index >= 0 && nums[index][i] == 0) index--;//寻找index开始第一个不为0的数
+                    if (index >= 0) beforeIndex = index--;
+                    if (beforeIndex == -1) break;
+                    while (index >= 0 && nums[index][i] == 0) index--;//寻找index开始第二个不为0的数
+                    if (index >= 0) lastIndex = index;
+                    if (lastIndex == -1 || nums[lastIndex][i] != nums[beforeIndex][i]) {
+                        //表示没有找到可以替换的数，但是有不为0的数，此时把第一个不为0的数放到指定位置
+                        if (putIndex > beforeIndex) {
+                            nums[putIndex][i] = nums[beforeIndex][i];
+                            nums[beforeIndex][i] = 0;
+                        }
+                    } else {
+                        nums[beforeIndex][i] += nums[lastIndex][i];
+                        nums[lastIndex][i] = 0;
+                        if (putIndex > beforeIndex) {
+                            nums[putIndex][i] = nums[beforeIndex][i];
+                            nums[beforeIndex][i] = 0;
+                        }
+                        index++;
+                    }
+                }
+            }
+        } else if (dir == 3) {
+            for (int i = 0; i < 4; i++) {
+                index = 0;
+                while (index < 4) {
+                    int putIndex = 0, beforeIndex = -1, lastIndex = -1;
+                    while (putIndex < 4 && nums[i][putIndex] != 0) putIndex++;//寻找第一个0，表示可以放
+                    while (index < 4 && nums[i][index] == 0) index++;//寻找index开始第一个不为0的数
+                    if (index < 4) beforeIndex = index++;
+                    if (beforeIndex == -1) break;
+                    while (index < 4 && nums[i][index] == 0) index++;//寻找index开始第二个不为0的数
+                    if (index < 4) lastIndex = index;
+                    if (lastIndex == -1 || nums[i][lastIndex] != nums[i][beforeIndex]) {
+                        //表示没有找到可以替换的数，但是有不为0的数，此时把第一个不为0的数放到指定位置
+                        if (putIndex < beforeIndex) {
+                            nums[i][putIndex] = nums[i][beforeIndex];
+                            nums[i][beforeIndex] = 0;
+                        }
+                    } else {
+                        nums[i][beforeIndex] += nums[i][lastIndex];
+                        nums[i][lastIndex] = 0;
+                        if (putIndex < beforeIndex) {
+                            nums[i][putIndex] = nums[i][beforeIndex];
+                            nums[i][beforeIndex] = 0;
+                        }
+                        index++;
+                    }
+                }
+            }
+        } else {
+            for (int i = 3; i >= 0; i--) {
+                index = 3;
+                while (index >= 0) {
+                    int putIndex = 3, beforeIndex = -1, lastIndex = -1;
+                    while (putIndex >= 0 && nums[i][putIndex] != 0) putIndex--;//寻找第一个0，表示可以放
+                    while (index >= 0 && nums[i][index] == 0) index--;//寻找index开始第一个不为0的数
+                    if (index >= 0) beforeIndex = index--;
+                    if (beforeIndex == -1) break;
+                    while (index >= 0 && nums[i][index] == 0) index--;//寻找index开始第二个不为0的数
+                    if (index >= 0) lastIndex = index;
+                    if (lastIndex == -1 || nums[i][lastIndex] != nums[i][beforeIndex]) {
+                        //表示没有找到可以替换的数，但是有不为0的数，此时把第一个不为0的数放到指定位置
+                        if (putIndex > beforeIndex) {
+                            nums[i][putIndex] = nums[i][beforeIndex];
+                            nums[i][beforeIndex] = 0;
+                        }
+                    } else {
+                        nums[i][beforeIndex] += nums[i][lastIndex];
+                        nums[i][lastIndex] = 0;
+                        if (putIndex > beforeIndex) {
+                            nums[i][putIndex] = nums[i][beforeIndex];
+                            nums[i][beforeIndex] = 0;
+                        }
+                        index++;
+                    }
+                }
+            }
+        }
+        for (int[] num : nums) {
+            for (int i = 0; i < 4; i++) {
+                System.out.print(num[i]);
+                if (i == 3) System.out.println();
+                else System.out.print(" ");
+            }
+
+        }
+    }
+
+    public static void getTotalCircles(int[][] nums, int N) {
+        boolean[] visited = new boolean[N];
+        int count = 0;
+        for (int i = 0; i < N; i++) {
+            if (!visited[i]) {
+                visited[i] = true;
+                for (int j = i + 1; j < N; j++) {
+                    if (nums[i][j] >= 3) {
+                        visited[j] = true;
+                        dfs(nums, N, j, visited);
+                    }
+                }
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+
+    private static void dfs(int[][] nums, int N, int before, boolean[] visited) {
+        for (int i = 0; i < N; i++) {
+            if (i != before && !visited[i] && nums[before][i] >= 3) {
+                visited[i] = true;
+                dfs(nums, N, i, visited);
+            }
+        }
+    }
 
     private int uniqueTwoCount = 0;
 
     public int getRepresentByUniqueTwo(int num) {
+//        Queue<Integer> q=new LinkedList<>();
+//        q.offer(1);
+//        q.poll();
         //找到num最多可以用多少个二进制数表示
         int k = 0, cur = 1;
         while (num >= cur << k) {

@@ -70,9 +70,49 @@ public class Solution {
 //        ArrayList
 //        System.out.println(solution.getRepresentByUniqueTwo(2));
 //        getTotalCircles(new int[][]{{0, 4, 0}, {4, 0, 0}, {0, 0, 0}}, 3);
-        get2048MoveResult(new int[][]{{0, 0, 0, 2}, {0, 0, 0, 2}, {0, 0, 4, 8,}, {0, 0, 4, 8}}, 3);
+//        get2048MoveResult(new int[][]{{0, 0, 0, 2}, {0, 0, 0, 2}, {0, 0, 4, 8,}, {0, 0, 4, 8}}, 3);
 //        System.out.println();
+        System.out.println(solution.findKthNumber(23,10));
     }//77260018937180
+
+    public int findKthNumber(int n, int k) {
+        int cur = 1;
+        k--;
+        while (k > 0) {
+            long step = 0, first = cur, last = cur + 1;
+            while (first <= n) {
+                step += Math.min((long) (n + 1), last) - first;
+                first *= 10;
+                last *= 10;
+            }
+            if (step <= k) {
+                cur++;
+                k -= step;
+            } else {
+                cur *= 10;
+                k--;
+            }
+        }
+        return cur;
+    }
+    private void findKthNumber(int n, int k,int cur){
+
+    }
+
+    public List<Integer> lexicalOrder(int n) {
+        List<Integer> result = new ArrayList<>();
+        lexicalOrder(n, result, 0);
+        return result;
+    }
+
+    private void lexicalOrder(int n, List<Integer> result, int cur) {
+        for (int i = 0; i < 10; i++) {
+            if (cur + i > 0 && cur + i <= n) {
+                result.add(cur + i);
+                lexicalOrder(n, result, (cur + i) * 10);
+            }
+        }
+    }
 
     public static void get2048MoveResult(int[][] nums, int dir) {
         int index = 0;
@@ -215,6 +255,7 @@ public class Solution {
             }
         }
         System.out.println(count);
+//        "".lastIndexOf(" ");
     }
 
     private static void dfs(int[][] nums, int N, int before, boolean[] visited) {

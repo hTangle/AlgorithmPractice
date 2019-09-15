@@ -72,8 +72,84 @@ public class Solution {
 //        getTotalCircles(new int[][]{{0, 4, 0}, {4, 0, 0}, {0, 0, 0}}, 3);
 //        get2048MoveResult(new int[][]{{0, 0, 0, 2}, {0, 0, 0, 2}, {0, 0, 4, 8,}, {0, 0, 4, 8}}, 3);
 //        System.out.println();
-        System.out.println(solution.findKthNumber(23,10));
+//        System.out.println(solution.findKthNumber(23, 10));
+
+//        getSum(17);
+        getDecimal("00002","00140");
     }//77260018937180
+
+    public static void getDecimal(String a, String b) {
+        int minDec = getMinDecimal(a, b);
+        if (minDec == 0) {
+            for (int i = 1; i <= 36; i++) {
+                System.out.print(i);
+                if (i < 35) System.out.print(" ");
+                else System.out.println();
+            }
+        }
+        a = removeFirstZero(a);
+        b = removeFirstZero(b);
+        List<Integer> result = new ArrayList<>();
+        for (int i = minDec+1; i <= 36; i++) {
+            if(isValTime(a,b,i))result.add(i);
+        }
+        for(int i=0;i<result.size();i++){
+            System.out.print(result.get(i));
+            if(i==result.size()-1)System.out.println();
+            else System.out.print(" ");
+        }
+    }
+
+    private static boolean isValTime(String a, String b, int dec) {
+        return getCurrentTime(a, dec, 24) && getCurrentTime(b, dec, 60);
+    }
+
+    private static boolean getCurrentTime(String a, int dec, int max) {
+        int t = 0, index = 1;
+        for (int i = a.length() - 1; i >= 0; i--) {
+            t += (getIntTime(a.charAt(i)) * index);
+            index *= dec;
+            if (t >= max) return false;
+        }
+        return t < max;
+    }
+
+    private static int getIntTime(char c) {
+        return c >= 'A' ? (c - 'A' + 10) : c - '0';
+    }
+
+    private static String removeFirstZero(String a) {
+        for (int i = 0; i < a.length(); i++) {
+            if (a.charAt(i) != '0') {
+                return a.substring(i);
+            }
+        }
+        return "";
+    }
+
+    private static int getMinDecimal(String a, String b) {
+        int k = 0;
+        for (char c : a.toCharArray()) k = Math.max(k, c - (c > '9' ? ('A' + 10) : '0'));
+        for (char c : b.toCharArray()) k = Math.max(k, c - (c > '9' ? ('A' + 10) : '0'));
+        return k;
+    }
+
+    public static void getSum(int k) {
+        int[] dp = new int[Math.max(k + 1, 10)];
+        dp[4] = 1;
+        dp[8] = 2;
+        dp[9] = 1;
+        for (int i = 10; i <= k; i++) {
+            if (Math.min(dp[i - 4], dp[i - 9]) > 0) {
+                if (dp[i - 4] != 0 && dp[i - 9] != 0) {
+                    dp[i] = Math.min(dp[i - 4], dp[i - 9]) + 1;
+                } else {
+                    dp[i] = Math.max(dp[i - 4], dp[i - 9]) + 1;
+                }
+            }
+        }
+        System.out.println(dp[k] == 0 ? -1 : dp[k]);
+    }
 
     public int findKthNumber(int n, int k) {
         int cur = 1;
@@ -95,7 +171,8 @@ public class Solution {
         }
         return cur;
     }
-    private void findKthNumber(int n, int k,int cur){
+
+    private void findKthNumber(int n, int k, int cur) {
 
     }
 
